@@ -9,16 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Login Aplikasi Tagihan Pulsa Masika Reload</title>
+  <link rel="shortcut icon" href="assets/image/fav/masika-fav.png" />
 
   <!-- Custom fonts for this template-->
-  <link href="assets/css/login/fontawesome.css" rel="stylesheet" type="text/css">
+  <link href="assets/css/login/fontawesome.min.css" rel="stylesheet">
   <link href="assets/css/login/fonts.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="assets/css/login/sb-admin-2.min.css" rel="stylesheet">
   <link href="assets/css/login/style.css" rel="stylesheet">
-
+  <script src="assets/js/login/fontawesome.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gradient-light">
@@ -30,7 +31,7 @@
 
       <div class="col-xl-10 col-lg-12 col-md-9">
 
-        <div class="card o-hidden border-0 shadow-lg margintop">
+        <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
@@ -61,10 +62,17 @@
                       Login
                     </a>
                     <hr>
-                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                    <a href="contents/daftar/register.php" class="btn btn-google btn-user btn-block">
                       Daftar Akun Sales
                     </a>
+                    <a href="contents/daftar/register.php" class="btn btn-facebook btn-user btn-block">
+                      <i class="fas fa-exclamation-circle fa-fw"></i>Laporan & Saran
+                    </a>
                   </form>
+                  <hr>
+                  <div class="text-center">
+                    <p class="small" href="login.html">Created &copy;2020 By Solikha Nopriati</p>
+                  </div>
                 </div>
               </div>
             </div>
