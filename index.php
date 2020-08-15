@@ -63,10 +63,10 @@
                     </a>
                     <hr>
                     <a href="contents/daftar/register.php" class="btn btn-google btn-user btn-block">
-                      Daftar Akun Sales
+                      <i class="fas fa-user-plus fa-fw"></i> Daftar Akun Sales
                     </a>
-                    <a href="contents/daftar/register.php" class="btn btn-facebook btn-user btn-block">
-                      <i class="fas fa-exclamation-circle fa-fw"></i>Laporan & Saran
+                    <a href="https://api.whatsapp.com/send?phone=+6285780167941&text=Silahkan Chat Kepada Admin Mengenai Laporan atau Saran Anda Sebagai Sales" target="_blank" class="btn btn-facebook btn-user btn-block">
+                      <i class="fas fa-exclamation-circle fa-fw"></i> Laporan & Saran
                     </a>
                   </form>
                   <hr>
