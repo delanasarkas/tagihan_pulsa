@@ -7,5 +7,6 @@
 #aturan url dashboard
 <IfModule mod_rewrite.c>
     RewriteEngine on
-    RewriteRule ^dashboard index.php?halaman=dashboard [NC,L]
+    RewriteRule ^dashboard index.php [NC,L]
+    RewriteRule ^transpenembakan transaksi-penembakan.php [NC,L]
 </IfModule>

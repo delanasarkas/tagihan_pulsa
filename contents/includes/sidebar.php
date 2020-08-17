@@ -13,7 +13,7 @@
           </div> -->
         </a>
     </div>
-    <div class="sidebar-wrapper">
+    <div class="sidebar-wrapper" style="overflow-x:hidden">
         <ul class="nav">
             <li class="active ">
                 <a href="dashboard">
@@ -27,7 +27,7 @@
                     <i class="nc-icon nc-paper"></i> TRANSAKSI PENEMBAKAN
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">INPUT PENEMBAKAN</a>
+                    <a class="dropdown-item" href="transpenembakan">DATA PENEMBAKAN</a>
                     <a class="dropdown-item" href="#">HISTORY PENEMBAKAN</a>
                 </div>
             </li>

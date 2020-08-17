@@ -1,0 +1,15 @@
+.float-rights{
+    float: right;
+}
+
+@media(max-width: 720px) {
+    .title-table{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .float-rights,.mobile {
+      float: none;
+      text-align: center;
+    }
+  }

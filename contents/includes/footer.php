@@ -1,4 +1,4 @@
-<footer class="footer footer-black bg-dark text-white">
+<footer class="footer footer-black bg-white text-dark">
     <div class="container-fluid">
         <div class="row">
             <div class="credits ml-auto">

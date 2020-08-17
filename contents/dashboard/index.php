@@ -1,16 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Dashboard Aplikasi Tagihan Pulsa Masika Reload
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+    name='viewport' />
+  <?php
+    include("../includes/css.php");
+  ?>
+</head>
+
 <body class="">
   <div class="wrapper ">
     <!-- Sidebar -->
     <?php
-      include("includes/sidebar.php");
+      include("../includes/sidebar.php");
     ?>
     <div class="main-panel bg-white">
-      <!-- Navbar -->
-      <?php
-        include("includes/navbar.php");
-      ?>
-      <!-- End Navbar -->
-      <!-- Main -->
+    <!-- Navbar -->
+    <?php
+      include("../includes/navbar.php");
+    ?>
+    <!-- End Navbar -->
+    <!-- Main -->
       <div class="content bg-white">
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
@@ -141,9 +156,13 @@
       <!-- End Main -->
       <!-- Footer -->
       <?php
-        include("includes/footer.php")
+      include("../includes/footer.php");
       ?>
     </div>
   </div>
+  <?php
+    include("../includes/scripts.php");
+  ?>
 </body>
+
 </html>
