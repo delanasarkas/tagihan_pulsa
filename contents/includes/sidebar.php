@@ -16,28 +16,36 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="active ">
-                <a href="./dashboard.html">
+                <a href="dashboard">
                     <i class="nc-icon nc-bank"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li>
-                <a href="./icons.html">
-                    <i class="nc-icon nc-paper"></i>
-                    <p>TRANSAKSI PENEMBAKAN</p>
+            <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nc-icon nc-paper"></i> TRANSAKSI PENEMBAKAN
                 </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">INPUT PENEMBAKAN</a>
+                    <a class="dropdown-item" href="#">HISTORY PENEMBAKAN</a>
+                </div>
             </li>
             <li>
                 <a href="./map.html">
                     <i class="nc-icon nc-chart-bar-32"></i>
-                    <p>HISTORY PENEMBAKAN</p>
+                    <p>SALDO LIMIT</p>
                 </a>
             </li>
-            <li>
-                <a href="./notifications.html">
-                    <i class="nc-icon nc-money-coins"></i>
-                    <p>INVOICE TAGIHAN</p>
+            <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nc-icon nc-money-coins"></i> SETORAN SALES
                 </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">INPUT SETORAN</a>
+                    <a class="dropdown-item" href="#">UPLOAD BUKTI</a>
+                </div>
             </li>
             <li>
                 <a href="./user.html">
@@ -46,10 +54,21 @@
                 </a>
             </li>
             <li>
-                <a href="./tables.html">
-                    <i class="nc-icon nc-bell-55"></i>
-                    <p>INBOX</p>
+                <a href="./notifications.html">
+                    <i class="nc-icon nc-send"></i>
+                    <p>INVOICE SALES</p>
                 </a>
+            </li>
+            <li class="nav-item btn-rotate dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="nc-icon nc-single-copy-04"></i> REPORT DATA
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">HARIAN</a>
+                    <a class="dropdown-item" href="#">BULANAN</a>
+                    <a class="dropdown-item" href="#">TAHUNAN</a>
+                </div>
             </li>
         </ul>
     </div>

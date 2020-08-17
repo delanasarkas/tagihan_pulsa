@@ -19,4 +19,5 @@
   <link href="../../assets/dashboard/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../assets/dashboard/demo/demo.css" rel="stylesheet" />
+  <link href="../../assets/css/dashboard/style.css" rel="stylesheet" />
 </head>

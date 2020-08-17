@@ -122,7 +122,7 @@
           <div class="col-md-12">
             <div class="card shadow">
               <div class="card-header ">
-                <h5 class="card-title">Users Behavior</h5>
+                <h5 class="card-title">Data Transaksi Sales</h5>
                 <p class="card-category">24 Hours performance</p>
               </div>
               <div class="card-body ">

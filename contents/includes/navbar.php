@@ -31,6 +31,26 @@
                 <li class="nav-item btn-rotate dropdown">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <span class="badge badge-danger">5</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">
+                            Invoice Masuk
+                            <span class="badge badge-info">3</span>
+                        </a>
+                        
+                        <a class="dropdown-item" href="#">
+                            Status Setoran
+                            <span class="badge badge-info">2</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item btn-rotate dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-single-02"></i> AKUN ANDA
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
