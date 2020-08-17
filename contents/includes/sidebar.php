@@ -1,0 +1,56 @@
+<div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="logo">
+        <a href="dashboard" class="simple-text logo-mini">
+            <div class="logo-image-small">
+                <img src="../../assets/image/fav/masika-fav.png">
+            </div>
+            <!-- <p>CT</p> -->
+        </a>
+        <a href="dashboard" class="simple-text logo-normal">
+            Masika Reload
+            <!-- <div class="logo-image-big">
+            <img src="../../assets/img/logo-big.png">
+          </div> -->
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="active ">
+                <a href="./dashboard.html">
+                    <i class="nc-icon nc-bank"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="./icons.html">
+                    <i class="nc-icon nc-paper"></i>
+                    <p>TRANSAKSI PENEMBAKAN</p>
+                </a>
+            </li>
+            <li>
+                <a href="./map.html">
+                    <i class="nc-icon nc-chart-bar-32"></i>
+                    <p>HISTORY PENEMBAKAN</p>
+                </a>
+            </li>
+            <li>
+                <a href="./notifications.html">
+                    <i class="nc-icon nc-money-coins"></i>
+                    <p>INVOICE TAGIHAN</p>
+                </a>
+            </li>
+            <li>
+                <a href="./user.html">
+                    <i class="nc-icon nc-circle-10"></i>
+                    <p>DATA PELANGGAN</p>
+                </a>
+            </li>
+            <li>
+                <a href="./tables.html">
+                    <i class="nc-icon nc-bell-55"></i>
+                    <p>INBOX</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
