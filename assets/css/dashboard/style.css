@@ -2,6 +2,24 @@
     float: right;
 }
 
+.form-group,.required:after {
+  content:"*";
+  color:red;
+}
+
+#example_filter input {
+  border-radius: 5px;
+}
+
+.select2{
+  width:100%!important;
+}
+
+.select2-selection__rendered {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
 @media(max-width: 720px) {
     .title-table{
         font-size: 20px;
@@ -12,4 +30,8 @@
       float: none;
       text-align: center;
     }
-  }
+
+    .input-kode-penembakan{
+      width: 65%;
+    }
+}

@@ -12,3 +12,6 @@
 <link rel="stylesheet" href="../../assets/dashboard/css/datatables/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../assets/dashboard/css/datatables/rowReorder.bootstrap4.min.css">
 <link rel="stylesheet" href="../../assets/dashboard/css/datatables/responsive.bootstrap4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="../../assets/dashboard/css/select2/select2.min.css">
+<link rel="stylesheet" href="../../assets/dashboard/css/select2/select2-bootstrap.css">
