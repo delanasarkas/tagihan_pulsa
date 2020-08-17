@@ -1,3 +1,6 @@
+<?php
+  $page = 'transaksipenembakan';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

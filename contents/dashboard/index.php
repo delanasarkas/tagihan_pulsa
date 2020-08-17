@@ -1,3 +1,6 @@
+<?php
+  $page = 'dashboard';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
