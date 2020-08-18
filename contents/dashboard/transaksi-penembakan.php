@@ -25,7 +25,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="modalCreate">Input Transaksi Penembakan</h5>
+          <h5 class="modal-title">Input Transaksi Penembakan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -50,7 +50,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="modalEdit">Edit Transaksi Penembakan</h5>
+          <h5 class="modal-title">Edit Transaksi Penembakan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -67,6 +67,53 @@
   </div>
   </form>
   <!-- End Edit Modal -->
+
+  <!-- Delete Modal -->
+  <form action="">
+  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">Hapus Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Yakin Hapus Data 827172 ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-outline-danger">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+  <!-- End Delete Modal -->
+
+  <!-- Detail Modal -->
+  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Detail Transaksi Penembakan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php include("transaksi-penembakan-detail.php");?>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Detail Modal -->
   <div class="wrapper ">
     <!-- Sidebar -->
     <?php
@@ -101,7 +148,7 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Nama Sales</th>
+                          <th>Kode Penembakan</th>
                           <th>Nama Pelanggan</th>
                           <th>Tanggal Penembakan</th>
                           <th>Jumlah Penembakan</th>
@@ -111,25 +158,29 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td>Abdi</td>
+                          <td>2919288</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
                           <td>61</td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="#" data-toggle="tooltip" data-placement="bottom"
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
                                 title="Edit Data" class="text-primary mr-3">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
                             </span>
-                            <a href="" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-                              class="text-danger mr-3">
-                              <i class="fas fa-trash fa-lg"></i>
-                            </a>
-                            <a href="" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                              class="text-success">
-                              <i class="fas fa-file-alt fa-lg"></i>
-                            </a>
+                            <span data-toggle="modal" data-target="#modalDelete">
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
+                                class="text-danger mr-3">
+                                <i class="fas fa-trash fa-lg"></i>
+                              </a>
+                            </span>
+                            <span data-toggle="modal" data-target="#modalDetail">
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-success">
+                                <i class="fas fa-file-alt fa-lg"></i>
+                              </a>
+                            </span>
                           </td>
                         </tr>
                         </tfoot>

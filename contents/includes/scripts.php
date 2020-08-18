@@ -24,6 +24,7 @@
   $(document).ready(function () {
     var table = $('#example').DataTable({
       responsive: true,
+      "scrollX": true,
       language: {
         search: "<i class='fas fa-search'></i>",
         searchPlaceholder: "Cari Data"
@@ -104,7 +105,4 @@
     //menampilkan hasil dari terbilang
     document.getElementById("terbilang").innerHTML = terbilang(input).replace(/  +/g, ' ');
   }
-</script>
-<script>
-  $('#loginModal').modal('hide')
 </script>
