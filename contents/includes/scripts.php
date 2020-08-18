@@ -54,7 +54,22 @@
     var yyyy = today.getFullYear();
 
     today = mm + '/' + dd + '/' + yyyy;
+
     document.getElementById("tanggalpenembakan").value = today;
+    // document.getElementById("tanggalpenagihan").value = tomorrow;
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    var tommorow = new Date();
+    var dd = String(tommorow.getDate()+3).padStart(2, '0');
+    var mm = String(tommorow.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = tommorow.getFullYear();
+
+    tommorow = mm + '/' + dd + '/' + yyyy;
+
+    document.getElementById("tanggalpenagihan").value = tommorow;
+    // document.getElementById("tanggalpenagihan").value = tomorrow;
   });
 </script>
 <script>

@@ -25,13 +25,24 @@
         <option>Sumon Zera</option>
     </select>
 </div>
-<div class="form-group">
-    <label class="control-label text-dark" for="tanggalpenembakan">Tanggal Penembakan</label>
-    <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-            <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label class="control-label text-dark" for="tanggalpenembakan">Tanggal Penembakan</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+            </div>
+            <input type="text" class="form-control" placeholder="Tanggal Penembakan" id="tanggalpenembakan" readonly />
         </div>
-        <input type="text" class="form-control" placeholder="Tanggal Penembakan" id="tanggalpenembakan" readonly />
+    </div>
+    <div class="form-group col-md-6">
+        <label class="control-label text-dark" for="tanggalpenagihan">Tanggal Penagihan</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
+            </div>
+            <input type="text" class="form-control" placeholder="Tanggal Penagihan" id="tanggalpenagihan" readonly />
+        </div>
     </div>
 </div>
 <div class="form-group">
