@@ -79,5 +79,9 @@ function terbilang(bilangan) {
    kaLimat = kaLimat.replace("Satu Ribu","Seribu");
  }
 
- return kaLimat + "";
+ if(panjang_bilangan > 0){
+    return kaLimat + "Rupiah";
+  }else{
+    document.getElementById("terbilang").innerHTML = "";
+  }
 }

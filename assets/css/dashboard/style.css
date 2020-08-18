@@ -2,9 +2,9 @@
     float: right;
 }
 
-.form-group,.required:after {
-  content:"*";
-  color:red;
+.required:after {
+  content:" *";
+  color: red;
 }
 
 #example_filter input {

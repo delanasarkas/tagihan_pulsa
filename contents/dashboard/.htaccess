@@ -10,4 +10,5 @@
     RewriteRule ^dashboard index.php [NC,L]
     RewriteRule ^transpenembakan transaksi-penembakan.php [NC,L]
     RewriteRule ^inputpenembakan transaksi-penembakan-input.php [NC,L]
+    RewriteRule ^editpenembakan transaksi-penembakan-ubah.php [NC,L]
 </IfModule>
