@@ -28,11 +28,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="transpenembakan">DATA PENEMBAKAN</a>
-                    <a class="dropdown-item" href="#">HISTORY PENEMBAKAN</a>
+                    <a class="dropdown-item" href="historypenembakan">HISTORY PENEMBAKAN</a>
                 </div>
             </li>
             <li class="<?php if($page=="saldolimit"){echo 'active';}?>">
-                <a href="#">
+                <a href="saldolimit">
                     <i class="nc-icon nc-chart-bar-32"></i>
                     <p>SALDO LIMIT</p>
                 </a>

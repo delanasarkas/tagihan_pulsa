@@ -65,7 +65,7 @@
 <script>
   $(document).ready(function () {
     var tommorow = new Date();
-    var dd = String(tommorow.getDate()+3).padStart(2, '0');
+    var dd = String(tommorow.getDate() + 3).padStart(2, '0');
     var mm = String(tommorow.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = tommorow.getFullYear();
 
@@ -101,72 +101,30 @@
     document.getElementById("feedbackpenembakan").innerHTML = "Kode sudah digenerate";
   }
 </script>
-<!-- select2 fungsi -->
+<!-- penambahan transaksi penembakan -->
 <script>
-  $("#single").select2({
-    theme: "bootstrap"
-  });
-</script>
-<script>
-  $("#single2").select2({
-    theme: "bootstrap"
-  });
-</script>
-<!-- rupiah -->
-<script>
-  function inputTerbilang() {
-    // Format mata uang.
-    $('.rupiah').mask('0.000.000.000', {
-      reverse: true
-    });
-    var input = document.getElementById("jumlahtransaksipenembakan").value.replace(/\./g, "");
-    //menampilkan hasil dari terbilang
-    document.getElementById("terbilang").innerHTML = terbilang(input).replace(/  +/g, ' ');
+  function generate2() {
+    if(document.getElementById("single3").value == "Pilih Kode Penembakan"){
+      document.getElementById("feedbackpenamabahanpenembakan").classList.remove("valid-feedback");
+      document.getElementById("feedbackpenamabahanpenembakan").classList.add("invalid-feedback");
+      document.getElementById("feedbackpenamabahanpenembakan").innerHTML = "Harap pilih kode penembakan";
+    } else{
+      document.getElementById("feedbackpenamabahanpenembakan").classList.remove("invalid-feedback");
+      document.getElementById("feedbackpenamabahanpenembakan").classList.add("valid-feedback");
+      document.getElementById("feedbackpenamabahanpenembakan").innerHTML = "Kode penembakan sudah dipilih";
+    }
   }
 </script>
-
-<!-- chart pie -->
+<!-- select2 fungsi -->
+<!-- data baru transaksi penembakan -->
 <script>
-		var randomScalingFactor = function() {
-			return Math.round(Math.random() * 100);
-		};
-
-		var config = {
-			type: 'pie',
-			data: {
-				datasets: [{
-					data: [
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-						randomScalingFactor(),
-					],
-					backgroundColor: [
-						window.chartColors.red,
-						window.chartColors.orange,
-						window.chartColors.yellow,
-						window.chartColors.green,
-						window.chartColors.blue,
-					],
-					label: 'Dataset 1'
-				}],
-				labels: [
-					'Red',
-					'Orange',
-					'Yellow',
-					'Green',
-					'Blue'
-				]
-			},
-			options: {
-				responsive: true
-			}
-		};
-
-		window.onload = function() {
-			var ctx = document.getElementById('chart-area').getContext('2d');
-			window.myPie = new Chart(ctx, config);
-		};
-
-	</script>
+  $("#single, #single2,#single3").select2({
+    theme: "bootstrap"
+  });
+</script>
+<!-- autfocus transaksi penembakan -->
+<script>
+$('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
+  $('#jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan').trigger('focus')
+});
+</script>

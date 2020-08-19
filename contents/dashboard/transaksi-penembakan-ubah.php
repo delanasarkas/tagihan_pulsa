@@ -2,12 +2,8 @@
     <label class="control-label text-dark" for="kodepenembakan">Kode Penembakan</label>
     <div class="form-inline">
         <input type="text"
-            class="form-control is-invalid input-kode-penembakan <?php if($page=="transaksipenembakan"){echo 'active';}?>"
+            class="form-control input-kode-penembakan"
             id="kodepenembakan" placeholder="Kode Penembakan" value="" readonly>
-        <button type="button" onclick="generate();" class="btn btn-primary mb-2 ml-2 disabled">Generate</button>
-        <div class="invalid-feedback d-block" id="feedbackpenembakan">
-            Harap generate kode penembakan
-        </div>
     </div>
 </div>
 <div class="form-group">
@@ -45,14 +41,27 @@
         </div>
     </div>
 </div>
-<div class="form-group">
-    <label class="control-label text-dark" for="jumlahtransaksipenembakan">Jumlah Transaksi Penembakan</label>
-    <div class="input-group mb-2 mr-sm-2">
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label class="control-label" for="saldosales">Saldo Anda</label>
+        <div class="input-group mb-2 mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text"><i class="fas fa-coins"></i></div>
         </div>
-        <input type="text" class="form-control rupiah" id="jumlahtransaksipenembakan"
-            placeholder="Jumlah Transaksi Penembakan" onkeyup="inputTerbilang();">
+        <input type="text" class="form-control rupiah" id="saldosales3"
+            placeholder="Saldo Anda" readonly>
+        </div>
+        <small id="terbilang7" class="form-text text-muted"></small>
     </div>
-    <small id="terbilang" class="form-text text-muted"></small>
+    <div class="form-group col-md-6">
+        <label class="control-label text-dark" for="jumlahtransaksipenembakan">Transaksi Penembakan</label>
+        <div class="input-group mb-2 mr-sm-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-coins"></i></div>
+            </div>
+            <input type="text" class="form-control rupiah" id="jumlahtransaksipenembakan2"
+                placeholder="Transaksi Penembakan" onkeyup="inputTerbilang3();">
+        </div>
+        <small id="terbilang8" class="form-text text-muted"></small>
+    </div>
 </div>
