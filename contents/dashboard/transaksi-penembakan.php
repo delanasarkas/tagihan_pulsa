@@ -342,7 +342,7 @@
   <script>
     $('#modalCreate, #modalCreatePenambahan, #modalEdit').on('hidden.bs.modal', function (e) {
       $(this)
-        .find("input,textarea,select")
+        .find("input,textarea")
           .val('')
           .end()
         .find("small")

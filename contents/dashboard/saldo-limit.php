@@ -20,92 +20,90 @@
 <body class="">
   <!-- Create Modal -->
   <form action="">
-  <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Input Transaksi Penembakan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("transaksi-penembakan-input.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Simpan</button>
+    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Input Saldo Limit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php include("saldo-limit-input.php");?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-success">Simpan</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <!-- End Create Modal -->
 
   <!-- Edit Modal -->
   <form action="">
-  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Edit Transaksi Penembakan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("transaksi-penembakan-ubah.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Edit</button>
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Edit Saldo Limit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php include("saldo-limit-ubah.php");?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-success">Edit</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
   <form action="">
-  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-danger text-white">
-          <h5 class="modal-title">Hapus Data</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Yakin Hapus Data 827172 ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-outline-danger">Hapus</button>
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">Hapus Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Yakin Hapus Data 827172 ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-outline-danger">Hapus</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <!-- End Delete Modal -->
 
   <!-- Detail Modal -->
-  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail"
-    aria-hidden="true">
+  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title">Detail Transaksi Penembakan</h5>
+          <h5 class="modal-title">Detail Saldo Limit</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <?php include("transaksi-penembakan-detail.php");?>
+          <?php include("saldo-limit-detail.php");?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -155,7 +153,8 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">SALDO LIMIT</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline">
+                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                      class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Tambah Saldo
                     </a>
                   </div>
@@ -183,8 +182,8 @@
                           <td>Rp.6.000.000</td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Edit Data" class="text-primary mr-3">
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
+                                class="text-primary mr-3">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
                             </span>
@@ -229,8 +228,91 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart transaksi penembakan -->
+  <!-- chart saldo limit -->
   <script src="../../assets/dashboard/js/chartjs/charttransaksipenembakan.js"></script>
+  <!-- tambah saldo limit -->
+  <script>
+    $(document).ready(function () {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("limitsaldo").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    })
+
+    function inputTerbilang() {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("nominalsaldopengiriman").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang2").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    }
+    $(document).ready(function () {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("totallimit").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang3").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    })
+  </script>
+  <!-- edit saldo limit -->
+  <script>
+    $(document).ready(function () {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("limitsaldoubah").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang4").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    })
+    function inputTerbilang2() {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("nominalsaldopengirimanubah").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang5").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    }
+    $(document).ready(function () {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("totallimitubah").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang6").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    })
+  </script>
+  <!-- reset modal -->
+  <script>
+    $('#modalCreate, #modalEdit').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find('#single')
+        .val('Pilih Nama Sales')
+        .end()
+        .find('#feedbacksaldolimit')
+        .addClass('invalid-feedback')
+        .html('Harap pilih nama sales')
+        .end()
+        .find("input,textarea")
+        .val('')
+        .end()
+        .find("small")
+        .html('')
+        .end()
+        .find("input[type=checkbox], input[type=radio]")
+        .prop("checked", "")
+        .end();
+    })
+  </script>
 </body>
 
 </html>

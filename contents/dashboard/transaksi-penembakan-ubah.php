@@ -13,7 +13,6 @@
 <div class="form-group">
     <label class="control-label text-dark" for="namapelanggan">Nama Pelanggan</label>
     <select class="form-control" id="single2">
-        <option>Pilih Nama Pelanggan</option>
         <option>Agung Waras</option>
         <option>Ndin Talimah</option>
         <option>Kentung Saidi</option>

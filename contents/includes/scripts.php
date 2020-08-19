@@ -59,6 +59,7 @@
     today = mm + '/' + dd + '/' + yyyy;
 
     document.getElementById("tanggalpenembakan").value = today;
+    document.getElementById("tanggaltambahsaldo").value = today;
     // document.getElementById("tanggalpenagihan").value = tomorrow;
   });
 </script>
@@ -115,6 +116,20 @@
     }
   }
 </script>
+<!-- input saldo limit -->
+<script>
+  function generate3() {
+    if(document.getElementById("single").value == "Pilih Nama Sales"){
+      document.getElementById("feedbacksaldolimit").classList.remove("valid-feedback");
+      document.getElementById("feedbacksaldolimit").classList.add("invalid-feedback");
+      document.getElementById("feedbacksaldolimit").innerHTML = "Harap pilih nama sales";
+    } else{
+      document.getElementById("feedbacksaldolimit").classList.remove("invalid-feedback");
+      document.getElementById("feedbacksaldolimit").classList.add("valid-feedback");
+      document.getElementById("feedbacksaldolimit").innerHTML = "Nama sales sudah dipilih";
+    }
+  }
+</script>
 <!-- select2 fungsi -->
 <!-- data baru transaksi penembakan -->
 <script>
@@ -126,5 +141,11 @@
 <script>
 $('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
   $('#jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan').trigger('focus')
+});
+</script>
+<!-- autfocus saldo limit -->
+<script>
+$('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
+  $('#nominalsaldopengiriman').trigger('focus')
 });
 </script>
