@@ -128,7 +128,28 @@
       <!-- Main -->
       <div class="content bg-white">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-4">
+            <div class="card card-stats shadow">
+              <div class="card-header">
+                <div class="mobile">
+                  <h3>Total Transaksi</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="canvas-holder" style="width:100%">
+                  <canvas id="chart-area"></canvas>
+                </div>
+              </div>
+              <div class="card-footer">
+                <hr>
+                <div class="stats">
+                  <i class="fa fa-refresh"></i>
+                  Dynamic Grafik
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
@@ -150,8 +171,6 @@
                           <th>No</th>
                           <th>Kode Penembakan</th>
                           <th>Nama Pelanggan</th>
-                          <th>Tanggal Penembakan</th>
-                          <th>Jumlah Penembakan</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -160,8 +179,6 @@
                           <td>1</td>
                           <td>2919288</td>
                           <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
