@@ -104,7 +104,7 @@
                           <td>1</td>
                           <td>818282</td>
                           <td>Rp.40.000.000</td>
-                          <td>Belum Proses</td>
+                          <td><span class="badge badge-pill badge-danger">Belum Proses</span></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalDetail">
                               <a href="javascript::" class="btn btn-success btn-sm">

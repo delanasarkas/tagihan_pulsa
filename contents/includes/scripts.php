@@ -149,3 +149,9 @@ $('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
   $('#nominalsaldopengiriman').trigger('focus')
 });
 </script>
+<!-- autfocus data pelanggan -->
+<script>
+$('#modalCreate').on('shown.bs.modal', function () {
+  $('#namapelanggan').trigger('focus')
+});
+</script>

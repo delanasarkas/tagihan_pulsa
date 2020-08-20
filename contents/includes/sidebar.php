@@ -48,7 +48,7 @@
                 </div>
             </li>
             <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">
-                <a href="./user.html">
+                <a href="datapelanggan">
                     <i class="nc-icon nc-circle-10"></i>
                     <p>DATA PELANGGAN</p>
                 </a>
