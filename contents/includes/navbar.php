@@ -35,8 +35,8 @@
                         <span class="badge badge-danger">5</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">
-                            Invoice Masuk
+                        <a class="dropdown-item <?php if($page=="invoicesales"){echo 'active';}?>" href="invoicesales">
+                            Invoice (Tagihan)
                             <span class="badge badge-info">3</span>
                         </a>
                         

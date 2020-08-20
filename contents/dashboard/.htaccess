@@ -11,4 +11,5 @@
     RewriteRule ^transpenembakan transaksi-penembakan.php [NC,L]
     RewriteRule ^historypenembakan transaksi-penembakan-history.php [NC,L]
     RewriteRule ^saldolimit saldo-limit.php [NC,L]
+    RewriteRule ^invoicesales invoice-sales.php [NC,L]
 </IfModule>

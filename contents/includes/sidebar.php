@@ -43,7 +43,7 @@
                     <i class="nc-icon nc-money-coins"></i> SETORAN SALES
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">INPUT SETORAN</a>
+                    <a class="dropdown-item" href="#">DATA SETORAN</a>
                     <a class="dropdown-item" href="#">UPLOAD BUKTI</a>
                 </div>
             </li>
@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li class="<?php if($page=="invoicesales"){echo 'active';}?>">
-                <a href="./notifications.html">
+                <a href="invoicesales">
                     <i class="nc-icon nc-send"></i>
                     <p>INVOICE SALES</p>
                 </a>

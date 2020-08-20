@@ -18,7 +18,7 @@
   <div class="form-group col-md-6">
     <label class="control-label required" for="namapelanggan">Nama Pelanggan</label>
     <select class="form-control" id="single">
-      <option>Pilih Nama Pelanggan</option>
+      <option value="Pilih Nama Pelanggan">Pilih Nama Pelanggan</option>
       <option>Agung Waras</option>
       <option>Ndin Talimah</option>
       <option>Kentung Saidi</option>

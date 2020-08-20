@@ -297,6 +297,7 @@
       $(this)
         .find('#single')
         .val('Pilih Nama Sales')
+        .trigger('change')
         .end()
         .find('#feedbacksaldolimit')
         .addClass('invalid-feedback')
