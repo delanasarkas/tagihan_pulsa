@@ -74,6 +74,13 @@
             </div>
           </div>
           <div class="col-lg-8">
+            <div class="alert alert-danger alert-with-icon alert-dismissible fade show" data-notify="container">
+              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="nc-icon nc-simple-remove"></i>
+              </button>
+              <span data-notify="icon" class="nc-icon nc-bell-55"></span>
+              <span data-notify="message">Jumlah data invoice yang belum di proses pada hari ini adalah <strong>13</strong></span>
+            </div>
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
@@ -111,6 +118,9 @@
                                 Detail
                               </a>
                             </span>
+                            <a href="javascript::" class="btn btn-warning btn-sm">
+                                Setor
+                            </a>
                           </td>
                         </tr>
                         </tfoot>
@@ -140,8 +150,8 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart saldo limit -->
-  <script src="../../assets/dashboard/js/chartjs/charttransaksipenembakan.js"></script>
+  <!-- chart invoice sales -->
+  <script src="../../assets/dashboard/js/chartjs/chartinvoicesales.js"></script>
 </body>
 
 </html>

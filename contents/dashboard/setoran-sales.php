@@ -1,5 +1,5 @@
 <?php
-  $page = 'datapelanggan';
+  $page = 'setoransales';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Data Pelanggan
+    Setoran Sales
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
@@ -25,13 +25,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Tambah Data Pelanggan</h5>
+          <h5 class="modal-title">Tambah Setoran</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <?php include("data-pelanggan-input.php");?>
+          <?php include("setoran-sales-input.php");?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -42,56 +42,6 @@
   </div>
   </form>
   <!-- End Create Modal -->
-
-  <!-- Create Penambahan Modal -->
-  <form action="">
-  <div class="modal fade" id="modalCreatePenambahan" tabindex="-1" role="dialog" aria-labelledby="modalCreatePenambahan"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Penambahan Transaksi Penembakan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("transaksi-penembakan-penambahan.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Simpan</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form>
-  <!-- End Create Penambahan Modal -->
-
-  <!-- Edit Modal -->
-  <form action="">
-  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Edit Data Pelanggan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("data-pelanggan-ubah.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Edit</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form>
-  <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
   <form action="">
@@ -124,13 +74,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title">Detail Data Pelanggan</h5>
+          <h5 class="modal-title">Detail Setoran</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <?php include("data-pelanggan-detail.php");?>
+          <?php include("setoran-sales-detail.php");?>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -154,34 +104,46 @@
       <div class="content bg-white">
         <div class="row">
           <div class="col-lg-4">
+            <div class="alert alert-warning alert-with-icon alert-dismissible fade show" data-notify="container">
+              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="nc-icon nc-simple-remove"></i>
+              </button>
+              <span data-notify="icon" class="nc-icon nc-cloud-upload-94"></span>
+              <span data-notify="message">Silahkan upload transfer hari ini</span>
+            </div>
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3>DATA DOWNLINE</h3>
+                  <h3>UPLOAD BUKTI</h3>
                 </div>
               </div>
               <div class="card-body">
-                <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
-                </div>
+                <?php include('setoran-sales-upload.php'); ?>
               </div>
               <div class="card-footer">
                 <hr>
                 <div class="stats">
-                  <i class="fa fa-refresh"></i>
-                  Dynamic Grafik
+                  <i class="fa fa-coins"></i>
+                  Bukti Transfer
                 </div>
               </div>
             </div>
           </div>
           <div class="col-lg-8">
+            <div class="alert alert-danger alert-with-icon alert-dismissible fade show" data-notify="container">
+              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="nc-icon nc-simple-remove"></i>
+              </button>
+              <span data-notify="icon" class="nc-icon nc-bell-55"></span>
+              <span data-notify="message">Jumlah data setoran yang belum di setor pada hari ini adalah <strong>13</strong></span>
+            </div>
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3 class="card-title d-inline title-table">DATA PELANGGAN</h3>
+                  <h3 class="card-title d-inline title-table">SETORAN SALES</h3>
                   <div class="float-rights">
                     <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline">
-                      <i class="fas fa-plus"></i> Tambah Pelanggan
+                      <i class="fas fa-plus"></i> Tambah Setoran
                     </a>
                   </div>
                 </div>
@@ -194,8 +156,8 @@
                       <thead>
                         <tr>
                           <th>No</th>
+                          <th>Kode Invoice</th>
                           <th>Nama Pelanggan</th>
-                          <th>Limit Saldo</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
@@ -203,26 +165,13 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td>Agung Njan</td>
-                          <td>Rp.20.000.000</td>
-                          <td><span class="badge badge-pill badge-success">Aktif</span></td>
+                          <td>8174758</td>
+                          <td>Aji Kuproy</td>
+                          <td><span class="badge badge-pill badge-info">Belum Setor</span></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Edit Data" class="text-primary mr-3">
-                                <i class="fas fa-edit fa-lg"></i>
-                              </a>
-                            </span>
-                            <span data-toggle="modal" data-target="#modalDelete">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-                                class="text-danger mr-3">
-                                <i class="fas fa-trash fa-lg"></i>
-                              </a>
-                            </span>
                             <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
-                                <i class="fas fa-file-alt fa-lg"></i>
+                              <a href="javascript::" class="btn btn-success btn-sm">
+                                Detail
                               </a>
                             </span>
                           </td>
@@ -254,26 +203,66 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart data pelanggan -->
-  <script src="../../assets/dashboard/js/chartjs/chartdatapelanggan.js"></script>
+  <!-- tambah setoran -->
   <script>
-  $( document ).ready(function() {
-    $('#statusaktif').change(function() {
-        var selectedValue = $(this).val();
+    $(document).ready(function () {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("limitsaldo").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    })
 
-        if(selectedValue  === 'Tidak Aktif') {
-            $('.status').addClass('has-danger');
-            $('.status').removeClass('has-success');
-            $(this).addClass('form-control-danger');
-            $(this).removeClass('form-control-success');
-        } else if (selectedValue === 'Aktif') {
-            $('.status').addClass('has-success');
-            $('.status').removeClass('has-danger');
-            $(this).addClass('form-control-success');
-            $(this).removeClass('form-control-danger');
-        }
+    function inputTerbilang() {
+      // Format mata uang.
+      $('.rupiah').mask('0.000.000.000', {
+        reverse: true
+      });
+      var input = document.getElementById("jumlahsetoran").value.replace(/\./g, "");
+      //menampilkan hasil dari terbilang
+      document.getElementById("terbilang2").innerHTML = terbilang(input).replace(/  +/g, ' ');
+    }
+  </script>
+  <!-- reset modal -->
+  <script>
+    $('#modalCreate').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find('#single4')
+        .val('Pilih Kode Invoice')
+        .trigger('change')
+        .end()
+        .find('#feedbacksetoransales')
+        .addClass('invalid-feedback')
+        .html('Harap pilih kode invoice')
+        .end()
+        .find("#kodepenembakan, #namasales, #namapelanggan, #tanggaltagihan, #limitsaldo, #jumlahsetoran, textarea")
+        .val('')
+        .end()
+        .find("small")
+        .html('')
+        .end()
+        .find("input[type=checkbox], input[type=radio]")
+        .prop("checked", "")
+        .end();
+    })
+  </script>
+  <!-- get file name upload -->
+  <script>
+    $('.custom-file-input').on('change', function () {
+      let fileName = Array.from(this.files).map(x => x.name).join(', ')
+      $(this).siblings('.custom-file-label').addClass("selected").html(fileName);
     });
-  });
+  </script>
+  <!-- reset value upload -->
+  <script>
+    $(document).ready(function() {
+      $('#resetUpload').click(function() {
+        $('.custom-file-input').val('');
+        $('.custom-file-label').html('Pilih File...');
+      });
+    });
   </script>
 </body>
 

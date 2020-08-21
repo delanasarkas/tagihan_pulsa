@@ -17,6 +17,10 @@
             <p>Rp.20.000.000</p>
         </div>
         <div class="form-group">
+            <label for="exampleFormControlInput1"><strong>Sales Terkait</strong></label>
+            <p>Abdi Negara</p>
+        </div>
+        <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Status Aktif</strong></label>
             <p><span class="badge badge-pill badge-success">Aktif</span></p>
         </div>

@@ -13,4 +13,5 @@
     RewriteRule ^saldolimit saldo-limit.php [NC,L]
     RewriteRule ^invoicesales invoice-sales.php [NC,L]
     RewriteRule ^datapelanggan data-pelanggan.php [NC,L]
+    RewriteRule ^setoransales setoran-sales.php [NC,L]
 </IfModule>

@@ -229,7 +229,7 @@
     include("../includes/scripts.php");
   ?>
   <!-- chart saldo limit -->
-  <script src="../../assets/dashboard/js/chartjs/charttransaksipenembakan.js"></script>
+  <script src="../../assets/dashboard/js/chartjs/chartsaldolimit.js"></script>
   <!-- tambah saldo limit -->
   <script>
     $(document).ready(function () {
@@ -303,7 +303,7 @@
         .addClass('invalid-feedback')
         .html('Harap pilih nama sales')
         .end()
-        .find("input,textarea")
+        .find("#limitsaldo, #nominalsaldopengiriman, #totallimit, textarea")
         .val('')
         .end()
         .find("small")

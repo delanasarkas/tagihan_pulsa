@@ -50,6 +50,7 @@
 </script>
 <!-- get tanggal -->
 <script>
+  //get tanggal transaksi penembakan
   $(document).ready(function () {
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -59,10 +60,31 @@
     today = mm + '/' + dd + '/' + yyyy;
 
     document.getElementById("tanggalpenembakan").value = today;
+  });
+  //get tanggal saldo limit
+  $(document).ready(function () {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+
     document.getElementById("tanggaltambahsaldo").value = today;
-    // document.getElementById("tanggalpenagihan").value = tomorrow;
+  });
+  //get tanggal setoran sales
+  $(document).ready(function () {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+
+    document.getElementById("tanggalsetoran").value = today;
   });
 </script>
+
 <script>
   $(document).ready(function () {
     var tommorow = new Date();
@@ -116,6 +138,20 @@
     }
   }
 </script>
+<!-- tambah setoran -->
+<script>
+  function generate4() {
+    if(document.getElementById("single4").value == "Pilih Kode Invoice"){
+      document.getElementById("feedbacksetoransales").classList.remove("valid-feedback");
+      document.getElementById("feedbacksetoransales").classList.add("invalid-feedback");
+      document.getElementById("feedbacksetoransales").innerHTML = "Harap pilih kode invoice";
+    } else{
+      document.getElementById("feedbacksetoransales").classList.remove("invalid-feedback");
+      document.getElementById("feedbacksetoransales").classList.add("valid-feedback");
+      document.getElementById("feedbacksetoransales").innerHTML = "Kode invoice sudah dipilih";
+    }
+  }
+</script>
 <!-- input saldo limit -->
 <script>
   function generate3() {
@@ -133,8 +169,12 @@
 <!-- select2 fungsi -->
 <!-- data baru transaksi penembakan -->
 <script>
-  $("#single, #single2,#single3").select2({
+  $("#single, #single2,#single3,#single4").select2({
     theme: "bootstrap"
+  });
+  $("#single5").select2({
+    theme: "bootstrap",
+    // disabled:readonly
   });
 </script>
 <!-- autfocus transaksi penembakan -->
@@ -153,5 +193,11 @@ $('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
 <script>
 $('#modalCreate').on('shown.bs.modal', function () {
   $('#namapelanggan').trigger('focus')
+});
+</script>
+<!-- autfocus setoran -->
+<script>
+$('#modalCreate').on('shown.bs.modal', function () {
+  $('#jumlahsetoran').trigger('focus')
 });
 </script>

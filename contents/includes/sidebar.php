@@ -43,8 +43,8 @@
                     <i class="nc-icon nc-money-coins"></i> SETORAN SALES
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">DATA SETORAN</a>
-                    <a class="dropdown-item" href="#">UPLOAD BUKTI</a>
+                    <a class="dropdown-item" href="setoransales">DATA SETORAN</a>
+                    <a class="dropdown-item" href="#">KONFIRMASI SETORAN</a>
                 </div>
             </li>
             <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">

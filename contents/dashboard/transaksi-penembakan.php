@@ -349,7 +349,7 @@
         .find('#kodepenembakan')
           .addClass('is-invalid')
           .end()
-        .find("input,textarea")
+        .find("#namasales, #saldosales, #jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan, textarea")
           .val('')
           .end()
         .find('#single')
