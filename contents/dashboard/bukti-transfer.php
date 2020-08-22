@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Setoran Sales
+    Bukti Transfer
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
@@ -18,31 +18,6 @@
 </head>
 
 <body class="">
-  <!-- Create Modal -->
-  <form action="">
-  <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Tambah Setoran</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("setoran-sales-input.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Simpan</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form>
-  <!-- End Create Modal -->
-
   <!-- Detail Modal -->
   <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail"
     aria-hidden="true">
@@ -78,46 +53,13 @@
       <!-- Main -->
       <div class="content bg-white">
         <div class="row">
-          <div class="col-lg-4">
-            <div class="alert alert-info alert-with-icon alert-dismissible fade show" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="nc-icon nc-cloud-upload-94"></span>
-              <span data-notify="message">Silahkan upload transfer hari ini</span>
-            </div>
+          <div class="col-lg-12">
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3>UPLOAD BUKTI</h3>
-                </div>
-              </div>
-              <div class="card-body">
-                <?php include('setoran-sales-upload.php'); ?>
-              </div>
-              <div class="card-footer">
-                <hr>
-                <div class="stats">
-                  <i class="fa fa-file-archive"></i>
-                  Bukti Transfer
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <div class="alert alert-danger alert-with-icon alert-dismissible fade show" data-notify="container">
-              <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
-                <i class="nc-icon nc-simple-remove"></i>
-              </button>
-              <span data-notify="icon" class="nc-icon nc-bell-55"></span>
-              <span data-notify="message">Jumlah data setoran yang belum di setor pada hari ini adalah <strong>13</strong></span>
-            </div>
-            <div class="card card-stats shadow">
-              <div class="card-header">
-                <div class="mobile">
-                  <h3 class="card-title d-inline title-table">SETORAN SALES</h3>
+                  <h3 class="card-title d-inline title-table">BUKTI TRANSFER</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline">
+                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline invisible">
                       <i class="fas fa-plus"></i> Tambah Setoran
                     </a>
                   </div>
@@ -132,8 +74,10 @@
                         <tr>
                           <th>No</th>
                           <th>Kode Invoice</th>
-                          <th>Nama Pelanggan</th>
-                          <th>Status</th>
+                          <th>Nama Sales</th>
+                          <th>Tanggal Setor</th>
+                          <th>Total Setor</th>
+                          <th>Bukti Transfer</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -142,12 +86,14 @@
                           <td>1</td>
                           <td>8174758</td>
                           <td>Aji Kuproy</td>
-                          <td><span class="badge badge-pill badge-info">Belum Setor</span></td>
+                          <td>08/11/2020</td>
+                          <td>Rp.50.000.000</td>
+                          <td>Gambar</td>
                           <td>
                             <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
-                                <i class="fas fa-list fa-lg"></i> Detail
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Download Gambar"
+                                class="text-info">
+                                <i class="fas fa-cloud-download-alt"></i> Download
                               </a>
                             </span>
                           </td>

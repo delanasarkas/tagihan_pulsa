@@ -14,4 +14,6 @@
     RewriteRule ^invoicesales invoice-sales.php [NC,L]
     RewriteRule ^datapelanggan data-pelanggan.php [NC,L]
     RewriteRule ^setoransales setoran-sales.php [NC,L]
+    RewriteRule ^konfirmasisetoran konfirmasi-setoran.php [NC,L]
+    RewriteRule ^buktitransfer bukti-transfer.php [NC,L]
 </IfModule>

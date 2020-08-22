@@ -201,3 +201,15 @@ $('#modalCreate').on('shown.bs.modal', function () {
   $('#jumlahsetoran').trigger('focus')
 });
 </script>
+<!-- autfocus tolak setoran -->
+<script>
+$('#modalTolak').on('shown.bs.modal', function () {
+  $('#keteranganditolak').trigger('focus')
+});
+</script>
+<!-- autfocus terima setoran -->
+<script>
+$('#modalTerima').on('shown.bs.modal', function () {
+  $('#keteranganditerima').trigger('focus')
+});
+</script>

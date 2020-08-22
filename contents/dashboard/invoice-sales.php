@@ -114,13 +114,17 @@
                           <td><span class="badge badge-pill badge-danger">Belum Proses</span></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" class="btn btn-success btn-sm">
-                                Detail
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-success mr-3">
+                                <i class="fas fa-list fa-lg"></i>
                               </a>
                             </span>
-                            <a href="javascript::" class="btn btn-warning btn-sm">
-                                Setor
-                            </a>
+                            <span>
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Setor"
+                                  class="text-warning">
+                                  <i class="fas fa-donate fa-lg"></i>
+                              </a>
+                            </span>
                           </td>
                         </tr>
                         </tfoot>

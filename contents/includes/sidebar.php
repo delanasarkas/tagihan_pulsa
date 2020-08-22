@@ -44,7 +44,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="setoransales">DATA SETORAN</a>
-                    <a class="dropdown-item" href="#">KONFIRMASI SETORAN</a>
+                    <a class="dropdown-item" href="konfirmasisetoran">KONFIRMASI SETORAN</a>
+                    <a class="dropdown-item" href="buktitransfer">BUKTI TRANSFER</a>
                 </div>
             </li>
             <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">

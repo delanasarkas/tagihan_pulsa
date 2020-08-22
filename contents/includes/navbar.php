@@ -40,7 +40,12 @@
                             <span class="badge badge-info">3</span>
                         </a>
                         
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="konfirmasisetoran">
+                            Konfirmasi Setoran
+                            <span class="badge badge-info">2</span>
+                        </a>
+
+                        <a class="dropdown-item" href="setoransales">
                             Status Setoran
                             <span class="badge badge-info">2</span>
                         </a>

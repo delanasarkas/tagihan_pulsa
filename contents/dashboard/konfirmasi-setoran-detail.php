@@ -5,15 +5,15 @@
             <p>98172777</p>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Kode Penembakan</strong></label>
-            <p>98111777</p>
-        </div>
-        <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Nama Sales</strong></label>
             <p>Anggun Anjay</p>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Nama Pelanggan</strong></label>
+            <label for="exampleFormControlInput1"><strong>Data Penembakan</strong></label>
+            <p>Acep Kusyadi</p>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1"><strong>Data Pelanggan</strong></label>
             <p>Acep Kusyadi</p>
         </div>
         <div class="form-group">
@@ -25,21 +25,18 @@
             <p>23/11/2020</p>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Saldo Pelanggan</strong></label>
-            <p>Rp.20.000.000</p>
+            <label for="exampleFormControlInput1"><strong>Total Setoran</strong></label>
+            <p>Rp.10.000.000</p>
         </div>
         <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Jumlah Setoran</strong></label>
-            <p>Rp.10.000.000</p>
+            <label for="exampleFormControlInput1"><strong>Bukti Setoran</strong></label>
+            <img src="../../assets/image/dashboard/default-avatar.png" class="img-fluid d-block border">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Status Setoran</strong></label>
             <p>
-                <span class="badge badge-pill badge-info">Belum Setor</span>
-                <span class="badge badge-pill badge-warning">Pending</span>
                 <span class="badge badge-pill badge-primary">Belum Konfirmasi</span>
                 <span class="badge badge-pill badge-success">Diterima</span>
-                <span class="badge badge-pill badge-danger">Ditolak</span>
             </p>
         </div>
     </div>

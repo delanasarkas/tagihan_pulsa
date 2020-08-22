@@ -223,7 +223,7 @@
                             <span data-toggle="modal" data-target="#modalDetail">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                                 class="text-success">
-                                <i class="fas fa-file-alt fa-lg"></i>
+                                <i class="fas fa-list fa-lg"></i>
                               </a>
                             </span>
                           </td>
