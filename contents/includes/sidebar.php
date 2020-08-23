@@ -48,28 +48,28 @@
                     <a class="dropdown-item" href="buktitransfer">BUKTI TRANSFER</a>
                 </div>
             </li>
-            <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">
-                <a href="datapelanggan">
-                    <i class="nc-icon nc-circle-10"></i>
-                    <p>DATA PELANGGAN</p>
-                </a>
-            </li>
             <li class="<?php if($page=="invoicesales"){echo 'active';}?>">
                 <a href="invoicesales">
                     <i class="nc-icon nc-send"></i>
                     <p>INVOICE SALES</p>
                 </a>
             </li>
-            <li class="nav-item btn-rotate dropdown <?php if($page=="reportdata"){echo 'active';}?>">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">
+                <a href="datapelanggan">
+                    <i class="nc-icon nc-circle-10"></i>
+                    <p>DATA PELANGGAN</p>
+                </a>
+            </li>
+            <li class="<?php if($page=="datasales"){echo 'active';}?>">
+                <a href="datasales">
+                    <i class="nc-icon nc-bulb-63"></i>
+                    <p>DATA SALES</p>
+                </a>
+            </li>
+            <li class="<?php if($page=="reportdata"){echo 'active';}?>">
+                <a href="reportdata">
                     <i class="nc-icon nc-single-copy-04"></i> REPORT DATA
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">HARIAN</a>
-                    <a class="dropdown-item" href="#">BULANAN</a>
-                    <a class="dropdown-item" href="#">TAHUNAN</a>
-                </div>
             </li>
         </ul>
     </div>
