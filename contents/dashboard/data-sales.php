@@ -205,7 +205,7 @@
     include("../includes/scripts.php");
   ?>
   <!-- chart data pelanggan -->
-  <script src="../../assets/dashboard/js/chartjs/chartdatapelanggan.js"></script>
+  <script src="../../assets/dashboard/js/chartjs/chartdatasales.js"></script>
   <script>
   $( document ).ready(function() {
     $('#statusaktif').change(function() {

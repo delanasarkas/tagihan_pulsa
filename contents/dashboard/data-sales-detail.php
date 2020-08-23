@@ -21,6 +21,10 @@
             <p>087615261718</p>
         </div>
         <div class="form-group">
+            <label for="exampleFormControlInput1"><strong>Limit Saldo</strong></label>
+            <p>Rp.20.000.000</p>
+        </div>
+        <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Status</strong></label>
             <p><span class="badge badge-pill badge-success">Aktif</span></p>
         </div>

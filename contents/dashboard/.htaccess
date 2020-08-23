@@ -18,4 +18,5 @@
     RewriteRule ^konfirmasisetoran konfirmasi-setoran.php [NC,L]
     RewriteRule ^buktitransfer bukti-transfer.php [NC,L]
     RewriteRule ^reportdata report-data.php [NC,L]
+    RewriteRule ^profil profil.php [NC,L]
 </IfModule>
