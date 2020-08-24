@@ -1,3 +1,8 @@
+<?php
+  
+  include('contents/query/registrasi.php');
+
+?>
 <!-- Header -->
 <body class="bg-gradient-light">
   <div class="container">
@@ -16,32 +21,50 @@
                       Registrasi Akun Sales
                     </h1>
                   </div>
-                  <form class="user">
+                  <form class="user" action="" method="POST" autocomplete="off">
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Nama Depan">
+                            <input type="text" class="form-control form-control-user" id="nama_depan" name="nama_depan" placeholder="Nama Depan" maxlength="15" value="<?php echo isset($_POST["nama_depan"]) ? $_POST["nama_depan"] : ''; ?>">
+                            <span class="error-text">
+                              <?= $errorNamaDepan; ?>
+                            </span>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Nama Belakang">
+                            <input type="text" class="form-control form-control-user" id="nama_belakang" name="nama_belakang" placeholder="Nama Belakang" maxlength="15" value="<?php echo isset($_POST["nama_belakang"]) ? $_POST["nama_belakang"] : ''; ?>">
+                            <span class="error-text">
+                              <?= $errorNamaBelakang; ?>
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                        <input type="text" class="form-control form-control-user" id="email_address" name="email_address" placeholder="Email Address" value="<?php echo isset($_POST["email_address"]) ? $_POST["email_address"] : ''; ?>">
+                        <span class="error-text">
+                          <?= $errorEmail; ?>
+                        </span>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" maxlength="8" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>">
+                            <span class="error-text">
+                              <?= $errorPassword; ?>
+                            </span>
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi Password">
+                            <input type="password" class="form-control form-control-user" id="confirm_password" name="confirm_password" placeholder="Ulangi Password" maxlength="8" value="<?php echo isset($_POST["confirm_password"]) ? $_POST["confirm_password"] : ''; ?>">
+                            <span class="error-text">
+                              <?= $errorConfirmPassword; ?>
+                            </span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Kode Registrasi">
+                        <input type="text" class="form-control form-control-user" id="kode_registrasi" name="kode_registrasi" placeholder="Kode Registrasi" maxlength="12" value="<?php echo isset($_POST["kode_registrasi"]) ? $_POST["kode_registrasi"] : ''; ?>">
+                        <span class="error-text">
+                            <?= $errorKodeRegistrasi; ?>
+                        </span>
                     </div>
-                    <a href="login.html" class="btn btn-success btn-user btn-block">
+                    <button type="submit" name="register" class="btn btn-success btn-user btn-block">
                         Registrasi Akun
-                    </a>
+                    </button>
                     <hr>
                     <a href="login" class="btn btn-google btn-user btn-block">
                       Kembali

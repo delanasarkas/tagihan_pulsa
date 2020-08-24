@@ -6,6 +6,19 @@
     margin-top: 70px;
 }
 
+.error-text{
+    font-size: 10px;
+    color: red;
+}
+
+.toast {
+    opacity: 1 !important;
+  }
+  
+#toast-container > div {
+    opacity: 1 !important; 
+}
+
 @media screen and (min-width: 320px){
     /* For tablets: */
     .margintop{
