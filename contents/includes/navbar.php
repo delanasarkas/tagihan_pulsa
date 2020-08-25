@@ -60,7 +60,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item <?php if($page=="profil"){echo 'active text-white';}?>" href="profil"><i class="fa fa-user fa-fw"></i> Joko Santoso</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw"></i> Keluar</a>
+                        <a class="dropdown-item" href="javascript::" data-toggle="modal" data-target="#modalKeluar"><i class="fas fa-sign-out-alt fa-fw"></i> Keluar</a>
                     </div>
                 </li>
             </ul>

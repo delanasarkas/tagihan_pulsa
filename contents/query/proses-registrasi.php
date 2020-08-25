@@ -21,8 +21,8 @@
     //submit
     if(isset($_POST['register'])){
         //inisialisasi variable
-        $nama_depan = htmlspecialchars($_POST['nama_depan']);
-        $nama_belakang = htmlspecialchars($_POST['nama_belakang']);
+        $nama_depan = htmlspecialchars(ucwords($_POST['nama_depan']));
+        $nama_belakang = htmlspecialchars(ucwords($_POST['nama_belakang']));
         $email_address = htmlspecialchars($_POST['email_address']);
         $password = htmlspecialchars($_POST['password']);
         $confirm_password = htmlspecialchars($_POST['confirm_password']);
@@ -101,27 +101,28 @@
 
         //validasi berhasil
         if($validNamaDepan && $validNamaBelakang && $validEmail && $validPassword && $validConfirmPassword && $validKodeRegistrasi){
-            $result = mysqli_query($con,"CALL registrasi(
-                '".$nama_depan."', 
-                '".$nama_belakang."', 
-                '".$email_address."', 
-                '".$rolle."', 
-                md5('".$password."'),
-                '".$stat."'
+            $cekData = mysqli_query($con,"CALL cek_email(
+                '".$email_address."'
             )");
+            $count = mysqli_num_rows($cekData);
+            if($count > 0 ){
+                $errorEmail = "Email sudah ada, silahkan gunakan data lain";
+                $validEmail = false;
+            }else{
+                //panggil prosedur registrasi
+                $result = mysqli_query($con,"CALL registrasi(
+                    '".$nama_depan."', 
+                    '".$nama_belakang."', 
+                    '".$email_address."', 
+                    '".$rolle."', 
+                    md5('".$password."'),
+                    '".$stat."'
+                )");
 
-            echo "<script>
-                    window.setTimeout(function(){
-                        Notiflix.Notify.Init({
-                            position:'right-bottom',
-                            useFontAwesome:true,
-                        });
-                        Notiflix.Notify.Success('Registrasi Berhasil Disimpan');
-                    },10);
-                    window.setTimeout(function(){
-                        window.location.href = 'login';
-                    },2500);
-                </script>";
+                //pindah ke halaman login
+                header('location:index.php?halaman=login&messageRegistrasi=registrasiberhasil');
+                exit();
+            }
         }
     }
 

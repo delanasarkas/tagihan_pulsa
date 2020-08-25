@@ -1,4 +1,22 @@
 <?php
+  //session
+  session_start();
+
+  //include akses
+  include('../query/hak-akses.php');
+
+  //get pesan
+  if (isset($_GET['messageLogin'])){
+    echo "<script>
+        window.setTimeout(function(){
+            Notiflix.Notify.Success('Login Berhasil');
+        },100);
+        window.setTimeout(function(){
+            window.location.href = 'dashboard';
+        },2000);
+    </script>";
+  }
+
   $page = 'dashboard';
 ?>
 <!DOCTYPE html>
@@ -30,6 +48,28 @@
     <!-- End Navbar -->
     <!-- Main -->
       <div class="content bg-white">
+        <!-- Keluar Modal -->
+        <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title">Konfirmasi Keluar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Yakin Keluar Dari Halaman ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+                <a href="keluar" class="btn btn-outline-danger">Keluar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Keluar Modal -->
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats shadow">

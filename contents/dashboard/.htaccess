@@ -4,9 +4,15 @@
     deny from all
 </Files>
 
+ErrorDocument 404 http://localhost/tagihan_pulsa/contents/error/404.php
+ErrorDocument 403 http://localhost/tagihan_pulsa/contents/error/403.php
+
 #aturan url dashboard
 <IfModule mod_rewrite.c>
     RewriteEngine on
+    RewriteRule ^error403 ../error/403.php [NC,L]
+    RewriteRule ^error404 ../error/404.php [NC,L]
+    RewriteRule ^keluar ../query/proses-logout.php [NC,L]
     RewriteRule ^dashboard index.php [NC,L]
     RewriteRule ^transpenembakan transaksi-penembakan.php [NC,L]
     RewriteRule ^historypenembakan transaksi-penembakan-history.php [NC,L]

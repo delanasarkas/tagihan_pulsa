@@ -1,7 +1,7 @@
 <?php
   
-  include('contents/query/registrasi.php');
-
+  include('contents/query/proses-registrasi.php');
+  
 ?>
 <!-- Header -->
 <body class="bg-gradient-light">

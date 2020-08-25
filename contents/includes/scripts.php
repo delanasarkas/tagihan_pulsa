@@ -23,6 +23,15 @@
 <!-- chart -->
 <script src="../../assets/dashboard/js/chartjs/chart.min.js"></script>
 <script src="../../assets/dashboard/js/chartjs/utils.js"></script>
+<!-- Toast -->
+<script src="../../assets/js/login/notiflix-2.4.0.min.js"></script>
+<script>
+  // Init the Confirm Module
+  Notiflix.Notify.Init({
+    position:'right-bottom',
+    useFontAwesome:true,
+  });
+</script>
 <script>
   $(document).ready(function () {
     var table = $('#example').DataTable({
@@ -127,11 +136,11 @@
 <!-- penambahan transaksi penembakan -->
 <script>
   function generate2() {
-    if(document.getElementById("single3").value == "Pilih Kode Penembakan"){
+    if (document.getElementById("single3").value == "Pilih Kode Penembakan") {
       document.getElementById("feedbackpenamabahanpenembakan").classList.remove("valid-feedback");
       document.getElementById("feedbackpenamabahanpenembakan").classList.add("invalid-feedback");
       document.getElementById("feedbackpenamabahanpenembakan").innerHTML = "Harap pilih kode penembakan";
-    } else{
+    } else {
       document.getElementById("feedbackpenamabahanpenembakan").classList.remove("invalid-feedback");
       document.getElementById("feedbackpenamabahanpenembakan").classList.add("valid-feedback");
       document.getElementById("feedbackpenamabahanpenembakan").innerHTML = "Kode penembakan sudah dipilih";
@@ -141,11 +150,11 @@
 <!-- tambah setoran -->
 <script>
   function generate4() {
-    if(document.getElementById("single4").value == "Pilih Kode Invoice"){
+    if (document.getElementById("single4").value == "Pilih Kode Invoice") {
       document.getElementById("feedbacksetoransales").classList.remove("valid-feedback");
       document.getElementById("feedbacksetoransales").classList.add("invalid-feedback");
       document.getElementById("feedbacksetoransales").innerHTML = "Harap pilih kode invoice";
-    } else{
+    } else {
       document.getElementById("feedbacksetoransales").classList.remove("invalid-feedback");
       document.getElementById("feedbacksetoransales").classList.add("valid-feedback");
       document.getElementById("feedbacksetoransales").innerHTML = "Kode invoice sudah dipilih";
@@ -155,11 +164,11 @@
 <!-- input saldo limit -->
 <script>
   function generate3() {
-    if(document.getElementById("single").value == "Pilih Nama Sales"){
+    if (document.getElementById("single").value == "Pilih Nama Sales") {
       document.getElementById("feedbacksaldolimit").classList.remove("valid-feedback");
       document.getElementById("feedbacksaldolimit").classList.add("invalid-feedback");
       document.getElementById("feedbacksaldolimit").innerHTML = "Harap pilih nama sales";
-    } else{
+    } else {
       document.getElementById("feedbacksaldolimit").classList.remove("invalid-feedback");
       document.getElementById("feedbacksaldolimit").classList.add("valid-feedback");
       document.getElementById("feedbacksaldolimit").innerHTML = "Nama sales sudah dipilih";
@@ -179,37 +188,37 @@
 </script>
 <!-- autfocus transaksi penembakan -->
 <script>
-$('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
-  $('#jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan').trigger('focus')
-});
+  $('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
+    $('#jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan').trigger('focus')
+  });
 </script>
 <!-- autfocus saldo limit -->
 <script>
-$('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
-  $('#nominalsaldopengiriman').trigger('focus')
-});
+  $('#modalCreate, #modalCreatePenambahan').on('shown.bs.modal', function () {
+    $('#nominalsaldopengiriman').trigger('focus')
+  });
 </script>
 <!-- autfocus data pelanggan -->
 <script>
-$('#modalCreate').on('shown.bs.modal', function () {
-  $('#namapelanggan').trigger('focus')
-});
+  $('#modalCreate').on('shown.bs.modal', function () {
+    $('#namapelanggan').trigger('focus')
+  });
 </script>
 <!-- autfocus setoran -->
 <script>
-$('#modalCreate').on('shown.bs.modal', function () {
-  $('#jumlahsetoran').trigger('focus')
-});
+  $('#modalCreate').on('shown.bs.modal', function () {
+    $('#jumlahsetoran').trigger('focus')
+  });
 </script>
 <!-- autfocus tolak setoran -->
 <script>
-$('#modalTolak').on('shown.bs.modal', function () {
-  $('#keteranganditolak').trigger('focus')
-});
+  $('#modalTolak').on('shown.bs.modal', function () {
+    $('#keteranganditolak').trigger('focus')
+  });
 </script>
 <!-- autfocus terima setoran -->
 <script>
-$('#modalTerima').on('shown.bs.modal', function () {
-  $('#keteranganditerima').trigger('focus')
-});
+  $('#modalTerima').on('shown.bs.modal', function () {
+    $('#keteranganditerima').trigger('focus')
+  });
 </script>

@@ -15,3 +15,5 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="../../assets/dashboard/css/select2/select2.min.css">
 <link rel="stylesheet" href="../../assets/dashboard/css/select2/select2-bootstrap.css">
+<!-- notify -->
+<link href="../../assets/css/login/notiflix-2.4.0.min.css" rel="stylesheet">
