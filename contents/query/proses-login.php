@@ -71,8 +71,8 @@
 
                 //remember me 7 hari
                 if(isset($_POST["check"])) {
-                    setcookie ("user_login",$_POST["email_address"],time()+ (60 * 60 * 24 * 7), '/');
-                    setcookie ("user_password",$_POST['password'],time()+ (60 * 60 * 24 * 7), '/');
+                    setcookie ("user_login",hash('md5',$_POST["email_address"]),time()+ (60 * 60 * 24 * 7), '/');
+                    setcookie ("user_password",hash('md5',$_POST['password']),time()+ (60 * 60 * 24 * 7), '/');
                 }
 
                 //akses masuk berdasarkan rolle
