@@ -20,57 +20,55 @@
 <body class="">
   <!-- Edit Modal -->
   <form action="">
-  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Edit Data Sales</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("data-sales-ubah.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-success">Edit</button>
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Edit Data Sales</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <?php include("data-sales-ubah.php");?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-success">Edit</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
   <form action="">
-  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-danger text-white">
-          <h5 class="modal-title">Hapus Data</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Yakin Hapus Data 827172 ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-outline-danger">Hapus</button>
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">Hapus Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Yakin Hapus Data 827172 ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-outline-danger">Hapus</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
   <!-- End Delete Modal -->
 
   <!-- Detail Modal -->
-  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail"
-    aria-hidden="true">
+  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
@@ -89,6 +87,27 @@
     </div>
   </div>
   <!-- End Detail Modal -->
+  <!-- Keluar Modal -->
+  <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title">Konfirmasi Keluar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Yakin Keluar Dari Halaman ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+          <a href="keluar" class="btn btn-outline-danger">Keluar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Keluar Modal -->
   <div class="wrapper ">
     <!-- Sidebar -->
     <?php
@@ -130,7 +149,8 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">DATA SALES</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline invisible">
+                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                      class="btn btn-primary btn-round d-inline invisible">
                       <i class="fas fa-plus"></i> Tambah Pelanggan
                     </a>
                   </div>
@@ -158,8 +178,8 @@
                           <td><span class="badge badge-pill badge-success">Aktif</span></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Edit Data" class="text-primary mr-3">
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
+                                class="text-primary mr-3">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
                             </span>
@@ -207,23 +227,23 @@
   <!-- chart data pelanggan -->
   <script src="../../assets/dashboard/js/chartjs/chartdatasales.js"></script>
   <script>
-  $( document ).ready(function() {
-    $('#statusaktif').change(function() {
+    $(document).ready(function () {
+      $('#statusaktif').change(function () {
         var selectedValue = $(this).val();
 
-        if(selectedValue  === 'Tidak Aktif') {
-            $('.status').addClass('has-danger');
-            $('.status').removeClass('has-success');
-            $(this).addClass('form-control-danger');
-            $(this).removeClass('form-control-success');
+        if (selectedValue === 'Tidak Aktif') {
+          $('.status').addClass('has-danger');
+          $('.status').removeClass('has-success');
+          $(this).addClass('form-control-danger');
+          $(this).removeClass('form-control-success');
         } else if (selectedValue === 'Aktif') {
-            $('.status').addClass('has-success');
-            $('.status').removeClass('has-danger');
-            $(this).addClass('form-control-success');
-            $(this).removeClass('form-control-danger');
+          $('.status').addClass('has-success');
+          $('.status').removeClass('has-danger');
+          $(this).addClass('form-control-success');
+          $(this).removeClass('form-control-danger');
         }
+      });
     });
-  });
   </script>
 </body>
 

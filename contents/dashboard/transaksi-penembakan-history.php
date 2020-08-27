@@ -31,6 +31,28 @@
       <!-- End Navbar -->
       <!-- Main -->
       <div class="content bg-white">
+        <!-- Keluar Modal -->
+        <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title">Konfirmasi Keluar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Yakin Keluar Dari Halaman ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+                <a href="keluar" class="btn btn-outline-danger">Keluar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Keluar Modal -->
         <div class="row">
           <div class="col-lg-4">
             <div class="card card-stats shadow">
@@ -59,7 +81,8 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">HISTORY TRANSAKSI PENEMBAKAN</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline invisible">
+                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                      class="btn btn-primary btn-round d-inline invisible">
                       <i class="fas fa-plus"></i> Tambah Data
                     </a>
                   </div>

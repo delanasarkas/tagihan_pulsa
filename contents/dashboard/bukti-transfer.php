@@ -19,8 +19,7 @@
 
 <body class="">
   <!-- Detail Modal -->
-  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail"
-    aria-hidden="true">
+  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
@@ -39,6 +38,27 @@
     </div>
   </div>
   <!-- End Detail Modal -->
+  <!-- Keluar Modal -->
+  <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title">Konfirmasi Keluar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Yakin Keluar Dari Halaman ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+          <a href="keluar" class="btn btn-outline-danger">Keluar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Keluar Modal -->
   <div class="wrapper ">
     <!-- Sidebar -->
     <?php
@@ -59,7 +79,8 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">BUKTI TRANSFER</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate" class="btn btn-primary btn-round d-inline invisible">
+                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                      class="btn btn-primary btn-round d-inline invisible">
                       <i class="fas fa-plus"></i> Tambah Setoran
                     </a>
                   </div>
@@ -91,8 +112,8 @@
                           <td>Gambar</td>
                           <td>
                             <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Download Gambar"
-                                class="text-info">
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
+                                title="Download Gambar" class="text-info">
                                 <i class="fas fa-cloud-download-alt"></i> Download
                               </a>
                             </span>
@@ -189,8 +210,8 @@
   </script>
   <!-- reset value upload -->
   <script>
-    $(document).ready(function() {
-      $('#resetUpload').click(function() {
+    $(document).ready(function () {
+      $('#resetUpload').click(function () {
         $('.custom-file-input').val('');
         $('.custom-file-label').html('Pilih File...');
       });

@@ -6,8 +6,22 @@
     //include koneksi
     include('koneksi.php');
 
+    //cek cookie
+    if(isset($_COOKIE['user_login']) && isset($_COOKIE['user_password'])){
+        $_SESSION["userId"]= $data["id_users"];
+        $_SESSION['email'] = $email_address;
+        $_SESSION['namaDepan'] = $data['nama_depan'];
+        $_SESSION['bio'] = $data['bio'];
+        $_SESSION['rolle'] = "admin";
+
+        //langsung login
+        header('location:contents/dashboard/index.php');
+    }
+
     //cek jika ada session
-    
+    if(isset($_SESSION['rolle'])){
+        echo "<script>window.history.back();</script>";
+    }
 
     //variable validasi
     $errorEmail = "";
@@ -56,16 +70,9 @@
                 $data = mysqli_fetch_assoc($result);
 
                 //remember me 7 hari
-                if(!empty($_POST["check"])) {
-                    setcookie ("user_login",$_POST["email_address"],time()+ (60 * 60 * 24 * 7));
-                    setcookie ("userpassword",$_POST['password'],time()+ (60 * 60 * 24 * 7));
-                } else {
-                    if(isset($_COOKIE["user_login"])) {
-                        setcookie ("user_login","");
-                    }
-                    if(isset($_COOKIE["userpassword"])) {
-                        setcookie ("userpassword","");
-                    }
+                if(isset($_POST["check"])) {
+                    setcookie ("user_login",$_POST["email_address"],time()+ (60 * 60 * 24 * 7), '/');
+                    setcookie ("user_password",$_POST['password'],time()+ (60 * 60 * 24 * 7), '/');
                 }
 
                 //akses masuk berdasarkan rolle

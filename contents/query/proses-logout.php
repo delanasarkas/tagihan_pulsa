@@ -5,18 +5,14 @@
     session_destroy();
 
     //kosongkan session
-    $_SESSION["userId"] = "";
-    $_SESSION['email'] = "";
-    $_SESSION['namaDepan'] = "";
-    $_SESSION['bio'] = "";
-    $_SESSION['rolle'] = "";
+    $_SESSION = [];
     
     //hapus cookie 
-    setcookie ("user_login","");
-    setcookie ("userpassword","");
+    setcookie ('user_login','',time() - (60 * 60 * 24 * 7), '/');
+    setcookie ('user_password','',time() - (60 * 60 * 24 * 7), '/');
 
     //kembali ke login
     header('location:../../index.php?halaman=login&messageLogout=logoutberhasil');
-    exit();
+    exit;
     
 ?>

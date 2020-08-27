@@ -1,7 +1,15 @@
 <?php
-    
+
+    //session
+    session_start();
+
     //include koneksi
     include('koneksi.php');
+
+    //cek jika ada session
+    if(isset($_SESSION['rolle'])){
+        echo "<script>window.history.back();</script>";
+    }
 
     //variable validasi
     $errorNamaDepan = "";

@@ -42,13 +42,13 @@
                   </div>
                   <form class="user" action="" method="POST">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="email_address" placeholder="Enter Email Address..." value="<?php if(isset($_COOKIE["user_login"])) { echo $_COOKIE["user_login"]; } ?>">
+                      <input type="text" class="form-control form-control-user" name="email_address" placeholder="Enter Email Address..." value="<?php echo isset($_POST["email_address"]) ? $_POST["email_address"] : ''; ?>">
                       <span class="error-text">
                         <?= $errorEmail; ?>
                       </span>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" name="password" placeholder="Password" maxlength="8" value="<?php if(isset($_COOKIE["userpassword"])) { echo $_COOKIE["userpassword"]; } ?>">
+                      <input type="password" class="form-control form-control-user" name="password" placeholder="Password" maxlength="8" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>">
                       <span class="error-text">
                         <?= $errorPassword; ?>
                         <?= $errorData; ?>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" name="check" id="check" <?php if(isset($_COOKIE["user_login"])) { ?> checked <?php } ?> />
+                        <input type="checkbox" class="custom-control-input" name="check" id="check" />
                         <label class="custom-control-label" for="check">Remember Me</label>
                       </div>
                     </div>

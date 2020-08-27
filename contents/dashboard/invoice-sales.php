@@ -38,6 +38,27 @@
     </div>
   </div>
   <!-- End Detail Modal -->
+  <!-- Keluar Modal -->
+  <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-dark">
+          <h5 class="modal-title">Konfirmasi Keluar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Yakin Keluar Dari Halaman ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+          <a href="keluar" class="btn btn-outline-danger">Keluar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Keluar Modal -->
   <div class="wrapper ">
     <!-- Sidebar -->
     <?php
@@ -79,7 +100,8 @@
                 <i class="nc-icon nc-simple-remove"></i>
               </button>
               <span data-notify="icon" class="nc-icon nc-bell-55"></span>
-              <span data-notify="message">Jumlah data invoice yang belum di proses pada hari ini adalah <strong>13</strong></span>
+              <span data-notify="message">Jumlah data invoice yang belum di proses pada hari ini adalah
+                <strong>13</strong></span>
             </div>
             <div class="card card-stats shadow">
               <div class="card-header">
@@ -121,8 +143,8 @@
                             </span>
                             <span>
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Setor"
-                                  class="text-warning">
-                                  <i class="fas fa-donate fa-lg"></i>
+                                class="text-warning">
+                                <i class="fas fa-donate fa-lg"></i>
                               </a>
                             </span>
                           </td>
