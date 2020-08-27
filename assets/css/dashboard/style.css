@@ -20,6 +20,12 @@
   font-size: 14px;
 }
 
+.error-text{
+  font-size: 10px;
+  color: red;
+  display: block;
+}
+
 @media(max-width: 720px) {
     .title-table{
         font-size: 20px;

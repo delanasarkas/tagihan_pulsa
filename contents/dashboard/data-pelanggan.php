@@ -1,4 +1,7 @@
 <?php
+  //session
+  session_start();
+  
   $page = 'datapelanggan';
 ?>
 <!DOCTYPE html>

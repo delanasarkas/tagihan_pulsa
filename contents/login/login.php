@@ -8,6 +8,9 @@
         window.setTimeout(function(){
             Notiflix.Notify.Success('Logout Berhasil');
         },10);
+        window.setTimeout(function(){
+          window.location.href='login';
+      },1500);
     </script>";
   }
   if(isset($_GET['messageRegistrasi'])){
