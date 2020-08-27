@@ -29,7 +29,6 @@
         $kode_registrasi = htmlspecialchars($_POST['kode_registrasi']);
         $rolle = "sales";
         $stat = "aktif";
-
         //validasi kekuatan password
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
@@ -69,6 +68,7 @@
             $validEmail = false;
         }
 
+
         //cek password
         if(empty($password)){
             $errorPassword = "Password tidak boleh kosong";
@@ -101,14 +101,19 @@
 
         //validasi berhasil
         if($validNamaDepan && $validNamaBelakang && $validEmail && $validPassword && $validConfirmPassword && $validKodeRegistrasi){
+        
+            //panggil prosedur cek email
             $cekData = mysqli_query($con,"CALL cek_email(
                 '".$email_address."'
             )");
             $count = mysqli_num_rows($cekData);
+
+            //cek email di db
             if($count > 0 ){
                 $errorEmail = "Email sudah ada, silahkan gunakan data lain";
                 $validEmail = false;
-            }else{
+            }else{ 
+                mysqli_next_result($con);  
                 //panggil prosedur registrasi
                 $result = mysqli_query($con,"CALL registrasi(
                     '".$nama_depan."', 

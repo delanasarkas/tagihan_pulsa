@@ -6,6 +6,9 @@
     //include koneksi
     include('koneksi.php');
 
+    //cek jika ada session
+    
+
     //variable validasi
     $errorEmail = "";
     $validEmail = true;
@@ -73,14 +76,7 @@
                     $_SESSION['bio'] = $data['bio'];
                     $_SESSION['rolle'] = "admin";
                     
-                    echo "<script>
-                        window.setTimeout(function(){
-                            Notiflix.Notify.Success('Login Berhasil');
-                        },10);
-                        window.setTimeout(function(){
-                            window.location.href = 'contents';
-                        },2500);
-                    </script>";
+                    header('location:contents/dashboard/index.php?messageLogin=loginberhasil');
                 }else if($data['rolle'] == 'sales'){
                     $_SESSION["userId"]= $data["id_users"];
                     $_SESSION['email'] = $email_address;

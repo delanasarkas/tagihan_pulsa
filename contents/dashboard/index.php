@@ -11,9 +11,6 @@
         window.setTimeout(function(){
             Notiflix.Notify.Success('Login Berhasil');
         },100);
-        window.setTimeout(function(){
-            window.location.href = 'dashboard';
-        },2000);
     </script>";
   }
 

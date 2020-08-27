@@ -1,16 +1,13 @@
 <?php
   //include proses login
   include('contents/query/proses-login.php');
-  
+
   //get pesan
   if (isset($_GET['messageLogout'])){
     echo "<script>
         window.setTimeout(function(){
             Notiflix.Notify.Success('Logout Berhasil');
         },10);
-        window.setTimeout(function(){
-            window.location.href = 'login';
-        },2000);
     </script>";
   }
   if(isset($_GET['messageRegistrasi'])){
