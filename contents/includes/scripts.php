@@ -222,3 +222,37 @@
     $('#keteranganditerima').trigger('focus')
   });
 </script>
+<!-- pencarian navbar -->
+<script>
+$("#cari2").on('click', function(event) {
+  event.preventDefault();
+  var x = $('#cari').val().toLowerCase();
+
+  if(x == "dashboard"){
+    window.location.href = "dashboard";
+  } else if(x == "transaksi penembakan"){
+    window.location.href = "transpenembakan";
+  } else if(x == "history penembakan"){
+    window.location.href = "historypenembakan";
+  } else if(x == "saldo limit"){
+    window.location.href = "saldolimit";
+  } else if(x == "setoran sales"){
+    window.location.href = "setoransales";
+  } else if(x == "konfirmasi setoran"){
+    window.location.href = "konfirmasisetoran";
+  } else if(x == "bukti transfer"){
+    window.location.href = "buktitransfer";
+  } else if(x == "invoice sales"){
+    window.location.href = "invoicesales";
+  } else if(x == "data pelanggan"){
+    window.location.href = "datapelanggan";
+  } else if(x == "data sales"){
+    window.location.href = "datasales";
+  } else if(x == "report data"){
+    window.location.href = "reportdata";
+  } else {
+    $('#cari').val(null);
+    Notiflix.Notify.Failure('Pencarian tidak ada');
+  }
+});
+</script>
