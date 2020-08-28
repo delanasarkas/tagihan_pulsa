@@ -18,8 +18,6 @@
     $validAlamat = true;
     $errorPassword = "";
     $validPassword = true;
-    $errorLimitSaldo = "";
-    $validLimitSaldo = true;
     $errorBio = "";
     $validBio = true;
 
@@ -32,8 +30,7 @@
         $no_tlp = htmlspecialchars($_POST['no_tlp']);
         $alamat = htmlspecialchars($_POST['alamat']);
         $password = htmlspecialchars($_POST['pass']);
-        $limit = htmlspecialchars($_POST['limits']);
-        $bio = htmlspecialchars($_POST['bio']);
+        $bio = htmlspecialchars(ucwords($_POST['bio']));
 
         //validasi kekuatan password
         $uppercase = preg_match('@[A-Z]@', $password);
@@ -49,7 +46,7 @@
             $errorNamaDepan = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi";
             $validNamaDepan = false;
         }else if(strlen($nama_depan) < 3 || strlen($nama_depan) > 15){
-            $errorNamaDepan = "Panjang minimal input 3 huruf dan maksimal input 15 karakter";
+            $errorNamaDepan = "Panjang minimal input 3 karakter dan maksimal input 15 karakter";
             $validNamaDepan = false;
         }
 
@@ -61,7 +58,7 @@
             $errorNamaBelakang = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi";
             $validNamaBelakang = false;
         }else if(strlen($nama_belakang) < 3 || strlen($nama_belakang) > 15){
-            $errorNamaBelakang = "Panjang minimal input 3 huruf dan maksimal input 15 karakter";
+            $errorNamaBelakang = "Panjang minimal input 3 karakter dan maksimal input 15 karakter";
             $validNamaBelakang = false;
         }
 
@@ -76,15 +73,15 @@
 
         //cek no tlp
         if(!empty($no_tlp)){
-            if(strlen($no_tlp) < 11){
-                $errorNoTlp = "Panjang minimal input 11 Huruf";
+            if(strlen($no_tlp) < 11 || strlen($no_tlp) > 12){
+                $errorNoTlp = "Panjang minimal input 11 karakter dan maksimal input 12 karakter";
                 $validNoTlp = false; 
             }
         }
         //cek alamat
         if(!empty($alamat)){
             if(strlen($alamat) < 12){
-                $errorAlamat = "Panjang minimal input 12 Huruf";
+                $errorAlamat = "Panjang minimal input 12 karakter";
                 $validAlamat = false; 
             }
         }
@@ -99,13 +96,6 @@
             } 
         } 
 
-        //cek limit saldo
-        if(!empty($limit)){
-            if(!is_numeric($limit)){
-                $errorLimitSaldo = "Format limit saldo harus nomor";
-                $validLimitSaldo = false; 
-            }
-        }
         //cek bio
         if(!empty($bio)){
             if(strlen($bio) < 10){
@@ -114,7 +104,7 @@
             }
         }
         //validasi berhasil
-        if($validNamaDepan && $validNamaBelakang && $validEmail && $validNoTlp && $validAlamat && $validPassword && $validLimitSaldo && $validBio){
+        if($validNamaDepan && $validNamaBelakang && $validEmail && $validNoTlp && $validAlamat && $validPassword && $validBio){
         
             //panggil prosedur cek email
             $cekData = mysqli_query($con,"CALL cek_email(
@@ -137,7 +127,6 @@
                         '".$email_address."',
                         '".$no_tlp."',
                         '".$alamat."',
-                        '".$limit."',
                         '".$bio."',
                         '".$id_users."'
                     )");
@@ -150,11 +139,16 @@
                         '".$no_tlp."',
                         '".$alamat."',
                         md5('".$password."'),
-                        '".$limit."',
                         '".$bio."',
                         '".$id_users."'
                     )");
                 }
+
+                //ubah session
+                $_SESSION['email'] = $email_address;
+                $_SESSION['namaDepan'] = $nama_depan;
+                $_SESSION['bio'] = $bio;
+
                 //pindah ke halaman login
                 header("location:profil?id_users=$id_users&messageUpdateProfil=updateberhasil");
                 exit;

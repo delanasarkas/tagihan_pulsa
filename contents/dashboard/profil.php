@@ -96,11 +96,13 @@
                   No diggity <br>
                   I wanna bag it up" -->
                   <?php 
-                    if($_SESSION['bio'] == ""){ ?>
+                    if(empty($_SESSION['bio'])){ ?>
                   "Bio Masih Kosong"
-                  <?php } else {
-                      $_SESSION['bio'];
-                    } ?>
+                  <?php } else {?> "
+                      <?php 
+                        echo $_SESSION['bio'];  
+                      ?> "
+                  <?php } ?>
                 </p>
               </div>
               <div class="card-footer">
@@ -122,7 +124,15 @@
             </div>
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Downline (pelanggan)</h4>
+                <h4 class="card-title">
+                    <?php
+                      if($_SESSION['rolle'] == 'sales'){
+                        echo 'Downline (pelanggan)';
+                      } else {
+                        echo 'Sales';
+                      }
+                    ?>
+                </h4>
               </div>
               <div class="card-body">
                 <ul class="list-unstyled team-members">
@@ -243,7 +253,7 @@
                             <div class="input-group-text"><i class="fas fa-phone"></i></div>
                           </div>
                           <input type="number" class="form-control" placeholder="Nomor Telepon"
-                            value="<?= $data['no_tlp'] ?>" maxlength="12" name="no_tlp">
+                            value="<?= $data['no_tlp'] ?>" name="no_tlp">
                         </div>
                         <span class="error-text">
                           <?= $errorNoTlp; ?>
@@ -286,12 +296,8 @@
                             <div class="input-group-text"><i class="fas fa-coins"></i></div>
                           </div>
                           <input type="number" class="form-control" placeholder="Limit Saldo"
-                            value="<?= $data['limit'] ?>" name="limits"
-                            <?php echo $_SESSION['rolle'] == 'admin' ? 'readonly' : '' ?>>
+                            value="<?= $data['limit'] ?>" readonly>
                         </div>
-                        <span class="error-text">
-                          <?= $errorLimitSaldo; ?>
-                        </span>
                       </div>
                     </div>
                   </div>

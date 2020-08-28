@@ -1,7 +1,20 @@
 <?php
   //session
   session_start();
+
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  //include query select pelanggan
+  include('../query/select-data-pelanggan.php');
+
   $page = 'datapelanggan';
 ?>
 <!DOCTYPE html>
@@ -22,7 +35,7 @@
 
 <body class="">
   <!-- Create Modal -->
-  <form action="">
+  <form method="POST" id="formInput" autocomplete="off">
     <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -38,7 +51,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Simpan</button>
+            <button type="submit" name="simpan" class="btn btn-success" id="simpanPelanggan">Simpan</button>
           </div>
         </div>
       </div>
@@ -200,7 +213,7 @@
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3 class="card-title d-inline title-table">DATA PELANGGAN</h3>
+                  <h3 class="card-title d-inline title-table">DATA <?php echo $rolle == 'admin' ? 'SELURUH ' : ''; ?>PELANGGAN</h3>
                   <div class="float-rights">
                     <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
                       class="btn btn-primary btn-round d-inline">
@@ -224,11 +237,15 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php 
+                        $no = 1;
+                        while($data = mysqli_fetch_assoc($result)){
+                      ?>
                         <tr>
-                          <td>1</td>
-                          <td>Agung Njan</td>
-                          <td>Rp.20.000.000</td>
-                          <td><span class="badge badge-pill badge-success">Aktif</span></td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['nama_pelanggan']; ?></td>
+                          <td>Rp.<?= $data['limits']; ?></td>
+                          <td><span class="badge badge-pill <?php echo $data['status_aktif'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['status_aktif']; ?></span></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
@@ -250,6 +267,7 @@
                             </span>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -279,6 +297,11 @@
   ?>
   <!-- chart data pelanggan -->
   <script src="../../assets/dashboard/js/chartjs/chartdatapelanggan.js"></script>
+  <!-- ajax input pelanggan -->
+  <?php
+    include("../includes/ajax/input-pelanggan.php");
+  ?>
+  <!-- select status -->
   <script>
     $(document).ready(function () {
       $('#statusaktif').change(function () {

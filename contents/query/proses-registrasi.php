@@ -48,10 +48,10 @@
             $errorNamaDepan = "Nama depan tidak boleh kosong";
             $validNamaDepan = false;
         }else if(!preg_match('/^[a-zA-Z]*$/',$nama_depan)){
-            $errorNamaDepan = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi";
+            $errorNamaDepan = "Hanya karakter yang diijinkan, dan tidak boleh menggunakan spasi";
             $validNamaDepan = false;
         }else if(strlen($nama_depan) < 3 || strlen($nama_depan) > 15){
-            $errorNamaDepan = "Panjang minimal input 3 huruf dan maksimal input 15 karakter";
+            $errorNamaDepan = "Panjang minimal input 3 karakter dan maksimal input 15 karakter";
             $validNamaDepan = false;
         }
 
@@ -60,10 +60,10 @@
             $errorNamaBelakang = "Nama belakang tidak boleh kosong";
             $validNamaBelakang = false;
         }else if(!preg_match('/^[a-zA-Z]*$/',$nama_belakang)){
-            $errorNamaBelakang = "Hanya huruf yang diijinkan, dan tidak boleh menggunakan spasi";
+            $errorNamaBelakang = "Hanya karakter yang diijinkan, dan tidak boleh menggunakan spasi";
             $validNamaBelakang = false;
         }else if(strlen($nama_belakang) < 3 || strlen($nama_belakang) > 15){
-            $errorNamaBelakang = "Panjang minimal input 3 huruf dan maksimal input 15 karakter";
+            $errorNamaBelakang = "Panjang minimal input 3 karakter dan maksimal input 15 karakter";
             $validNamaBelakang = false;
         }
 

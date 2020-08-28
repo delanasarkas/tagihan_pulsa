@@ -39,12 +39,12 @@
                             Invoice (Tagihan)
                             <span class="badge badge-info">3</span>
                         </a>
-                        
+                        <?php if($_SESSION['rolle'] == 'admin') { ?>
                         <a class="dropdown-item" href="konfirmasisetoran">
                             Konfirmasi Setoran
                             <span class="badge badge-info">2</span>
                         </a>
-
+                        <?php } ?>
                         <a class="dropdown-item" href="setoransales">
                             Status Setoran
                             <span class="badge badge-info">2</span>
