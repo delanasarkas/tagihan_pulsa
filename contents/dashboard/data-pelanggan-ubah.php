@@ -4,8 +4,6 @@
     $result2 = mysqli_query($con, "CALL select_pelanggan_by_id('".$data['id_pelanggan']."')");
     mysqli_next_result($con);
 
-?>
-<?php 
 	while($data2 = mysqli_fetch_assoc($result2)){
     $id_pelanggan = $data2['id_pelanggan'];
     $nama_pelanggan = $data2['nama_pelanggan'];

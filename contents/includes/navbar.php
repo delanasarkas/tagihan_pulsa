@@ -54,13 +54,13 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item btn-rotate dropdown">
-                    <a class="nav-link dropdown-toggle" href="javascript::" id="navbarDropdownMenuLink"
+                    <a class="nav-link dropdown-toggle" href="javascript:;" id="navbarDropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-single-02"></i> AKUN ANDA
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item <?php if($page=="profil"){echo 'active text-white';}?>" href="profil?id_users=<?= $_SESSION["userId"]; ?>"><i class="fa fa-user fa-fw"></i> <?= $_SESSION['namaDepan']; ?> </a>
-                        <a class="dropdown-item" href="javascript::" data-toggle="modal" data-target="#modalKeluar"><i class="fas fa-sign-out-alt fa-fw"></i> Keluar</a>
+                        <a class="dropdown-item" href="javascript:;" data-toggle="modal" data-target="#modalKeluar"><i class="fas fa-sign-out-alt fa-fw"></i> Keluar</a>
                     </div>
                 </li>
             </ul>

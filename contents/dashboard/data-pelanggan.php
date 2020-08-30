@@ -170,7 +170,7 @@
                               </a>
                             </span>
                             <?php } ?>
-                            <span data-toggle="modal" data-target="#modalDetail">
+                            <span data-toggle="modal" data-target="#modalDetail<?= $data['id_pelanggan']; ?>">
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                                 class="text-success">
                                 <i class="fas fa-list fa-lg"></i>
@@ -231,7 +231,7 @@
                         <!-- End Delete Modal -->
 
                         <!-- Detail Modal -->
-                        <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="modalDetail<?= $data['id_pelanggan']; ?>" tabindex="-1" role="dialog"
                           aria-labelledby="modalDetail" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
