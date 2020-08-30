@@ -58,6 +58,33 @@
   </div>
   <!-- End Create Modal -->
 
+  <!-- Edit Modal -->
+
+  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
+    aria-labelledby="modalEdit" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Edit Data Pelanggan</h5>
+          <a href="javascript:;" class="close" id="batalEdit">
+            <span aria-hidden="true">&times;</span>
+          </a>
+        </div>
+        <form method="POST" action="#" id="editForm">
+        <div class="modal-body" id="infoUpdatePelanggan">
+            
+        </div>
+        <div class="modal-footer">
+          <a href="javascript:;" class="btn btn-danger mr-2" id="batalEdit2">Tutup</a>
+          <button type="button" class="btn btn-success" id="editPelanggan">Edit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Edit Modal -->
+
   <!-- Keluar Modal -->
   <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -97,12 +124,18 @@
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3>DATA DOWNLINE</h3>
+                  <h3>
+                    <?php if($rolle=='admin') { ?>
+                    DATA DOWNLINE
+                    <?php } else { ?>
+                    STATUS PELANGGAN
+                    <?php } ?>
+                  </h3>
                 </div>
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
+                  <canvas id="chart-datapelanggansales"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -155,13 +188,12 @@
                               class="badge badge-pill <?php echo $data['status_aktif'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['status_aktif']; ?></span>
                           </td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalEdit<?= $data['id_pelanggan']; ?>"
-                              data-backdrop="static" data-keyboard="false">
+                            
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
-                                class="text-primary mr-3">
+                                class="text-primary mr-3 updatePelanggan" id="<?= $data['id_pelanggan']; ?>">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
-                            </span>
+                            
                             <?php if($rolle == 'admin') { ?>
                             <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
@@ -178,33 +210,6 @@
                             </span>
                           </td>
                         </tr>
-                        <!-- Edit Modal -->
-
-                        <div class="modal fade" id="modalEdit<?= $data['id_pelanggan']; ?>" tabindex="-1" role="dialog"
-                          aria-labelledby="modalEdit" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header bg-primary text-white">
-                                <h5 class="modal-title">Edit Data Pelanggan</h5>
-                                <a href="javascript:;" class="close" id="batalEdit">
-                                  <span aria-hidden="true">&times;</span>
-                                </a>
-                              </div>
-                              <div class="modal-body">
-                                <form method="POST" id='formEdit'>
-                                  <?php include("data-pelanggan-ubah.php");?>
-                              </div>
-                              <div class="modal-footer">
-                                <a href="javascript:;" class="btn btn-danger mr-2" id="batalEdit2">Tutup</a>
-                                <button type="submit" name="updatepelanggan"
-                                  class="btn btn-success editButton">Edit</button>
-                              </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- End Edit Modal -->
                         <!-- Delete Modal -->
                         <form action="">
                           <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
@@ -231,8 +236,8 @@
                         <!-- End Delete Modal -->
 
                         <!-- Detail Modal -->
-                        <div class="modal fade" id="modalDetail<?= $data['id_pelanggan']; ?>" tabindex="-1" role="dialog"
-                          aria-labelledby="modalDetail" aria-hidden="true">
+                        <div class="modal fade" id="modalDetail<?= $data['id_pelanggan']; ?>" tabindex="-1"
+                          role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <div class="modal-header bg-success text-white">
@@ -280,7 +285,9 @@
     include("../includes/scripts.php");
   ?>
   <!-- chart data pelanggan -->
-  <script src="../../assets/dashboard/js/chartjs/chartdatapelanggan.js"></script>
+  <?php
+    include("../includes/charts/grafik-data-pelanggan-sales.php");
+  ?>
   <!-- ajax input pelanggan -->
   <?php
     include("../includes/ajax/input-pelanggan.php");

@@ -1,31 +1,38 @@
 <?php
 
-    //berdasarkan id pelanggan
-    $result2 = mysqli_query($con, "CALL select_pelanggan_by_id('".$data['id_pelanggan']."')");
-    mysqli_next_result($con);
+    //session
+    session_start();
+    
+    //include koneksi
+    include('../query/koneksi.php');
 
-	while($data2 = mysqli_fetch_assoc($result2)){
-    $id_pelanggan = $data2['id_pelanggan'];
-    $nama_pelanggan = $data2['nama_pelanggan'];
-    $alamat_pelanggan = $data2['alamat_pelanggan'];
-    $nomor_telepon = $data2['nomor_telepon'];
-    $status_aktif = $data2['status_aktif'];
+    if(isset($_POST['updatePelanggan'])){
+    $id_pelanggan = $_POST['updatePelanggan'];
+    $result2 = mysqli_query($con,"CALL select_pelanggan_by_id('".$id_pelanggan."')");
+        while($row=mysqli_fetch_array($result2)){
+            $id=$row['id_pelanggan'];
+            $nama_pelanggan=$row['nama_pelanggan'];
+            $alamat_pelanggan=$row['alamat_pelanggan'];
+            $nomor_telepon=$row['nomor_telepon'];
+            $status_aktif=$row['status_aktif'];
+        }
+    }
 ?>
-<input type="text" class="form-control" value="<?= $id_pelanggan; ?>" name="id_pelanggan" hidden>
+<input type="text" class="form-control idpelanggan2" value="<?= $id; ?>" name="id_pelanggan">
 <div class="form-group">
     <label for="namapelanggan">Nama Pelanggan</label>
     <input type="text" class="form-control namapelanggan2" placeholder="Nama Pelanggan" value="<?= $nama_pelanggan; ?>" name="nama_pelanggan">
-    <span class="error-text" id="errorNamaPelanggan2"></span>
+    <span class="error-text errorNamaPelanggan2"></span>
 </div>
 <div class="form-group">
     <label for="alamatpelanggan">Alamat Pelanggan</label>
-    <textarea class="form-control" placeholder="Alamat Pelanggan" id="alamatpelanggan2" rows="3" name="alamat_pelanggan"><?= $alamat_pelanggan; ?></textarea>
-    <span class="error-text" id="errorAlamatPelanggan2"></span>
+    <textarea class="form-control alamatpelanggan2" placeholder="Alamat Pelanggan" rows="3" name="alamat_pelanggan"><?= $alamat_pelanggan; ?></textarea>
+    <span class="error-text errorAlamatPelanggan2"></span>
 </div>
 <div class="form-group">
     <label for="nomortelepon">Nomor Telepon</label>
-    <input type="number" class="form-control" placeholder="Nomor Telepon" id="nomortelepon2" value="<?= $nomor_telepon; ?>" name="nomor_telepon">
-    <span class="error-text" id="errorNomorTelepon2"></span>
+    <input type="number" class="form-control nomortelepon2" placeholder="Nomor Telepon" value="<?= $nomor_telepon; ?>" name="nomor_telepon">
+    <span class="error-text errorNomorTelepon2"></span>
 </div>
 <div class="form-group <?php echo $status_aktif == 'tidak aktif' ? 'has-danger' : 'has-success'; ?> status">
     <label for="statusaktif2">Status Aktif</label>
@@ -34,5 +41,3 @@
         <option value="Aktif" <?php echo ucwords($status_aktif) == 'Aktif' ? 'selected' : ''; ?>>Aktif</option>
     </select>
 </div>
-
-<?php } ?>
