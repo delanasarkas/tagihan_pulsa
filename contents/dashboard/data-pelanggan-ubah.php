@@ -21,23 +21,49 @@
 <input type="text" class="form-control idpelanggan2" value="<?= $id; ?>" name="id_pelanggan">
 <div class="form-group">
     <label for="namapelanggan">Nama Pelanggan</label>
-    <input type="text" class="form-control namapelanggan2" placeholder="Nama Pelanggan" value="<?= $nama_pelanggan; ?>" name="nama_pelanggan">
+    <input type="text" class="form-control namapelanggan2" placeholder="Nama Pelanggan" value="<?= $nama_pelanggan; ?>"
+        name="nama_pelanggan">
     <span class="error-text errorNamaPelanggan2"></span>
 </div>
 <div class="form-group">
     <label for="alamatpelanggan">Alamat Pelanggan</label>
-    <textarea class="form-control alamatpelanggan2" placeholder="Alamat Pelanggan" rows="3" name="alamat_pelanggan"><?= $alamat_pelanggan; ?></textarea>
+    <textarea class="form-control alamatpelanggan2" placeholder="Alamat Pelanggan" rows="3"
+        name="alamat_pelanggan"><?= $alamat_pelanggan; ?></textarea>
     <span class="error-text errorAlamatPelanggan2"></span>
 </div>
 <div class="form-group">
     <label for="nomortelepon">Nomor Telepon</label>
-    <input type="number" class="form-control nomortelepon2" placeholder="Nomor Telepon" value="<?= $nomor_telepon; ?>" name="nomor_telepon">
+    <input type="number" class="form-control nomortelepon2" placeholder="Nomor Telepon" value="<?= $nomor_telepon; ?>"
+        name="nomor_telepon">
     <span class="error-text errorNomorTelepon2"></span>
 </div>
 <div class="form-group <?php echo $status_aktif == 'tidak aktif' ? 'has-danger' : 'has-success'; ?> status">
     <label for="statusaktif2">Status Aktif</label>
-    <select class="form-control <?php echo $status_aktif == 'tidak aktif' ? 'form-control-danger' : 'form-control-success'; ?> statusaktif2" name="status_aktif">
-        <option value="Tidak Aktif" <?php echo ucwords($status_aktif) == 'Tidak Aktif' ? 'selected' : ''; ?>>Tidak Aktif</option>
+    <select
+        class="form-control <?php echo $status_aktif == 'tidak aktif' ? 'form-control-danger' : 'form-control-success'; ?> statusaktif2"
+        name="status_aktif">
+        <option value="Tidak Aktif" <?php echo ucwords($status_aktif) == 'Tidak Aktif' ? 'selected' : ''; ?>>Tidak Aktif
+        </option>
         <option value="Aktif" <?php echo ucwords($status_aktif) == 'Aktif' ? 'selected' : ''; ?>>Aktif</option>
     </select>
 </div>
+<!-- select status 2-->
+<script>
+    $(document).ready(function () {
+        $('.statusaktif2').change(function () {
+            var selectedValue2 = $(this).val();
+
+            if (selectedValue2 === 'Tidak Aktif') {
+                $('.status').addClass('has-danger');
+                $('.status').removeClass('has-success');
+                $(this).addClass('form-control-danger');
+                $(this).removeClass('form-control-success');
+            } else if (selectedValue2 === 'Aktif') {
+                $('.status').addClass('has-success');
+                $('.status').removeClass('has-danger');
+                $(this).addClass('form-control-success');
+                $(this).removeClass('form-control-danger');
+            }
+        });
+    });
+</script>

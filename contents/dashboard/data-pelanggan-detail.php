@@ -1,17 +1,25 @@
 <?php
 
-    //berdasarkan id pelanggan
-    $result2 = mysqli_query($con, "CALL select_pelanggan_by_id('".$data['id_pelanggan']."')");
-    mysqli_next_result($con);
+    //include koneksi
+    include('../query/koneksi.php');
 
-	while($data2 = mysqli_fetch_assoc($result2)){
-    $id_pelanggan = $data2['id_pelanggan'];
-    $nama_pelanggan = $data2['nama_pelanggan'];
-    $alamat_pelanggan = $data2['alamat_pelanggan'];
-    $nomor_telepon = $data2['nomor_telepon'];
-    $limit = $data2['limits'];
-    $sales_terkait = $data2['created_by'];
-    $status_aktif = $data2['status_aktif'];
+    if(isset($_POST['detailPelanggan'])){
+        //id
+        $id_pelanggan = $_POST['detailPelanggan'];
+        //berdasarkan id pelanggan
+        $result = mysqli_query($con, "CALL select_pelanggan_by_id('".$id_pelanggan."')");
+        mysqli_next_result($con);
+
+        while($data = mysqli_fetch_assoc($result)){
+            $id_pelanggan = $data['id_pelanggan'];
+            $nama_pelanggan = $data['nama_pelanggan'];
+            $alamat_pelanggan = $data['alamat_pelanggan'];
+            $nomor_telepon = $data['nomor_telepon'];
+            $limit = $data['limits'];
+            $sales_terkait = $data['created_by'];
+            $status_aktif = $data['status_aktif'];
+        }
+    }
 
 ?>
 <div class="row">
@@ -45,4 +53,3 @@
         </div>
     </div>
 </div>
-<?php } ?>

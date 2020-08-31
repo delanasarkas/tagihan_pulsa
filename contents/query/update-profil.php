@@ -1,5 +1,8 @@
 <?php
 
+    //akses
+    include('hak-akses.php');
+    
     //panggil users
     $id_users = $_GET['id_users'];
     $result = mysqli_query($con, "CALL select_users('".$id_users."')");

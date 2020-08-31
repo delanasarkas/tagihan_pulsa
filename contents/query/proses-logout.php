@@ -1,6 +1,10 @@
 <?php
     //deklarasi hapus
     session_start();
+
+    //akses
+    include('hak-akses.php');
+    
     session_unset();
     session_destroy();
 

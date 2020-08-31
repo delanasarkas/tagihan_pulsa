@@ -62,7 +62,7 @@ $(document).ready(function() {
                     // Loading indicator with a message
                     Notiflix.Loading.Standard('Loading...');
                     setTimeout(function(){
-                      window.location.href = 'datapelanggan';
+                      location.reload();
                     });
                   },
                 );

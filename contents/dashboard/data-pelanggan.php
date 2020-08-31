@@ -60,8 +60,7 @@
 
   <!-- Edit Modal -->
 
-  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
-    aria-labelledby="modalEdit" aria-hidden="true">
+  <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
@@ -71,19 +70,66 @@
           </a>
         </div>
         <form method="POST" action="#" id="editForm">
-        <div class="modal-body" id="infoUpdatePelanggan">
-            
-        </div>
-        <div class="modal-footer">
-          <a href="javascript:;" class="btn btn-danger mr-2" id="batalEdit2">Tutup</a>
-          <button type="button" class="btn btn-success" id="editPelanggan">Edit</button>
-        </div>
+          <div class="modal-body" id="infoUpdatePelanggan">
+
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:;" class="btn btn-danger mr-2" id="batalEdit2">Tutup</a>
+            <button type="button" class="btn btn-success" id="editPelanggan">Edit</button>
+          </div>
         </form>
       </div>
     </div>
   </div>
 
   <!-- End Edit Modal -->
+
+  <!-- Delete Modal -->
+  <form action="">
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title">Hapus Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Yakin Hapus Data 827172 ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-outline-danger">Hapus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <!-- End Delete Modal -->
+
+  <!-- Detail Modal -->
+  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog"
+    aria-labelledby="modalDetail" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Detail Data Pelanggan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="infoDetailPelanggan">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Detail Modal -->
 
   <!-- Keluar Modal -->
   <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
@@ -135,7 +181,11 @@
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
+                  <?php if($rolle=='sales') { ?>
                   <canvas id="chart-datapelanggansales"></canvas>
+                  <?php } else { ?>
+                  <canvas id="canvas"></canvas>
+                  <?php } ?>
                 </div>
               </div>
               <div class="card-footer">
@@ -188,12 +238,10 @@
                               class="badge badge-pill <?php echo $data['status_aktif'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['status_aktif']; ?></span>
                           </td>
                           <td>
-                            
-                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
-                                class="text-primary mr-3 updatePelanggan" id="<?= $data['id_pelanggan']; ?>">
-                                <i class="fas fa-edit fa-lg"></i>
-                              </a>
-                            
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
+                              class="text-primary mr-3 updatePelanggan" id="<?= $data['id_pelanggan']; ?>">
+                              <i class="fas fa-edit fa-lg"></i>
+                            </a>
                             <?php if($rolle == 'admin') { ?>
                             <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
@@ -202,60 +250,12 @@
                               </a>
                             </span>
                             <?php } ?>
-                            <span data-toggle="modal" data-target="#modalDetail<?= $data['id_pelanggan']; ?>">
-                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
-                                <i class="fas fa-list fa-lg"></i>
-                              </a>
-                            </span>
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                              class="text-success detailPelanggan" id="<?= $data['id_pelanggan']; ?>">
+                              <i class="fas fa-list fa-lg"></i>
+                            </a>
                           </td>
                         </tr>
-                        <!-- Delete Modal -->
-                        <form action="">
-                          <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog"
-                            aria-labelledby="modalDelete" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header bg-danger text-white">
-                                  <h5 class="modal-title">Hapus Data</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  Yakin Hapus Data 827172 ?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-                                  <button type="button" class="btn btn-outline-danger">Hapus</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                        <!-- End Delete Modal -->
-
-                        <!-- Detail Modal -->
-                        <div class="modal fade" id="modalDetail<?= $data['id_pelanggan']; ?>" tabindex="-1"
-                          role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header bg-success text-white">
-                                <h5 class="modal-title">Detail Data Pelanggan</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <?php include("data-pelanggan-detail.php");?>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- End Detail Modal -->
                         <?php } ?>
                         </tfoot>
                     </table>
@@ -284,17 +284,27 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart data pelanggan -->
+  <!-- chart data pelanggan sales -->
   <?php
+  if($rolle=='sales') {
     include("../includes/charts/grafik-data-pelanggan-sales.php");
+  } else {
+    include("../includes/charts/grafik-data-pelanggan-admin.php");
+  }
   ?>
   <!-- ajax input pelanggan -->
   <?php
+  if($rolle=='sales') {
     include("../includes/ajax/input-pelanggan.php");
+  }
   ?>
   <!-- ajax edit pelanggan -->
   <?php
     include("../includes/ajax/edit-pelanggan.php");
+  ?>
+  <!-- ajax detail pelanggan -->
+  <?php
+    include("../includes/ajax/detail-pelanggan.php");
   ?>
   <!-- reset modal create -->
   <script>
@@ -338,26 +348,6 @@
     });
   </script>
 
-  <!-- select status 2-->
-  <script>
-    $(document).ready(function () {
-      $('.statusaktif2').change(function () {
-        var selectedValue2 = $(this).val();
-
-        if (selectedValue2 === 'Tidak Aktif') {
-          $('.status').addClass('has-danger');
-          $('.status').removeClass('has-success');
-          $(this).addClass('form-control-danger');
-          $(this).removeClass('form-control-success');
-        } else if (selectedValue2 === 'Aktif') {
-          $('.status').addClass('has-success');
-          $('.status').removeClass('has-danger');
-          $(this).addClass('form-control-success');
-          $(this).removeClass('form-control-danger');
-        }
-      });
-    });
-  </script>
   <!-- edit batal -->
   <script>
     $('#batalEdit, #batalEdit2').on('click', function () {
