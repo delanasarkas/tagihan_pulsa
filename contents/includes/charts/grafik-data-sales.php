@@ -3,11 +3,11 @@
     //session
 
     //aktif
-    $result3 = mysqli_query($con, "CALL select_pelanggan_aktif('".$_SESSION["userId"]."')");
+    $result3 = mysqli_query($con, "CALL select_sales_aktif");
     $count = mysqli_num_rows($result3);
     mysqli_next_result($con);
     //tidak aktif
-    $result4 = mysqli_query($con, "CALL select_pelanggan_nonaktif('".$_SESSION["userId"]."')");
+    $result4 = mysqli_query($con, "CALL select_sales_nonaktif");
     $count2 = mysqli_num_rows($result4);
     mysqli_next_result($con);
 
@@ -34,7 +34,7 @@
     };
 
     window.onload = function () {
-        var ctx = document.getElementById('chart-datapelanggansales').getContext('2d');
+        var ctx = document.getElementById('chart-datasales').getContext('2d');
         window.myPie = new Chart(ctx, config);
     };
 </script>

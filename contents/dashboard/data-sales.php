@@ -59,7 +59,6 @@
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
-  <form action="">
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -70,17 +69,18 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            Yakin Hapus Data 827172 ?
+          <form method="POST" action="#" id="deleteForm">
+          <div class="modal-body" id="infoDeleteSales">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-outline-danger">Hapus</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteSales">Hapus</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Delete Modal -->
 
   <!-- Detail Modal -->
@@ -94,7 +94,7 @@
           </a>
         </div>
         <div class="modal-body" id="infoDetailSales">
-          
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -147,7 +147,7 @@
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
+                  <canvas id="chart-datasales"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -203,12 +203,10 @@
                               class="text-primary mr-3 updateSales" id="<?= $data['id_users']; ?>">
                               <i class="fas fa-edit fa-lg"></i>
                             </a>
-                            <span data-toggle="modal" data-target="#modalDelete">
-                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-                                class="text-danger mr-3">
-                                <i class="fas fa-trash fa-lg"></i>
-                              </a>
-                            </span>
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
+                              class="text-danger mr-3 deleteSales" id="<?= $data['id_users']; ?>">
+                              <i class="fas fa-trash fa-lg"></i>
+                            </a>
                             <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                               class="text-success detailSales" id="<?= $data['id_users']; ?>">
                               <i class="fas fa-list fa-lg"></i>
@@ -251,8 +249,14 @@
   <?php
     include("../includes/ajax/detail-sales.php");
   ?>
-  <!-- chart data pelanggan -->
-  <script src="../../assets/dashboard/js/chartjs/chartdatasales.js"></script>
+  <!-- ajax delete sales -->
+  <?php
+    include("../includes/ajax/delete-sales.php");
+  ?>
+  <!-- chart data sales -->
+  <?php 
+    include("../includes/charts/grafik-data-sales.php"); 
+  ?>
   <script>
     $(document).ready(function () {
       $('#statusaktif').change(function () {
