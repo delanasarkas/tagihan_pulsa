@@ -18,10 +18,10 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
-                <div class="input-group no-border">
+                <div class="input-group">
                     <input type="text" value="" class="form-control" id="cari" placeholder="Cari Disini..." autocomplete="off">
                     <div class="input-group-append">
-                        <div class="input-group-text">
+                        <div class="input-group-text bg-white">
                             <a href="#" id="cari2"><i class="nc-icon nc-zoom-split"></i></a>
                         </div>
                     </div>
