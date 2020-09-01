@@ -1,5 +1,9 @@
 <?php
 
+    $result3 = mysqli_query($con, "CALL select_count_pelanggan_by_sales");
+    mysqli_next_result($con);
+    $result4 = mysqli_query($con, "CALL select_count_pelanggan_by_sales");
+    mysqli_next_result($con);
 
 ?>
 
@@ -7,24 +11,18 @@
     var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
         'November', 'December'
     ];
+    var nama_sales = [<?php while ($nama_sales = mysqli_fetch_assoc($result3)) { echo '"' . $nama_sales['nama_depan'] . '",';}?>];
+    var jumlah_pelanggan = [<?php while ($jumlah_pelanggan = mysqli_fetch_assoc($result4)) { echo '"' . $jumlah_pelanggan['total_pelanggan'] . '",';}?>];
     var config = {
         type: 'line',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: nama_sales,
             datasets: [{
                 label: '',
                 backgroundColor: window.chartColors.red,
                 borderColor: window.chartColors.red,
-                data: [
-                    10,
-                    12,
-                    7,
-                    20,
-                    6,
-                    11,
-                    70
-                ],
-                fill: false,
+                data: jumlah_pelanggan,
+                fill: true,
             }]
         },
         options: {
