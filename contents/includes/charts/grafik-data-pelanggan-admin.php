@@ -8,9 +8,6 @@
 ?>
 
 <script>
-    var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-        'November', 'December'
-    ];
     var nama_sales = [<?php while ($nama_sales = mysqli_fetch_assoc($result3)) { echo '"' . $nama_sales['nama_depan'] . '",';}?>];
     var jumlah_pelanggan = [<?php while ($jumlah_pelanggan = mysqli_fetch_assoc($result4)) { echo '"' . $jumlah_pelanggan['total_pelanggan'] . '",';}?>];
     var config = {

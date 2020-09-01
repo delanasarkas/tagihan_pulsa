@@ -11,7 +11,8 @@
 
     //get id
     $id = $_SESSION['userId'];
-    $name = $_SESSION['namaDepan'];
+    $nameDepan = $_SESSION['namaDepan'];
+    $nameBelakang = $_SESSION['namaBelakang'];
 
     //variable
     $nama_pelanggan = htmlspecialchars(ucwords($_POST['nama_pelanggan']));
@@ -26,8 +27,9 @@
         '".$nomor_telepon."',
         '".$status_aktif."',
         CURDATE(),
-        '".$name."'
+        '".$nameDepan." ".$nameBelakang."'
     )");
+
     mysqli_next_result($con);
 
 ?>

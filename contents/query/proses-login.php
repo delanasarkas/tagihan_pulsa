@@ -11,6 +11,7 @@
         $_SESSION["userId"]= $data["id_users"];
         $_SESSION['email'] = $email_address;
         $_SESSION['namaDepan'] = $data['nama_depan'];
+        $_SESSION['namaBelakang'] = $data['nama_belakang'];
         $_SESSION['bio'] = $data['bio'];
         $_SESSION['rolle'] = "admin";
 
@@ -80,6 +81,7 @@
                     $_SESSION["userId"]= $data["id_users"];
                     $_SESSION['email'] = $email_address;
                     $_SESSION['namaDepan'] = $data['nama_depan'];
+                    $_SESSION['namaBelakang'] = $data['nama_belakang'];
                     $_SESSION['bio'] = $data['bio'];
                     $_SESSION['rolle'] = "admin";
                     
@@ -88,6 +90,7 @@
                     $_SESSION["userId"]= $data["id_users"];
                     $_SESSION['email'] = $email_address;
                     $_SESSION['namaDepan'] = $data['nama_depan'];
+                    $_SESSION['namaBelakang'] = $data['nama_belakang'];
                     $_SESSION['bio'] = $data['bio'];
                     $_SESSION['rolle'] = "sales";
                     
@@ -98,7 +101,7 @@
                 }
             }else{
                 //data tidak ditemukan
-                $errorData = "Email address atau password tidak ditemukan";
+                $errorData = "Email address atau password tidak ditemukan/tidak aktif";
             }
         }
     }

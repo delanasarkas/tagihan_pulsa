@@ -193,7 +193,7 @@
                       ?>
                         <tr>
                           <td><?= $no++; ?></td>
-                          <td><?= $data['nama_depan']; ?></td>
+                          <td><?= $data['nama_depan'];?> <?= $data['nama_belakang'];?></td>
                           <td>Rp.<?= $data['limits']; ?></td>
                           <td><span
                               class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span>
