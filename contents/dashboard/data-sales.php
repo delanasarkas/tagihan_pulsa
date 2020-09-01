@@ -35,27 +35,27 @@
 
 <body class="">
   <!-- Edit Modal -->
-  <form action="">
     <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Edit Data Sales</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" id="batalEdit">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            <?php include("data-sales-ubah.php");?>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Edit</button>
-          </div>
+          <form method="POST" action="#" id="editForm">
+            <div class="modal-body" id="infoUpdateSales">
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger mr-2" data-dismiss="modal" id="batalEdit2">Tutup</button>
+              <button type="button" class="btn btn-success" id="editSales">Edit</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
@@ -187,7 +187,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <?php 
+                        <?php 
                         $no = 1;
                         while($data = mysqli_fetch_assoc($result)){
                       ?>
@@ -195,14 +195,14 @@
                           <td><?= $no++; ?></td>
                           <td><?= $data['nama_depan']; ?></td>
                           <td>Rp.<?= $data['limits']; ?></td>
-                          <td><span class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span></td>
+                          <td><span
+                              class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span>
+                          </td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
-                                class="text-primary mr-3">
-                                <i class="fas fa-edit fa-lg"></i>
-                              </a>
-                            </span>
+                            <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
+                              class="text-primary mr-3 updateSales" id="<?= $data['id_users']; ?>">
+                              <i class="fas fa-edit fa-lg"></i>
+                            </a>
                             <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
                                 class="text-danger mr-3">
@@ -245,6 +245,10 @@
   <?php
     include("../includes/scripts.php");
   ?>
+  <!-- ajax edit sales -->
+  <?php
+    include("../includes/ajax/edit-sales.php");
+  ?>
   <!-- chart data pelanggan -->
   <script src="../../assets/dashboard/js/chartjs/chartdatasales.js"></script>
   <script>
@@ -264,6 +268,16 @@
           $(this).removeClass('form-control-danger');
         }
       });
+    });
+  </script>
+  <!-- edit batal -->
+  <script>
+    $('#batalEdit, #batalEdit2').on('click', function () {
+      // Loading indicator with a message
+      Notiflix.Loading.Standard('Loading...');
+      setTimeout(function () {
+        window.location.href = "datasales";
+      }, 200);
     });
   </script>
 </body>
