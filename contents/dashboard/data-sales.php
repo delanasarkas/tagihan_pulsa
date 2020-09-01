@@ -1,7 +1,20 @@
 <?php
   //session
   session_start();
+
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  //include query select pelanggan
+  include('../query/select-data-sales.php');
+
   $page = 'datasales';
 ?>
 <!DOCTYPE html>
@@ -174,11 +187,15 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <?php 
+                        $no = 1;
+                        while($data = mysqli_fetch_assoc($result)){
+                      ?>
                         <tr>
-                          <td>1</td>
-                          <td>Agung Njan</td>
-                          <td>Rp.20.000.000</td>
-                          <td><span class="badge badge-pill badge-success">Aktif</span></td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['nama_depan']; ?></td>
+                          <td>Rp.<?= $data['limits']; ?></td>
+                          <td><span class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
@@ -200,6 +217,7 @@
                             </span>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->

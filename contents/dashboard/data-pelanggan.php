@@ -226,7 +226,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php 
+                      <?php 
                         $no = 1;
                         while($data = mysqli_fetch_assoc($result)){
                       ?>
