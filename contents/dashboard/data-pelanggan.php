@@ -85,28 +85,28 @@
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
-  <form action="">
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
             <h5 class="modal-title">Hapus Data</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            Yakin Hapus Data 827172 ?
-          </div>
+          <form action="#" method="POST" id="deleteForm">
+            <div class="modal-body" id="infoDeletePelanggan">
+              
+            </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-outline-danger">Hapus</button>
+            <button type="button" class="btn btn-outline-danger" id="deletePelanggan">Hapus</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Delete Modal -->
 
   <!-- Detail Modal -->
@@ -116,9 +116,9 @@
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
           <h5 class="modal-title">Detail Data Pelanggan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </a>
         </div>
         <div class="modal-body" id="infoDetailPelanggan">
           
@@ -243,12 +243,10 @@
                               <i class="fas fa-edit fa-lg"></i>
                             </a>
                             <?php if($rolle == 'admin') { ?>
-                            <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-                                class="text-danger mr-3">
+                                class="text-danger mr-3 deletePelanggan" id="<?= $data['id_pelanggan']; ?>">
                                 <i class="fas fa-trash fa-lg"></i>
                               </a>
-                            </span>
                             <?php } ?>
                             <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                               class="text-success detailPelanggan" id="<?= $data['id_pelanggan']; ?>">
@@ -305,6 +303,12 @@
   <!-- ajax detail pelanggan -->
   <?php
     include("../includes/ajax/detail-pelanggan.php");
+  ?>
+  <!-- ajax delete pelanggan -->
+  <?php
+  if($rolle=='admin') {
+    include("../includes/ajax/delete-pelanggan.php");
+  }
   ?>
   <!-- reset modal create -->
   <script>

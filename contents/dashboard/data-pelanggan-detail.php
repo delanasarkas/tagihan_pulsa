@@ -23,33 +23,44 @@
 
 ?>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 text-center">
         <input type="text" class="form-control" value="<?= $id_pelanggan; ?>" name="id_pelanggan" hidden>
         <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Nama Pelanggan</strong></label>
-            <p><?= $nama_pelanggan; ?></p>
+            <div class="text-center">
+                <img src="../../assets/dashboard/img/default-avatar.png" class="rounded-circle img-fluid img-thumbnail" width="20%">
+            </div>
+            <p class="text-capitalize font-weight-bold h4 mt-1"><?= $nama_pelanggan; ?></p>
         </div>
-        <div class="form-group">
+        <div class="form-group row">
+            <div class="col-lg-6 offset-lg-3">
             <label for="exampleFormControlInput1"><strong>Alamat Pelanggan</strong></label>
-            <p><?= $alamat_pelanggan; ?></p>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Nomor Telepon</strong></label>
-            <p><?= $nomor_telepon; ?> <a href="https://api.whatsapp.com/send?phone=<?= $nomor_telepon; ?>&text=Silahkan Chat Kepada Pelanggan <?= $nama_pelanggan; ?>" target="_blank" class="btn btn-sm btn-success btn-round btn-icon text-white"><i class="fa fa-whatsapp"></i></a></p>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Limit Saldo</strong></label>
-            <p>Rp.<?= $limit; ?></p>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Sales Terkait</strong></label>
-            <p><?= $sales_terkait; ?></p>
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Status Aktif</strong></label>
-            <p>
-                <span class="badge badge-pill <?= $status_aktif == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $status_aktif; ?></span>
+            <p class="text-capitalize"><?= $alamat_pelanggan; ?>
+            <a href="http://maps.google.com/maps?q=<?= $alamat_pelanggan; ?>" target="_blank"><i class="fa fa-map-marker-alt text-danger"></i></a>
             </p>
+            </div>
+        </div>
+        <div id="map"></div>
+        <div class="form-group row">
+            <div class="col-lg-6">
+                <label for="exampleFormControlInput1"><strong>Nomor Telepon</strong></label>
+                <p><?= $nomor_telepon; ?> <a href="https://api.whatsapp.com/send?phone=<?= $nomor_telepon; ?>&text=Silahkan Chat Kepada Pelanggan <?= $nama_pelanggan; ?>" target="_blank"><i class="fa fa-whatsapp"></i></a></p>
+            </div>
+            <div class="col-lg-6">
+                <label for="exampleFormControlInput1"><strong>Limit Saldo</strong></label>
+                <p>Rp.<?= $limit; ?></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-6">
+                <label for="exampleFormControlInput1"><strong>Sales Terkait</strong></label>
+                <p><?= $sales_terkait; ?></p>
+            </div>
+            <div class="col-lg-6">
+                <label for="exampleFormControlInput1"><strong>Status Aktif</strong></label>
+                <p>
+                <span class="badge badge-pill <?= $status_aktif == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $status_aktif; ?></span>
+                </p>
+            </div>
         </div>
     </div>
 </div>

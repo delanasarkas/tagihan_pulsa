@@ -16,9 +16,10 @@
             $nomor_telepon=$row['nomor_telepon'];
             $status_aktif=$row['status_aktif'];
         }
+        mysqli_next_result($con);
     }
 ?>
-<input type="text" class="form-control idpelanggan2" value="<?= $id; ?>" name="id_pelanggan">
+<input type="text" class="form-control idpelanggan2" value="<?= $id; ?>" name="id_pelanggan" hidden>
 <div class="form-group">
     <label for="namapelanggan">Nama Pelanggan</label>
     <input type="text" class="form-control namapelanggan2" placeholder="Nama Pelanggan" value="<?= $nama_pelanggan; ?>"

@@ -19,4 +19,4 @@
       <option value="Tidak Aktif">Tidak Aktif</option>
       <option value="Aktif">Aktif</option>
     </select>
-  </div>
+</div>
