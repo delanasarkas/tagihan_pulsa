@@ -1,6 +1,19 @@
 <?php
-  //session
-  session_start();
+ //session
+ session_start();
+
+ //include akses
+ include('../query/hak-akses.php');
+ 
+ //include koneksi
+ include('../query/koneksi.php');
+
+ //get id
+ $id = $_SESSION['userId'];
+ $rolle = $_SESSION['rolle'];
+
+ //include query select pelanggan
+ include('../query/select-saldo-limit.php');
   
   $page = 'saldolimit';
 ?>
@@ -29,9 +42,9 @@
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Input Saldo Limit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
           <div class="modal-body">
             <?php include("saldo-limit-input.php");?>
@@ -193,17 +206,21 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Sales</th>
-                          <th>Tanggal</th>
-                          <th>Nominal Saldo</th>
+                          <th>Saldo</th>
+                          <th>Tanggal Pengiriman</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php 
+                        $no = 1;
+                        while($data = mysqli_fetch_assoc($result)){
+                      ?>
                         <tr>
-                          <td>1</td>
-                          <td>Agung Hapsah</td>
-                          <td>11/12/2020</td>
-                          <td>Rp.6.000.000</td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['email_address'] ?></td>
+                          <td><?= $data['limits'] ?></td>
+                          <td><?= $data['created_at'] ?></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
@@ -225,6 +242,7 @@
                             </span>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
