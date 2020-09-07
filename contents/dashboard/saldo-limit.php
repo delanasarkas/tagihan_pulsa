@@ -85,7 +85,6 @@
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
-  <form action="">
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -96,39 +95,20 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            Yakin Hapus Data 827172 ?
+          <form method="POST" id="deleteForm">
+          <div class="modal-body" id="infoDeleteSaldoLimit">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-outline-danger">Hapus</button>
+            <button type="button" class="btn btn-outline-danger" id="deleteSaldoLimit">Hapus</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Delete Modal -->
 
-  <!-- Detail Modal -->
-  <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title">Detail Saldo Limit</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <?php include("saldo-limit-detail.php");?>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Detail Modal -->
   <!-- Keluar Modal -->
   <div class="modal fade" id="modalKeluar" tabindex="-1" role="dialog" aria-labelledby="modalKeluar" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
@@ -191,7 +171,7 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">SALDO LIMIT</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                    <a type="submit" href="javascript:;" data-toggle="modal" data-target="#modalCreate"
                       class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Tambah Saldo
                     </a>
@@ -223,22 +203,14 @@
                           <td>Rp <?= number_format( $data['saldo'], 0 , '' , '.' ) . ',-' ?></td>
                           <td><?= $data['created_at'] ?></td>
                           <td>
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
                                 class="text-primary mr-3 updateSaldoLimit" id="<?= $data['id_saldo']; ?>">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
-                            <span data-toggle="modal" data-target="#modalDelete">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-                                class="text-danger mr-3">
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
+                                class="text-danger mr-3 deleteSaldoLimit" id="<?= $data['id_saldo']; ?>">
                                 <i class="fas fa-trash fa-lg"></i>
                               </a>
-                            </span>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
-                                <i class="fas fa-list fa-lg"></i>
-                              </a>
-                            </span>
                           </td>
                         </tr>
                         <?php } ?>
@@ -278,6 +250,8 @@
     include("../includes/ajax/input-saldo-limit.php");
     //edit saldo limit
     include("../includes/ajax/edit-saldo-limit.php");
+    //hapus saldo limit
+    include("../includes/ajax/delete-saldo-limit.php");
   }
   ?>
   <script>
