@@ -233,7 +233,7 @@
                         <tr>
                           <td><?= $no++; ?></td>
                           <td><?= $data['nama_pelanggan']; ?></td>
-                          <td>Rp.<?= $data['limits']; ?></td>
+                          <td>Rp <?= number_format( $data['limits'], 0 , '' , '.' ) ?></td>
                           <td><span
                               class="badge badge-pill <?php echo $data['status_aktif'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['status_aktif']; ?></span>
                           </td>

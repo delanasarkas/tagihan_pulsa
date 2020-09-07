@@ -11,6 +11,7 @@
  //get id
  $id = $_SESSION['userId'];
  $rolle = $_SESSION['rolle'];
+ $limitSaldos=0;
 
  //include query select pelanggan
  include('../query/select-saldo-limit.php');
@@ -35,7 +36,6 @@
 
 <body class="">
   <!-- Create Modal -->
-  <form action="">
     <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -47,16 +47,17 @@
             </a>
           </div>
           <div class="modal-body">
+          <form method="POST" id="formInput" autocomplete="off">
             <?php include("saldo-limit-input.php");?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success" id="simpanButton">Simpan</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Create Modal -->
 
   <!-- Edit Modal -->
@@ -219,7 +220,7 @@
                         <tr>
                           <td><?= $no++; ?></td>
                           <td><?= $data['email_address'] ?></td>
-                          <td><?= $data['limits'] ?></td>
+                          <td>Rp <?= number_format( $data['saldo'], 0 , '' , '.' )?></td>
                           <td><?= $data['created_at'] ?></td>
                           <td>
                             <span data-toggle="modal" data-target="#modalEdit">
@@ -272,7 +273,12 @@
   ?>
   <!-- chart saldo limit -->
   <script src="../../assets/dashboard/js/chartjs/chartsaldolimit.js"></script>
-  <!-- tambah saldo limit -->
+  <!-- ajax input saldo limit -->
+  <?php
+  if($rolle=='admin') {
+    include("../includes/ajax/input-saldo-limit.php");
+  }
+  ?>
   <script>
     $(document).ready(function () {
       // Format mata uang.
@@ -338,7 +344,7 @@
   <script>
     $('#modalCreate, #modalEdit').on('hidden.bs.modal', function (e) {
       $(this)
-        .find('#single')
+        .find('#single2')
         .val('Pilih Nama Sales')
         .trigger('change')
         .end()
@@ -349,7 +355,7 @@
         .find("#limitsaldo, #nominalsaldopengiriman, #totallimit, textarea")
         .val('')
         .end()
-        .find("small")
+        .find("small,#errorNamaSales")
         .html('')
         .end()
         .find("input[type=checkbox], input[type=radio]")

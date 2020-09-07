@@ -47,7 +47,7 @@
             </div>
             <div class="col-lg-6">
                 <label for="exampleFormControlInput1"><strong>Limit Saldo</strong></label>
-                <p>Rp.<?= $limit; ?></p>
+                <p>Rp <?= number_format( $limit, 0 , '' , '.' )?></p>
             </div>
         </div>
         <div class="form-group row">
