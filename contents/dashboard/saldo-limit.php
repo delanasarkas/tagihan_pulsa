@@ -91,9 +91,9 @@
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
             <h5 class="modal-title">Hapus Data</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
           <form method="POST" id="deleteForm">
           <div class="modal-body" id="infoDeleteSaldoLimit">
@@ -148,12 +148,12 @@
             <div class="card card-stats shadow">
               <div class="card-header">
                 <div class="mobile">
-                  <h3>TOTAL SALDO TERKIRIM</h3>
+                  <h3>TOTAL SALDO</h3>
                 </div>
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
+                  <canvas id="canvas"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -242,7 +242,7 @@
     include("../includes/scripts.php");
   ?>
   <!-- chart saldo limit -->
-  <script src="../../assets/dashboard/js/chartjs/chartsaldolimit.js"></script>
+  <?php include("../includes/charts/grafik-data-saldo-limit.php"); ?>
   <!-- ajax -->
   <?php
   if($rolle=='admin') {
