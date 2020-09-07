@@ -7,7 +7,7 @@ $(document).ready(function() {
         //variable
         var NamaSales = $('.namasales').val();
         var validNamaSales = true;
-        var NominalSaldo = $('#nominalsaldopengiriman').val().replace(".", ""); ;
+        var NominalSaldo = $('#nominalsaldopengiriman').val().replace(".", "").replace(",", "").replace("-", ""); ;
         var validNominalSaldo = true;
 
         //validasi nama sales

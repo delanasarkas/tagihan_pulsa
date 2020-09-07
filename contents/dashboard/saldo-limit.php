@@ -61,27 +61,27 @@
   <!-- End Create Modal -->
 
   <!-- Edit Modal -->
-  <form action="">
     <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Edit Saldo Limit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            <?php include("saldo-limit-ubah.php");?>
+          <form method="POST" action="#" id="editForm">
+          <div class="modal-body" id="infoUpdateSaldoLimit">
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Edit</button>
+            <button type="button" class="btn btn-success" id="editSaldoLimit">Edit</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Edit Modal -->
 
   <!-- Delete Modal -->
@@ -220,15 +220,13 @@
                         <tr>
                           <td><?= $no++; ?></td>
                           <td><?= $data['email_address'] ?></td>
-                          <td>Rp <?= number_format( $data['saldo'], 0 , '' , '.' )?></td>
+                          <td>Rp <?= number_format( $data['saldo'], 0 , '' , '.' ) . ',-' ?></td>
                           <td><?= $data['created_at'] ?></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalEdit">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
-                                class="text-primary mr-3">
+                                class="text-primary mr-3 updateSaldoLimit" id="<?= $data['id_saldo']; ?>">
                                 <i class="fas fa-edit fa-lg"></i>
                               </a>
-                            </span>
                             <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
                                 class="text-danger mr-3">
@@ -273,23 +271,16 @@
   ?>
   <!-- chart saldo limit -->
   <script src="../../assets/dashboard/js/chartjs/chartsaldolimit.js"></script>
-  <!-- ajax input saldo limit -->
+  <!-- ajax -->
   <?php
   if($rolle=='admin') {
+    //input saldo limit
     include("../includes/ajax/input-saldo-limit.php");
+    //edit saldo limit
+    include("../includes/ajax/edit-saldo-limit.php");
   }
   ?>
   <script>
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("limitsaldo").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
-
     function inputTerbilang() {
       // Format mata uang.
       $('.rupiah').mask('0.000.000.000', {
@@ -299,28 +290,9 @@
       //menampilkan hasil dari terbilang
       document.getElementById("terbilang2").innerHTML = terbilang(input).replace(/  +/g, ' ');
     }
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("totallimit").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang3").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
   </script>
   <!-- edit saldo limit -->
   <script>
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("limitsaldoubah").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang4").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
-
     function inputTerbilang2() {
       // Format mata uang.
       $('.rupiah').mask('0.000.000.000', {
@@ -328,17 +300,8 @@
       });
       var input = document.getElementById("nominalsaldopengirimanubah").value.replace(/\./g, "");
       //menampilkan hasil dari terbilang
-      document.getElementById("terbilang5").innerHTML = terbilang(input).replace(/  +/g, ' ');
+      document.getElementById("terbilang3").innerHTML = terbilang(input).replace(/  +/g, ' ');
     }
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("totallimitubah").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang6").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
   </script>
   <!-- reset modal -->
   <script>

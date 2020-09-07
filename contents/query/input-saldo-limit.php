@@ -31,10 +31,5 @@
         '".$saldo."'
     )");
     mysqli_next_result($con);
-    $result2 = mysqli_query($con,"CALL update_saldo_sales(
-        '".$id_sales."',
-        '".$fixSaldo."'
-    )");
-    mysqli_next_result($con);
 
 ?>

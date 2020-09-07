@@ -164,7 +164,7 @@
 <!-- input saldo limit -->
 <script>
   function generate3() {
-    if (document.getElementById("single").value == "Pilih Nama Sales") {
+    if (document.getElementById("single2").value == "Pilih Nama Sales") {
       document.getElementById("feedbacksaldolimit").classList.remove("valid-feedback");
       document.getElementById("feedbacksaldolimit").classList.add("invalid-feedback");
       document.getElementById("feedbacksaldolimit").innerHTML = "Harap pilih nama sales";
