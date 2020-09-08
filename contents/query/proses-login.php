@@ -84,6 +84,7 @@
                     $_SESSION['namaBelakang'] = $data['nama_belakang'];
                     $_SESSION['bio'] = $data['bio'];
                     $_SESSION['rolle'] = "admin";
+                    $_SESSION['limit'] = $data['limits'];
                     
                     header('location:contents/dashboard/index.php?messageLogin=loginberhasil');
                 }else if($data['rolle'] == 'sales'){
@@ -93,6 +94,7 @@
                     $_SESSION['namaBelakang'] = $data['nama_belakang'];
                     $_SESSION['bio'] = $data['bio'];
                     $_SESSION['rolle'] = "sales";
+                    $_SESSION['limit'] = $data['limits'];
                     
                     header('location:contents/dashboard/index.php?messageLogin=loginberhasil');
                 }else{

@@ -2,6 +2,18 @@
   //session
   session_start();
   
+  //include akses
+  include('../query/hak-akses.php');
+  
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  //select transaksi penembakan
+  include('../query/select-transaksi-penembakan.php');
+
   $page = 'transaksipenembakan';
 ?>
 <!DOCTYPE html>
@@ -22,28 +34,28 @@
 
 <body class="">
   <!-- Create Modal -->
-  <form action="">
     <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Data Baru Transaksi Penembakan</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
           <div class="modal-body">
+          <form method="POST" id="formInput" autocomplete="off">
             <?php include("transaksi-penembakan-input.php");?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Simpan</button>
+            <button type="button" id="simpanButton" class="btn btn-success">Simpan</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Create Modal -->
 
   <!-- Create Penambahan Modal -->
@@ -63,6 +75,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-info mr-2">Pilih</button>
             <button type="button" class="btn btn-success">Simpan</button>
           </div>
         </div>
@@ -202,11 +215,11 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">TRANSAKSI PENEMBAKAN</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
+                    <a type="submit" href="javascript:;" data-toggle="modal" data-target="#modalCreate"
                       class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Data Baru
                     </a>
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreatePenambahan"
+                    <a type="submit" href="javascript:;" data-toggle="modal" data-target="#modalCreatePenambahan"
                       class="btn btn-outline-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Tambah Transaksi
                     </a>
@@ -223,27 +236,29 @@
                           <th>No</th>
                           <th>Kode Penembakan</th>
                           <th>Nama Pelanggan</th>
+                          <th>Transaksi</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php 
+                        $no=1;
+                        while($data = mysqli_fetch_assoc($resultSelect)) {
+                        ?>
                         <tr>
-                          <td>1</td>
-                          <td>2919288</td>
-                          <td>System Architect</td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['kode_penembakan'] ?></td>
+                          <td><?= $data['nama_pelanggan'] ?></td>
+                          <td>Rp <?= number_format( $data['transaksi_penembakan'], 0 , '' , '.' ) . ',-' ?></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalEdit">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Edit Data"
-                                class="text-primary mr-3">
-                                <i class="fas fa-edit fa-lg"></i>
-                              </a>
-                            </span>
+                            <?php if($rolle == 'admin') { ?>
                             <span data-toggle="modal" data-target="#modalDelete">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Batal"
                                 class="text-danger mr-3">
-                                <i class="fas fa-trash fa-lg"></i>
+                                <i class="fas fa-undo fa-lg"></i>
                               </a>
                             </span>
+                            <?php } ?>
                             <span data-toggle="modal" data-target="#modalDetail">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                                 class="text-success">
@@ -252,7 +267,7 @@
                             </span>
                           </td>
                         </tr>
-                        </tfoot>
+                        <?php } ?>
                     </table>
                     <!-- End Table -->
                   </div>
@@ -282,6 +297,8 @@
   <!-- chart transaksi penembakan -->
   <script src="../../assets/dashboard/js/chartjs/charttransaksipenembakan.js"></script>
   <!-- rupiah data baru-->
+  <!-- ajax input transaksi -->
+  <?php include("../includes/ajax/input-transaksi.php"); ?>
   <script>
     function inputTerbilang() {
       // Format mata uang.
@@ -375,7 +392,7 @@
         .find('#kodepenembakan')
         .addClass('is-invalid')
         .end()
-        .find("#namasales, #saldosales, #jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan, textarea")
+        .find("#jumlahtransaksipenembakan, #jumlahpenambahantransaksipenembakan, textarea")
         .val('')
         .end()
         .find('#single')
