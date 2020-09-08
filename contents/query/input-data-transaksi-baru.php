@@ -31,7 +31,6 @@
          '".$namasales."'
      )");
      mysqli_next_result($con);
-     var_dump($result);die;
  
      $result2 = mysqli_query($con,"CALL insert_transaksi_log(
          '".$kodesales."',
@@ -43,7 +42,7 @@
          '".$jumlahtransaksipenembakan."',
          NULL,
          '".$jumlahtransaksipenembakan."',
-         'insert',
+         'insert'
      )");
      mysqli_next_result($con);
     

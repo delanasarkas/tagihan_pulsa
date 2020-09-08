@@ -7,12 +7,12 @@ $(document).ready(function() {
         //variable
         var NamaSales = $('.namasales').val();
         var validNamaSales = true;
-        var NominalSaldo = $('#nominalsaldopengiriman').val().replace(".", "").replace(",", "").replace("-", ""); ;
+        var NominalSaldo = $('.nominalsaldopengiriman').val().replace(".", "").replace(".", "");
         var validNominalSaldo = true;
 
         //validasi nama sales
         if(NamaSales == "Pilih Nama Sales"){
-          $('#errorNamaSales').html('Nama pelanggan tidak boleh kosong');
+          $('#errorNamaSales').html('Nama sales tidak boleh kosong');
           validNamaSales = false;
         }
 

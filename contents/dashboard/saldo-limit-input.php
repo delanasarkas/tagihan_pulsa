@@ -20,7 +20,7 @@
       <div class="input-group-prepend">
         <div class="input-group-text"><i class="fas fa-coins"></i></div>
       </div>
-      <input type="text" class="form-control rupiah" id="nominalsaldopengiriman"
+      <input type="text" class="form-control rupiah nominalsaldopengiriman" id="nominalsaldopengiriman"
         placeholder="Transaksi Penembakan" name="nominalsaldopengiriman" onkeyup="inputTerbilang();">
   </div>
   <small id="terbilang2" class="form-text text-muted"></small>

@@ -23,7 +23,7 @@
     //variable
     var NamaSales2 = $('#single3').val();
     var validNamaSales2 = true;
-    var NominalSaldo2 = $('#nominalsaldopengirimanubah').val().replace(".", "").replace(",", "").replace("-", "");;
+    var NominalSaldo2 = $('#nominalsaldopengirimanubah').val().replace(".", "").replace(".", "").replace(",", "").replace("-", "");;
     var validNominalSaldo2 = true;
 
     //validasi nama sales

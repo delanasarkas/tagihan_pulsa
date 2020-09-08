@@ -59,56 +59,31 @@
   <!-- End Create Modal -->
 
   <!-- Create Penambahan Modal -->
-  <form action="">
     <div class="modal fade" id="modalCreatePenambahan" tabindex="-1" role="dialog"
       aria-labelledby="modalCreatePenambahan" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary text-white">
             <h5 class="modal-title">Penambahan Transaksi Penembakan</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            <?php include("transaksi-penembakan-penambahan.php");?>
+          <form method="POST" id="penambahanForm" autocomplete="off">
+          <div class="modal-body" id="infoPenambahanTransaksi">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-info mr-2">Pilih</button>
-            <button type="button" class="btn btn-success">Simpan</button>
+            <button type="button" class="btn btn-success" id="simpanPerubahanButton">Tambah</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Create Penambahan Modal -->
 
-  <!-- Edit Modal -->
-  <form action="">
-    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">Edit Transaksi Penembakan</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php include("transaksi-penembakan-ubah.php");?>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Edit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-  <!-- End Edit Modal -->
-
-  <!-- Delete Modal -->
+  <!-- Kembalikan Modal -->
   <form action="">
     <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
       aria-hidden="true">
@@ -116,9 +91,9 @@
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
             <h5 class="modal-title">Hapus Data</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
           <div class="modal-body">
             Yakin Hapus Data 827172 ?
@@ -219,10 +194,6 @@
                       class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Data Baru
                     </a>
-                    <a type="submit" href="javascript:;" data-toggle="modal" data-target="#modalCreatePenambahan"
-                      class="btn btn-outline-primary btn-round d-inline">
-                      <i class="fas fa-plus"></i> Tambah Transaksi
-                    </a>
                   </div>
                 </div>
               </div>
@@ -249,8 +220,12 @@
                           <td><?= $no++; ?></td>
                           <td><?= $data['kode_penembakan'] ?></td>
                           <td><?= $data['nama_pelanggan'] ?></td>
-                          <td>Rp <?= number_format( $data['transaksi_penembakan'], 0 , '' , '.' ) . ',-' ?></td>
+                          <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
                           <td>
+                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Penambahan Transaksi"
+                                class="text-primary mr-3 penambahanTransaksi" id="<?= $data['kode_penembakan'] ?>">
+                                <i class="fas fa-plus-circle fa-lg"></i>
+                              </a>
                             <?php if($rolle == 'admin') { ?>
                             <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Batal"
@@ -299,6 +274,8 @@
   <!-- rupiah data baru-->
   <!-- ajax input transaksi -->
   <?php include("../includes/ajax/input-transaksi.php"); ?>
+  <!-- ajax input transaksi -->
+  <?php include("../includes/ajax/penambahan-transaksi.php"); ?>
   <script>
     function inputTerbilang() {
       // Format mata uang.
@@ -321,34 +298,6 @@
   </script>
   <!-- rupiah penambahan transaksi-->
   <script>
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("saldosales2").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang3").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("sisatransaksipenembakan").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang5").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
-    $(document).ready(function () {
-      // Format mata uang.
-      $('.rupiah').mask('0.000.000.000', {
-        reverse: true
-      });
-      var input = document.getElementById("totaltransaksipenembakan").value.replace(/\./g, "");
-      //menampilkan hasil dari terbilang
-      document.getElementById("terbilang6").innerHTML = terbilang(input).replace(/  +/g, ' ');
-    })
-
     function inputTerbilang2() {
       // Format mata uang.
       $('.rupiah').mask('0.000.000.000', {

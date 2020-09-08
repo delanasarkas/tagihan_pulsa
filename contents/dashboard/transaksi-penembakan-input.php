@@ -3,7 +3,7 @@
   <div class="form-inline">
     <input type="text"
       class="form-control is-invalid input-kode-penembakan"
-      id="kodepenembakan" placeholder="Kode Penembakan" name="kodepenembakan" readonly>
+      id="kodepenembakan" placeholder="Kode Penembakan" name="kodepenembakan" style="width:227px !important" readonly>
     <button type="button" onclick="generate();" class="btn btn-primary mb-2 ml-2">Generate</button>
     <div class="invalid-feedback d-block" id="feedbackpenembakan">
       Harap generate kode penembakan
@@ -39,7 +39,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
             </div>
-            <input type="text" class="form-control" placeholder="Tanggal Penembakan" id="tanggalpenembakan" name="tanggalpenembakan" readonly />
+            <input type="date" class="form-control" placeholder="Tanggal Penembakan" id="tanggalpenembakan" name="tanggalpenembakan" readonly />
         </div>
     </div>
     <div class="form-group col-md-6">
@@ -48,7 +48,7 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-calendar-day"></i></div>
             </div>
-            <input type="text" class="form-control" placeholder="Tanggal Penagihan" name="tanggalpenagihan" id="tanggalpenagihan" readonly />
+            <input type="date" class="form-control" placeholder="Tanggal Penagihan" name="tanggalpenagihan" id="tanggalpenagihan" readonly />
         </div>
     </div>
 </div>
@@ -63,8 +63,8 @@
         $rowSaldo = mysqli_fetch_array($querySaldo);
         mysqli_next_result($con);
       ?>
-      <input type="text" class="form-control rupiah" id="saldosalesinput"
-        placeholder="Saldo Anda" value="<?= number_format( $rowSaldo['limits'], 0 , '' , '.' ) . ',-' ?>" name="saldosales" readonly>
+      <input type="text" class="form-control rupiah" id="saldosales"
+        placeholder="Saldo Anda" value="<?= $rowSaldo['limits'] ?>" name="saldosales" readonly>
     </div>
     <small id="terbilang2" class="form-text text-muted"></small>
   </div>

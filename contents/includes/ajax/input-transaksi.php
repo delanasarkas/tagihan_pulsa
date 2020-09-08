@@ -2,16 +2,16 @@
 $(document).ready(function() { 
     $("#simpanButton").click(function(e){
         e.preventDefault();
-	    var data = $('#formInput').serialize();
+	      var data = $('#formInput').serialize();
         
         //variable
         var KodePenembakan = $('#kodepenembakan').val();
         var validKodePenembakan = true;
         var NamaPelanggan = $('.namapelangganinput').val();
         var validNamaPelanggan = true;
-        var JumlahTransaksi = $('#jumlahtransaksipenembakan').val().replace('.','').replace('-','');
+        var JumlahTransaksi = $('#jumlahtransaksipenembakan').val().replace('.','').replace('.','').replace('-','');
         var validJumlahTransaksi = true;
-        var SaldoSales = $('#saldosalesinput').val().replace('.','').replace('-','');
+        var SaldoSales = $('#saldosales').val().replace('.','').replace('.','').replace('-','');
         var validSaldoSales = true;
 
         //validasi kode penembakan

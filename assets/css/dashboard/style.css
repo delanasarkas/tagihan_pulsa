@@ -28,7 +28,6 @@
 
 input,textarea[readonly] {background-color: white !important;}
 
-
 @media(max-width: 720px) {
     .title-table{
         font-size: 20px;
