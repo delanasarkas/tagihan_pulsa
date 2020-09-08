@@ -114,12 +114,12 @@
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
           <h5 class="modal-title">Detail Transaksi Penembakan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </a>
         </div>
-        <div class="modal-body">
-          <?php include("transaksi-penembakan-detail.php");?>
+        <div class="modal-body" id="infoDetailTransaksi">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -222,24 +222,22 @@
                           <td><?= $data['nama_pelanggan'] ?></td>
                           <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
                           <td>
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Penambahan Transaksi"
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Penambahan Transaksi"
                                 class="text-primary mr-3 penambahanTransaksi" id="<?= $data['kode_penembakan'] ?>">
                                 <i class="fas fa-plus-circle fa-lg"></i>
                               </a>
                             <?php if($rolle == 'admin') { ?>
                             <span data-toggle="modal" data-target="#modalDelete">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Batal"
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Batal"
                                 class="text-danger mr-3">
                                 <i class="fas fa-undo fa-lg"></i>
                               </a>
                             </span>
                             <?php } ?>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-success detailTransaksi" id="<?= $data['kode_penembakan'] ?>">
                                 <i class="fas fa-list fa-lg"></i>
                               </a>
-                            </span>
                           </td>
                         </tr>
                         <?php } ?>
@@ -274,8 +272,10 @@
   <!-- rupiah data baru-->
   <!-- ajax input transaksi -->
   <?php include("../includes/ajax/input-transaksi.php"); ?>
-  <!-- ajax input transaksi -->
+  <!-- ajax penambahan transaksi -->
   <?php include("../includes/ajax/penambahan-transaksi.php"); ?>
+  <!-- ajax detail transaksi -->
+  <?php include("../includes/ajax/detail-transaksi-penembakan.php"); ?>
   <script>
     function inputTerbilang() {
       // Format mata uang.

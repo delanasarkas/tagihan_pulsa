@@ -18,12 +18,14 @@
     $tanggalpenembakan = htmlspecialchars($_POST['tanggalpenembakan']);
     $tanggalpenagihan = htmlspecialchars($_POST['tanggalpenagihan']);
     $jumlahtransaksipenembakan = filter_var($_POST['sisatransaksipenembakan'], FILTER_SANITIZE_NUMBER_INT);
+    $transpenambahan = filter_var($_POST['transpenambahan'], FILTER_SANITIZE_NUMBER_INT);
 
     $transaksiPenambahan = filter_var($_POST['jumlahpenambahantransaksipenembakan'], FILTER_SANITIZE_NUMBER_INT);
+    $transpenambahan += $transaksiPenambahan;
     $totalPenambahan = filter_var($_POST['totaltransaksipenembakan'], FILTER_SANITIZE_NUMBER_INT);
 
     $result = mysqli_query($con,"CALL insert_transaksi_penambahan(
-        '".$transaksiPenambahan."',
+        '".$transpenambahan."',
         '".$totalPenambahan."',
         '".$namasales."',
         '".$kodepenembakan."'

@@ -19,10 +19,12 @@
             $tglPenembakan=$row['tgl_penembakan'];
             $tglPenagihan=$row['tgl_penagihan'];
             $saldoSales=$row['limits'];
+            $penambahan=$row['transaksi_penambahan'];
         }
         mysqli_next_result($con);
     }
 ?>
+<input type="hidden" class="form-control" id="transpenambahan" name="transpenambahan" value="<?= $penambahan ?>" placeholder="Kode Penembakan" readonly>
 <div class="form-group">
     <label class="control-label" for="kodepenembakan">Kode Penembakan</label>
     <input type="text" class="form-control" id="kodepenembakan" name="kodepenembakan" value="<?= $kdPenembakan ?>" placeholder="Kode Penembakan" readonly>
