@@ -84,29 +84,29 @@
   <!-- End Create Penambahan Modal -->
 
   <!-- Kembalikan Modal -->
-  <form action="">
-    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete"
+    <div class="modal fade" id="modalKembali" tabindex="-1" role="dialog" aria-labelledby="modalKembali"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">Hapus Data</h5>
+            <h5 class="modal-title">Konfirmasi</h5>
             <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </a>
           </div>
-          <div class="modal-body">
-            Yakin Hapus Data 827172 ?
+          <form method="POST" id="kembaliForm">
+          <div class="modal-body" id="infoKembaliTransaksi">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-outline-danger">Hapus</button>
+            <button type="button" class="btn btn-outline-danger" id="konfirmasiKembali">Konfirmasi</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
-  <!-- End Delete Modal -->
+  <!-- End kembalikan Modal -->
 
   <!-- Detail Modal -->
   <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
@@ -189,12 +189,14 @@
               <div class="card-header">
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">TRANSAKSI PENEMBAKAN</h3>
+                  <?php if($rolle=='sales') { ?>
                   <div class="float-rights">
                     <a type="submit" href="javascript:;" data-toggle="modal" data-target="#modalCreate"
                       class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Data Baru
                     </a>
                   </div>
+                  <?php } ?>
                 </div>
               </div>
               <div class="card-body">
@@ -222,17 +224,17 @@
                           <td><?= $data['nama_pelanggan'] ?></td>
                           <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
                           <td>
+                            <?php if($rolle == 'sales') { ?>
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Penambahan Transaksi"
                                 class="text-primary mr-3 penambahanTransaksi" id="<?= $data['kode_penembakan'] ?>">
                                 <i class="fas fa-plus-circle fa-lg"></i>
                               </a>
+                            <?php } ?>
                             <?php if($rolle == 'admin') { ?>
-                            <span data-toggle="modal" data-target="#modalDelete">
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Batal"
-                                class="text-danger mr-3">
+                                class="text-danger mr-3 batalTransaksi" id="<?= $data['kode_penembakan']; ?>">
                                 <i class="fas fa-undo fa-lg"></i>
                               </a>
-                            </span>
                             <?php } ?>
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                                 class="text-success detailTransaksi" id="<?= $data['kode_penembakan'] ?>">
@@ -276,6 +278,8 @@
   <?php include("../includes/ajax/penambahan-transaksi.php"); ?>
   <!-- ajax detail transaksi -->
   <?php include("../includes/ajax/detail-transaksi-penembakan.php"); ?>
+  <!-- ajax kembali transaksi -->
+  <?php include("../includes/ajax/kembali-penambahan-transaksi.php"); ?>
   <script>
     function inputTerbilang() {
       // Format mata uang.
