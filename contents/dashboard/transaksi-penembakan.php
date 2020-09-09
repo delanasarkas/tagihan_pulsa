@@ -172,7 +172,7 @@
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
+                  <canvas id="myChart"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -270,8 +270,15 @@
     include("../includes/scripts.php");
   ?>
   <!-- chart transaksi penembakan -->
-  <script src="../../assets/dashboard/js/chartjs/charttransaksipenembakan.js"></script>
-  <!-- rupiah data baru-->
+  <?php 
+    if($rolle=='sales'){
+      //sales
+      include("../includes/charts/grafik-transaksi-penembakan-sales.php");
+    }else{
+      //admin
+      include("../includes/charts/grafik-transaksi-penembakan-admin.php");
+    }
+  ?>
   <!-- ajax input transaksi -->
   <?php include("../includes/ajax/input-transaksi.php"); ?>
   <!-- ajax penambahan transaksi -->

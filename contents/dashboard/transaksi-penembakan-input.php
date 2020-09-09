@@ -22,7 +22,7 @@
     <select class="form-control namapelangganinput" id="single" name="namapelanggan">
       <option value="Pilih Nama Pelanggan">Pilih Nama Pelanggan</option>
       <?php
-        $queryPelanggan = mysqli_query($con,"CALL select_pelanggan_all");
+        $queryPelanggan = mysqli_query($con,"CALL select_pelanggan_by_sales('".$id."')");
         mysqli_next_result($con);
         while($dataPelanggan=mysqli_fetch_assoc($queryPelanggan)) {
       ?>
