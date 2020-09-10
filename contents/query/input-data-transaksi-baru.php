@@ -42,7 +42,7 @@
          '".$jumlahtransaksipenembakan."',
          NULL,
          '".$jumlahtransaksipenembakan."',
-         'insert'
+         'baru'
      )");
      mysqli_next_result($con);
     

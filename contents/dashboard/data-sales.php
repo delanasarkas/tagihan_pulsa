@@ -195,8 +195,7 @@
                           <td><?= $no++; ?></td>
                           <td><?= $data['nama_depan'];?> <?= $data['nama_belakang'];?></td>
                           <td>Rp <?= number_format( $data['limits'], 0 , '' , '.' ) . ',-' ?></td>
-                          <td><span
-                              class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span>
+                          <td><span class="badge badge-pill <?php echo $data['stat'] == 'aktif' ? 'badge-success' : 'badge-danger'; ?>"><?= $data['stat']; ?></span>
                           </td>
                           <td>
                             <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Edit Data"

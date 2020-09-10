@@ -42,7 +42,7 @@
         '".$jumlahtransaksipenembakan."',
         '".$transaksiPenambahan."',
         '".$totalPenambahan."',
-        'update'
+        'penambahan'
     )");
     mysqli_next_result($con);
 

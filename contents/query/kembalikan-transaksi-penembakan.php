@@ -33,7 +33,7 @@
         '".$transPenembakan."',
         '".$penambahan."',
         '".$total."',
-        'delete'
+        'dikembalikan'
     )");
     mysqli_next_result($con);
 

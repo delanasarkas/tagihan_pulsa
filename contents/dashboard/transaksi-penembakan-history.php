@@ -2,6 +2,18 @@
   //session
   session_start();
   
+  //include akses
+  include('../query/hak-akses.php');
+  
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  //select transaksi penembakan
+  include('../query/select-transaksi-penembakan-log.php');
+
   $page = 'transaksipenembakan';
 ?>
 <!DOCTYPE html>
@@ -66,7 +78,7 @@
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-historypenembakan"></canvas>
+                  <canvas id="chart-datasales"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -106,25 +118,32 @@
                           <th>Tanggal Penambahan</th>
                           <th>Tanggal Penagihan</th>
                           <th>Transaksi Penembakan</th>
-                          <th>Tambah Penembakan</th>
+                          <th>Transaksi Penambahan</th>
                           <th>Total Transaksi</th>
                           <th>Keterangan</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+
+                      $no = 1;
+                      while($data = mysqli_fetch_assoc($resultSelect)){
+
+                      ?>
                         <tr>
-                          <td>1</td>
-                          <td>2919288</td>
-                          <td>System Architect</td>
-                          <td>Njunaedi</td>
-                          <td>11/12/2020</td>
-                          <td>11/12/2020</td>
-                          <td>14/12/2020</td>
-                          <td>Rp.2.000.000</td>
-                          <td>Rp.2.000.000</td>
-                          <td>Rp.4.000.000</td>
-                          <td>Data Baru, Data Perubahan, Data Penambahan, Data Terhapus</td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['kode_penembakan']; ?></td>
+                          <td><?= $data['nama_depan'] ?> <?= $data['nama_belakang'] ?></td>
+                          <td><?= $data['nama_pelanggan'] ?></td>
+                          <td><?= $data['tgl_penembakan'] ?></td>
+                          <td><?= $data['tgl_penambahan'] ?></td>
+                          <td><?= $data['tgl_penagihan'] ?></td>
+                          <td>Rp <?= number_format( $data['transaksi_penembakan'], 0 , '' , '.' ) . ',-' ?></td>
+                          <td>Rp <?= number_format( $data['transaksi_penambahan'], 0 , '' , '.' ) . ',-' ?></td>
+                          <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
+                          <td><span class="badge badge-pill <?php if($data['keterangan'] == 'baru'){ echo 'badge-success'; }else if($data['keterangan'] == 'penambahan'){ echo 'badge-primary'; }else{ echo 'badge-danger'; } ?>"><?= $data['keterangan'] ?></span></td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -152,8 +171,10 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart transaksi penembakan -->
-  <script src="../../assets/dashboard/js/chartjs/charthistorypenembakan.js"></script>
+  <!-- chart penembakan log -->
+  <?php 
+    include("../includes/charts/grafik-transaksi-penembakan-log.php"); 
+  ?>
 </body>
 
 </html>
