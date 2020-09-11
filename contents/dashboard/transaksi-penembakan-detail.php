@@ -32,7 +32,7 @@
                 <i class="fas fa-comments-dollar fa-5x"></i>
             </div>
         </div>
-        <div class="form-row mt-2">
+        <div class="form-row mt-5">
             <div class="col-md-6 mb-3">
                 <label for=""><strong>Kode Penembakan</strong></label>
                 <p><?= $kode_penembakan; ?></p>

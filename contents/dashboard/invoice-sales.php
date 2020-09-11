@@ -2,6 +2,18 @@
   //session
   session_start();
   
+  //include akses
+  include('../query/hak-akses.php');
+  
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+ 
+  //select transaksi penembakan
+  include('../query/select-invoice-tagihan.php');
+
   $page = 'invoicesales';
 ?>
 <!DOCTYPE html>
@@ -21,18 +33,42 @@
 </head>
 
 <body class="">
+  <!-- Setor Modal -->
+    <div class="modal fade" id="modalSetor" tabindex="-1" role="dialog" aria-labelledby="modalSetor"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Tambah Setoran</h5>
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </div>
+          <form method="POST" id="setorForm" autocomplete="off">
+          <div class="modal-body" id="infoSetorInvoice">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-success" id="setorButton">Setor</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- End Setor Modal -->
   <!-- Detail Modal -->
   <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
           <h5 class="modal-title">Detail Invoice</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </a>
         </div>
-        <div class="modal-body">
-          <?php include("invoice-sales-detail.php");?>
+        <div class="modal-body" id="infoDetailInvoice">
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -104,7 +140,7 @@
               </button>
               <span data-notify="icon" class="nc-icon nc-bell-55"></span>
               <span data-notify="message">Jumlah data invoice yang belum di proses pada hari ini adalah
-                <strong>13</strong></span>
+                <strong><?= $count; ?></strong></span>
             </div>
             <div class="card card-stats shadow">
               <div class="card-header">
@@ -132,26 +168,29 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php 
+                          $no=1;
+                          while($data = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr>
-                          <td>1</td>
-                          <td>818282</td>
-                          <td>Rp.40.000.000</td>
-                          <td><span class="badge badge-pill badge-danger">Belum Proses</span></td>
+                          <td><?= $no++; ?></td>
+                          <td><?= substr($data['id_invoice'],0,7) ?></td>
+                          <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-'; ?></td>
+                          <td><span class="badge badge-pill <?php if($data['status_invoice'] == 'belum proses'){ echo 'badge-danger'; }else{ echo 'badge-success'; } ?>"><?= $data['status_invoice'] ?></span></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success mr-3">
-                                <i class="fas fa-list fa-lg"></i>
-                              </a>
-                            </span>
-                            <span>
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Setor"
-                                class="text-warning">
+                              <?php if($data['status_invoice'] == 'belum proses') { ?>
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Setor"
+                                class="text-warning mr-3 setorInvoice" id="<?= $data['id_invoice'] ?>">
                                 <i class="fas fa-donate fa-lg"></i>
                               </a>
-                            </span>
+                              <?php } ?>
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-success detailInvoice" id="<?= $data['id_invoice'] ?>">
+                                <i class="fas fa-list fa-lg"></i>
+                              </a>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -179,8 +218,37 @@
   <?php
     include("../includes/scripts.php");
   ?>
+  <!-- ajax detail invoice -->
+  <?php
+    include("../includes/ajax/detail-invoice.php");
+  ?>
+  <!-- ajax setor invoice -->
+  <?php include("../includes/ajax/invoice-tagihan-setor.php"); ?>
   <!-- chart invoice sales -->
   <script src="../../assets/dashboard/js/chartjs/chartinvoicesales.js"></script>
+  <!-- reset modal -->
+  <script>
+    $('#modalCreate').on('hidden.bs.modal', function (e) {
+      $(this)
+        .find('#single4')
+        .val('Pilih Kode Invoice')
+        .trigger('change')
+        .end()
+        .find('#feedbacksetoransales')
+        .addClass('invalid-feedback')
+        .html('Harap pilih kode invoice')
+        .end()
+        .find("#kodepenembakan, #namasales, #namapelanggan, #tanggaltagihan, #limitsaldo, #jumlahsetoran, textarea")
+        .val('')
+        .end()
+        .find("small")
+        .html('')
+        .end()
+        .find("input[type=checkbox], input[type=radio]")
+        .prop("checked", "")
+        .end();
+    })
+  </script>
 </body>
 
 </html>

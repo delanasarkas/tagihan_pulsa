@@ -25,11 +25,13 @@
     var validtransaksiPenambahan = true;
     var totalPenambahan = $('#totaltransaksipenembakan').val().replace('.','').replace('.','').replace('-','');
     var validtotalPenambahan = true;
+    var saldoSales = $('#saldosales2').val().replace('.','').replace('.','').replace('-','');
+    var validsaldoSales = true;
 
     if(transaksiPenambahan== ""){
         $('#errorTransaksiPenambahan').html('Jumlah transaksi tidak boleh kosong');
         validtransaksiPenambahan= false;
-    }else if(transaksiPenambahan < 100000 || transaksiPenambahan > 5000000){
+    }else if(Number(transaksiPenambahan) < 100000 || Number(transaksiPenambahan) > 5000000){
         $('#errorTransaksiPenambahan').html('Jumlah penambahan minimal Rp 100.000 dan maksimal Rp 5.000.000');
         validtransaksiPenambahan= false;
     }
@@ -39,8 +41,13 @@
         validtotalPenambahan= false;
     }
 
+    if(Number(transaksiPenambahan) > Number(saldoSales)){
+        $('#errorTransaksiPenambahan').html('Jumlah saldo anda kurang');
+        validsaldoSales= false;
+    }
+
     //jika sukses
-    if(validtransaksiPenambahan && validtotalPenambahan){
+    if(validtransaksiPenambahan && validtotalPenambahan && validsaldoSales){
       $.ajax({
         url: "../query/input-data-transaksi-penambahan.php",
         type: 'POST',

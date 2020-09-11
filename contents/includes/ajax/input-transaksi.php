@@ -9,9 +9,9 @@ $(document).ready(function() {
         var validKodePenembakan = true;
         var NamaPelanggan = $('.namapelangganinput').val();
         var validNamaPelanggan = true;
-        var JumlahTransaksi = $('#jumlahtransaksipenembakan').val().replace('.','').replace('.','').replace('-','');
+        var JumlahTransaksi = $('#jumlahtransaksipenembakan').val().replace('.','').replace('.','');
         var validJumlahTransaksi = true;
-        var SaldoSales = $('#saldosales').val().replace('.','').replace('.','').replace('-','');
+        var SaldoSales = $('#saldosales').val().replace('.','').replace('.','');
         var validSaldoSales = true;
 
         //validasi kode penembakan
@@ -30,13 +30,13 @@ $(document).ready(function() {
         if(JumlahTransaksi== ""){
           $('#errorJumlahTransaksi').html('Jumlah transaksi tidak boleh kosong');
           validJumlahTransaksi= false;
-        }else if(JumlahTransaksi < 100000 || JumlahTransaksi > 5000000){
+        }else if(Number(JumlahTransaksi) < 100000 || Number(JumlahTransaksi) > 5000000){
           $('#errorJumlahTransaksi').html('Jumlah transaksi minimal Rp 100.000 dan maksimal Rp 5.000.000');
           validJumlahTransaksi= false;
         }
 
         //validasi total
-        if(JumlahTransaksi > SaldoSales){
+        if(Number(JumlahTransaksi) > Number(SaldoSales)){
             $('#errorJumlahTransaksi').html('Jumlah saldo anda kurang');
             validSaldoSales= false;
         }

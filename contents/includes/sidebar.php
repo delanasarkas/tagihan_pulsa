@@ -39,6 +39,12 @@
                 </a>
             </li>
             <?php } ?>
+            <li class="<?php if($page=="invoicesales"){echo 'active';}?>">
+                <a href="invoicesales">
+                    <i class="nc-icon nc-send"></i>
+                    <p>INVOICE SALES</p>
+                </a>
+            </li>
             <li class="nav-item btn-rotate dropdown <?php if($page=="setoransales"){echo 'active';}?>">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,12 +57,6 @@
                     <?php } ?>
                     <a class="dropdown-item" href="buktitransfer">BUKTI TRANSFER</a>
                 </div>
-            </li>
-            <li class="<?php if($page=="invoicesales"){echo 'active';}?>">
-                <a href="invoicesales">
-                    <i class="nc-icon nc-send"></i>
-                    <p>INVOICE SALES</p>
-                </a>
             </li>
             <li class="<?php if($page=="datapelanggan"){echo 'active';}?>">
                 <a href="datapelanggan">

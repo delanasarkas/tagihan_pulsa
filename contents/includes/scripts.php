@@ -198,6 +198,12 @@
     $('#nominalsaldopengiriman').trigger('focus')
   });
 </script>
+<!-- autfocus invoice -->
+<script>
+  $('#modalSetor').on('shown.bs.modal', function () {
+    $('#jumlahsetoran').trigger('focus')
+  });
+</script>
 <!-- autfocus data pelanggan -->
 <script>
   $('#modalCreate').on('shown.bs.modal', function () {

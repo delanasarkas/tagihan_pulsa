@@ -21,31 +21,6 @@
 </head>
 
 <body class="">
-  <!-- Create Modal -->
-  <form action="">
-    <div class="modal fade" id="modalCreate" tabindex="-1" role="dialog" aria-labelledby="modalCreate"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">Tambah Setoran</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <?php include("setoran-sales-input.php");?>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Simpan</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-  <!-- End Create Modal -->
-
   <!-- Detail Modal -->
   <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -140,12 +115,12 @@
               <div class="card-header">
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">SETORAN SALES</h3>
-                  <div class="float-rights">
+                  <!-- <div class="float-rights">
                     <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
                       class="btn btn-primary btn-round d-inline">
                       <i class="fas fa-plus"></i> Tambah Setoran
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="card-body">
