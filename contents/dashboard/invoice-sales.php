@@ -121,7 +121,7 @@
               </div>
               <div class="card-body">
                 <div id="canvas-holder" style="width:100%">
-                  <canvas id="chart-transaksipenembakan"></canvas>
+                  <canvas id="chartcanvas"></canvas>
                 </div>
               </div>
               <div class="card-footer">
@@ -147,7 +147,7 @@
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">INVOICE (TAGIHAN)</h3>
                   <div class="float-rights">
-                    <a type="submit" href="javascript::" class="btn btn-outline-primary btn-round d-inline">
+                    <a href="cetakinvoice" target="_blank" class="btn btn-outline-primary btn-round d-inline">
                       <i class="fas fa-print"></i> Cetak Data
                     </a>
                   </div>
@@ -224,8 +224,10 @@
   ?>
   <!-- ajax setor invoice -->
   <?php include("../includes/ajax/invoice-tagihan-setor.php"); ?>
-  <!-- chart invoice sales -->
-  <script src="../../assets/dashboard/js/chartjs/chartinvoicesales.js"></script>
+  <!-- chart data invoice -->
+  <?php 
+    include("../includes/charts/grafik-invoice-tagihan.php"); 
+  ?>
   <!-- reset modal -->
   <script>
     $('#modalCreate').on('hidden.bs.modal', function (e) {

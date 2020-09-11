@@ -25,4 +25,5 @@ ErrorDocument 403 http://localhost/tagihan_pulsa/contents/error/403.php
     RewriteRule ^buktitransfer bukti-transfer.php [NC,L]
     RewriteRule ^reportdata report-data.php [NC,L]
     RewriteRule ^profil profil.php [NC,L]
+    RewriteRule ^cetakinvoice cetak-invoice.php [NC,L]
 </IfModule>
