@@ -45,8 +45,14 @@ class PDF extends FPDF
         include('../query/koneksi.php');
         //get id
         $id = $_SESSION['userId'];
+		$rolle = $_SESSION['rolle'];
 
-        $query = mysqli_query($con,"CALL cetak_invoice_tagihan_sales('".$id."')");
+		if($rolle == 'admin'){
+			$query = mysqli_query($con,"CALL cetak_invoice_tagihan_admin()");
+		}else{
+		    $query = mysqli_query($con,"CALL cetak_invoice_tagihan_sales('".$id."')");	
+		}
+
 
         mysqli_next_result($con);
         while($data = mysqli_fetch_assoc($query)){

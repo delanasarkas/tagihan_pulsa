@@ -2,14 +2,25 @@
 
     //session
 
-    //aktif
-    $result3 = mysqli_query($con, "CALL select_invoice_lunas('".$id."')");
-    $count = mysqli_num_rows($result3);
-    mysqli_next_result($con);
-    //tidak aktif
-    $result4 = mysqli_query($con, "CALL select_invoice_proses('".$id."')");
-    $count2 = mysqli_num_rows($result4);
-    mysqli_next_result($con);
+    if($rolle == 'admin'){
+        //aktif
+        $result3 = mysqli_query($con, "CALL select_invoice_lunas_admin()");
+        $count = mysqli_num_rows($result3);
+        mysqli_next_result($con);
+        //tidak aktif
+        $result4 = mysqli_query($con, "CALL select_invoice_proses_admin()");
+        $count2 = mysqli_num_rows($result4);
+        mysqli_next_result($con);
+    }else{
+        //aktif
+        $result3 = mysqli_query($con, "CALL select_invoice_lunas('".$id."')");
+        $count = mysqli_num_rows($result3);
+        mysqli_next_result($con);
+        //tidak aktif
+        $result4 = mysqli_query($con, "CALL select_invoice_proses('".$id."')");
+        $count2 = mysqli_num_rows($result4);
+        mysqli_next_result($con);
+    }
 
 ?>
 <script>
