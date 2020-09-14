@@ -1,7 +1,17 @@
 <?php
   //session
   session_start();
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  $querySelect = mysqli_query($con,"CALL bukti_transfer_sales('".$id."')");
+
   $page = 'setoransales';
 ?>
 <!DOCTYPE html>
@@ -26,13 +36,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title">Detail Setoran</h5>
+          <h5 class="modal-title">Detail Bukti Transfer</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <?php include("setoran-sales-detail.php");?>
+        <div class="modal-body" id="infoDetailBukti">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -81,12 +91,6 @@
               <div class="card-header">
                 <div class="mobile">
                   <h3 class="card-title d-inline title-table">BUKTI TRANSFER</h3>
-                  <div class="float-rights">
-                    <a type="submit" href="javascript::" data-toggle="modal" data-target="#modalCreate"
-                      class="btn btn-primary btn-round d-inline invisible">
-                      <i class="fas fa-plus"></i> Tambah Setoran
-                    </a>
-                  </div>
                 </div>
               </div>
               <div class="card-body">
@@ -97,31 +101,34 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Kode Invoice</th>
                           <th>Nama Sales</th>
                           <th>Tanggal Setor</th>
                           <th>Total Setor</th>
-                          <th>Bukti Transfer</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                      <?php 
+                          $no=1;
+                          while($data = mysqli_fetch_assoc($querySelect)) {
+                      ?>
                         <tr>
-                          <td>1</td>
-                          <td>8174758</td>
-                          <td>Aji Kuproy</td>
-                          <td>08/11/2020</td>
-                          <td>Rp.50.000.000</td>
-                          <td>Gambar</td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['nama_depan'] ?> <?= $data['nama_belakang'] ?></td>
+                          <td><?= date('d-m-Y',strtotime($data['tgl_setoran'])) ?></td>
+                          <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Download Gambar" class="text-info">
-                                <i class="fas fa-cloud-download-alt"></i> Download
+                              <a href="uploadtransfer/<?= $data['bukti_transfer'] ?>" target="_blank" data-toggle="tooltip" data-placement="bottom"
+                                title="Download Gambar" class="text-info mr-3">
+                                <i class="fas fa-cloud-download-alt fa-lg"></i>
                               </a>
-                            </span>
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom"
+                                title="Detail Data" class="text-success detailBukti" id="<?= $data['tgl_setoran'] ?>">
+                                <i class="fas fa-list fa-lg"></i>
+                              </a>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -149,6 +156,8 @@
   <?php
     include("../includes/scripts.php");
   ?>
+  <!-- ajax detail bukti -->
+  <?php include("../includes/ajax/detail-bukti-transfer.php"); ?>
   <!-- tambah setoran -->
   <script>
     $(document).ready(function () {
