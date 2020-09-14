@@ -1,7 +1,100 @@
 <?php
   //session
   session_start();
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+  $validasi = "";
+  $setoran = "";
+  //select setoran
+  include('../query/select-setoran-sales.php');
+  if(isset($_POST['upload'])){
+    $totalsetoran = $_POST['totalsetoran'];
+    $nama_file = $_FILES['uploadtransfer']['name'];
+    $ukuran_file = $_FILES['uploadtransfer']['size'];
+    $tipe_file = $_FILES['uploadtransfer']['type'];
+    $tmp_file = $_FILES['uploadtransfer']['tmp_name'];
+    // Set path folder tempat menyimpan gambarnya
+    $path = "uploadtransfer/".$nama_file;
+
+    if(empty($totalsetoran)){
+      $setoran = "Tidak ada total setoran";
+    }
+
+    if($tipe_file == "image/jpeg" || $tipe_file == "image/png"){ // Cek apakah tipe file yang diupload adalah JPG / JPEG / PNG
+        // Jika tipe file yang diupload JPG / JPEG / PNG, lakukan :
+        if($ukuran_file <= 500000){ // Cek apakah ukuran file yang diupload kurang dari sama dengan 1MB
+          // Jika ukuran file kurang dari sama dengan 1MB, lakukan :
+          // Proses upload
+          if(move_uploaded_file($tmp_file, $path)){ // Cek apakah gambar berhasil diupload atau tidak
+            // Jika gambar berhasil diupload, Lakukan :  
+            // Proses simpan ke Database
+            $query = mysqli_query($con, "CALL update_setoran_sales('".$nama_file."','".$id."')");
+            if($query){ // Cek jika proses simpan ke database sukses atau tidak
+              // Jika Sukses, Lakukan :
+              header("location:setoransales?suksesTransfer"); // Redirectke halaman index.php
+            }else{
+              // Jika Gagal, Lakukan :
+              $validasi = '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> Terjadi kesalahan menyimpan
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                ';
+            }
+          }else{
+            // Jika gambar gagal diupload, Lakukan :
+            $validasi = '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> Gambar gagal diupload
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                ';
+          }
+        }else{
+          // Jika ukuran file lebih dari 1MB, lakukan :
+          $validasi = '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> Ukuran gambar max 500Kb
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                ';
+        }
+      }else{
+        // Jika tipe file yang diupload bukan JPG / JPEG / PNG, lakukan :
+        $validasi = '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Gagal!</strong> Format harus jpeg atau png
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                ';
+      }
+  }      
+
+  if(isset($_GET['suksesTransfer'])){
+    $validasi = '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Upload Berhasil!</strong> selanjutnya tunggu konfirmasi admin
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    ';
+  }
+
   $page = 'setoransales';
 ?>
 <!DOCTYPE html>
@@ -31,8 +124,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <?php include("setoran-sales-detail.php");?>
+        <div class="modal-body" id="infoDetailSetoran">
+         
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -76,6 +169,7 @@
       <!-- Main -->
       <div class="content bg-white">
         <div class="row">
+          <?php if($rolle=="sales"){ ?>
           <div class="col-lg-4">
             <div class="alert alert-info alert-with-icon alert-dismissible fade show" data-notify="container">
               <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
@@ -102,14 +196,15 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
+          <?php } ?>
+          <div class="<?= $rolle=='admin' ? 'col-lg-12' : 'col-lg-8'; ?>">
             <div class="alert alert-danger alert-with-icon alert-dismissible fade show" data-notify="container">
               <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
                 <i class="nc-icon nc-simple-remove"></i>
               </button>
               <span data-notify="icon" class="nc-icon nc-bell-55"></span>
-              <span data-notify="message">Jumlah data setoran yang belum di setor pada hari ini adalah
-                <strong>13</strong></span>
+              <span data-notify="message">Jumlah data setoran yang pending pada hari ini adalah
+              <strong><?= $count; ?></strong></span>
             </div>
             <div class="card card-stats shadow">
               <div class="card-header">
@@ -138,20 +233,23 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <?php 
+                          $no=1;
+                          while($data = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr>
-                          <td>1</td>
-                          <td>8174758</td>
-                          <td>Aji Kuproy</td>
-                          <td><span class="badge badge-pill badge-info">Belum Setor</span></td>
+                          <td><?= $no++; ?></td>
+                          <td><?= substr($data['id_invoice'],0,7) ?></td>
+                          <td><?= $data['nama_pelanggan'] ?></td>
+                          <td><span class="badge badge-pill <?php if($data['keterangan'] == 'pending'){ echo 'badge-warning'; }else if($data['keterangan'] == 'belum konfirmasi'){ echo 'badge-info'; }else if($data['keterangan'] == 'diterima'){ echo 'badge-success'; }else if($data['keterangan'] == 'ditolak'){ echo 'badge-danger'; } ?>"><?= $data['keterangan'] ?></span></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
-                                class="text-success">
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-success detailSetoran" id="<?= $data['id_setoran'] ?>">
                                 <i class="fas fa-list fa-lg"></i> Detail
                               </a>
-                            </span>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -179,6 +277,8 @@
   <?php
     include("../includes/scripts.php");
   ?>
+  <!-- ajax detail setoran -->
+  <?php include("../includes/ajax/detail-setoran-sales.php"); ?>
   <!-- tambah setoran -->
   <script>
     $(document).ready(function () {
