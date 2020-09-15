@@ -51,7 +51,9 @@
                     <i class="nc-icon nc-money-coins"></i> SETORAN SALES
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <?php if($_SESSION['rolle'] == 'sales') { ?>
                     <a class="dropdown-item" href="setoransales">DATA SETORAN</a>
+                    <?php } ?>
                     <?php if($_SESSION['rolle'] == 'admin') { ?>
                     <a class="dropdown-item" href="konfirmasisetoran">KONFIRMASI SETORAN</a>
                     <?php } ?>

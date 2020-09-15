@@ -10,7 +10,11 @@
   $id = $_SESSION['userId'];
   $rolle = $_SESSION['rolle'];
 
-  $querySelect = mysqli_query($con,"CALL bukti_transfer_sales('".$id."')");
+  if($rolle == 'sales'){
+    $querySelect = mysqli_query($con,"CALL bukti_transfer_sales('".$id."')");
+  }else{
+    $querySelect = mysqli_query($con,"CALL bukti_transfer_admin()");
+  }
 
   $page = 'setoransales';
 ?>

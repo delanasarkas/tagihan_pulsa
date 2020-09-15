@@ -1,7 +1,18 @@
 <?php
   //session
   session_start();
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  //select konfirmasi setoran
+  include('../query/select-konfirmasi-setoran.php');
+
   $page = 'setoransales';
 ?>
 <!DOCTYPE html>
@@ -22,52 +33,52 @@
 
 <body class="">
   <!-- Terima Modal -->
-  <form action="">
     <div class="modal fade" id="modalTerima" tabindex="-1" role="dialog" aria-labelledby="modalTerima"
       aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header bg-success text-white">
-            <h5 class="modal-title">Konfirmasi Terima Setoran</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title">Konfirmasi Terima</h5>
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            <?php include("konfirmasi-setoran-terima.php"); ?>
+          <form method="POST" action="#" id="editForm" autocomplete="off">
+          <div class="modal-body" id="infoKonfirmasiTerima">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Terima</button>
+            <button type="button" class="btn btn-success" id="editButton">Terima</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Terima Modal -->
 
   <!-- Tolak Modal -->
-  <form action="">
     <div class="modal fade" id="modalTolak" tabindex="-1" role="dialog" aria-labelledby="modalTolak" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger text-white">
-            <h5 class="modal-title">Konfirmasi Tolak Setoran</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title">Konfirmasi Tolak</h5>
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </a>
           </div>
-          <div class="modal-body">
-            <?php include("konfirmasi-setoran-tolak.php"); ?>
+          <form method="POST" action="#" id="tolakForm" autocomplete="off">
+          <div class="modal-body" id="infoKonfirmasiTolak">
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-success">Tolak</button>
+            <button type="button" class="btn btn-success" id="tolakButton">Tolak</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
   <!-- End Tolak Modal -->
 
   <!-- Detail Modal -->
@@ -76,12 +87,12 @@
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
           <h5 class="modal-title">Detail Konfirmasi Setoran</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
         </div>
-        <div class="modal-body">
-          <?php include("konfirmasi-setoran-detail.php");?>
+        <div class="modal-body" id="infoDetailKonfirmasi">
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
@@ -96,9 +107,9 @@
       <div class="modal-content">
         <div class="modal-header bg-warning text-dark">
           <h5 class="modal-title">Konfirmasi Keluar</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+            <a href="javascript:;" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </a>
         </div>
         <div class="modal-body">
           Yakin Keluar Dari Halaman ?
@@ -153,7 +164,7 @@
               </button>
               <span data-notify="icon" class="nc-icon nc-bell-55"></span>
               <span data-notify="message">Jumlah data setoran yang belum di konfirmasi pada hari ini adalah
-                <strong>13</strong></span>
+                <strong><?= $count; ?></strong></span>
             </div>
             <div class="card card-stats shadow">
               <div class="card-header">
@@ -175,39 +186,45 @@
                       <thead>
                         <tr>
                           <th>No</th>
-                          <th>Kode Invoice</th>
                           <th>Nama Sales</th>
+                          <th>Tanggal Setor</th>
+                          <th>Total Setor</th>
                           <th>Status</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php 
+                          $no=1;
+                          while($data = mysqli_fetch_assoc($result)) {
+                        ?>
                         <tr>
-                          <td>1</td>
-                          <td>8174758</td>
-                          <td>Aji Kuproy</td>
-                          <td><span class="badge badge-pill badge-info">Belum Konfirmasi</span></td>
+                          <td><?= $no++; ?></td>
+                          <td><?= $data['nama_depan'] ?> <?= $data['nama_belakang'] ?></td>
+                          <td><?= date('d-m-Y',strtotime($data['tgl_setoran'])) ?></td>
+                          <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-' ?></td>
+                          <td><span class="badge badge-pill <?php if($data['keterangan'] == 'belum konfirmasi'){ echo 'badge-info'; }else if($data['keterangan'] == 'diterima'){ echo 'badge-success'; }else if($data['keterangan'] == 'ditolak'){ echo 'badge-danger'; } ?>"><?= $data['keterangan'] ?></span></td>
                           <td>
-                            <span data-toggle="modal" data-target="#modalTerima">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Terima Setoran" class="text-primary mr-3">
+                              <?php if($data['keterangan'] == 'belum konfirmasi') { ?>
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom"
+                                title="Terima Setoran" class="text-primary mr-3 konfirmasiTerima" id="<?= $data['id_users'] ?>">
                                 <i class="fas fa-check fa-lg"></i>
                               </a>
-                            </span>
-                            <span data-toggle="modal" data-target="#modalTolak">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom" title="Tolak Setoran"
-                                class="text-danger mr-3">
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Tolak Setoran"
+                                class="text-danger mr-3 konfirmasiTolak" id="<?= $data['id_users'] ?>">
                                 <i class="fas fa-times fa-lg"></i>
                               </a>
-                            </span>
-                            <span data-toggle="modal" data-target="#modalDetail">
-                              <a href="javascript::" data-toggle="tooltip" data-placement="bottom"
-                                title="Detail Setoran" class="text-success">
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom"
+                                title="Detail Setoran" class="text-success detailKonfirmasi" id="<?= $data['tgl_setoran'] ?>">
                                 <i class="fas fa-list fa-lg"></i>
                               </a>
-                            </span>
+                              <?php } ?>
+                              <?php if($data['keterangan'] == 'diterima' || $data['keterangan'] == 'ditolak') { ?>
+                              -
+                              <?php } ?>
                           </td>
                         </tr>
+                        <?php } ?>
                         </tfoot>
                     </table>
                     <!-- End Table -->
@@ -235,8 +252,16 @@
   <?php
     include("../includes/scripts.php");
   ?>
-  <!-- chart saldo limit -->
-  <script src="../../assets/dashboard/js/chartjs/chartkonfirmasisetoran.js"></script>
+  <!-- ajax detail konfirmasi -->
+  <?php include("../includes/ajax/detail-konfirmasi-setoran.php"); ?>
+  <!-- ajax terima-->
+  <?php include("../includes/ajax/terima-konfirmasi.php"); ?>
+  <!-- ajax tolak -->
+  <?php include("../includes/ajax/tolak-konfirmasi.php"); ?>
+  <!-- chart konfirmasi setoran -->
+  <?php 
+    include("../includes/charts/grafik-data-konfirmasi.php"); 
+  ?>
   <!-- tambah setoran -->
   <script>
     $(document).ready(function () {

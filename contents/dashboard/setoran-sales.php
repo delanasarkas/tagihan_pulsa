@@ -114,6 +114,26 @@
 </head>
 
 <body class="">
+  <!-- Pesan Modal -->
+  <div class="modal fade" id="modalPesan" tabindex="-1" role="dialog" aria-labelledby="modalPesan" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Pesan Setoran</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="infoPesanSetoran">
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger mr-2" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Pesan Modal -->
   <!-- Detail Modal -->
   <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -243,6 +263,12 @@
                           <td><?= $data['nama_pelanggan'] ?></td>
                           <td><span class="badge badge-pill <?php if($data['keterangan'] == 'pending'){ echo 'badge-warning'; }else if($data['keterangan'] == 'belum konfirmasi'){ echo 'badge-info'; }else if($data['keterangan'] == 'diterima'){ echo 'badge-success'; }else if($data['keterangan'] == 'ditolak'){ echo 'badge-danger'; } ?>"><?= $data['keterangan'] ?></span></td>
                           <td>
+                              <?php if($data['keterangan'] == 'ditolak') { ?>
+                              <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
+                                class="text-primary pesanSetoran mr-3" id="<?= $data['id_setoran'] ?>">
+                                <i class="fas fa-comment-dots fa-lg"></i> Pesan
+                              </a>
+                              <?php } ?>
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Detail Data"
                                 class="text-success detailSetoran" id="<?= $data['id_setoran'] ?>">
                                 <i class="fas fa-list fa-lg"></i> Detail
@@ -279,6 +305,8 @@
   ?>
   <!-- ajax detail setoran -->
   <?php include("../includes/ajax/detail-setoran-sales.php"); ?>
+  <!-- ajax pesan setoran -->
+  <?php include("../includes/ajax/pesan-setoran-sales.php"); ?>
   <!-- tambah setoran -->
   <script>
     $(document).ready(function () {
