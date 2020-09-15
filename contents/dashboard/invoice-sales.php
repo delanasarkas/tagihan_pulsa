@@ -178,7 +178,7 @@
                           <td>Rp <?= number_format( $data['total'], 0 , '' , '.' ) . ',-'; ?></td>
                           <td><span class="badge badge-pill <?php if($data['status_invoice'] == 'belum proses'){ echo 'badge-danger'; }else{ echo 'badge-success'; } ?>"><?= $data['status_invoice'] ?></span></td>
                           <td>
-                              <?php if($data['status_invoice'] == 'belum proses') { ?>
+                              <?php if($data['status_invoice'] == 'belum proses' && $rolle == 'sales') { ?>
                               <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="Setor"
                                 class="text-warning mr-3 setorInvoice" id="<?= $data['id_invoice'] ?>">
                                 <i class="fas fa-donate fa-lg"></i>

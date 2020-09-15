@@ -1,7 +1,15 @@
 <?php
   //session
   session_start();
+  //include akses
+  include('../query/hak-akses.php');
   
+  //include koneksi
+  include('../query/koneksi.php');
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
   $page = 'reportdata';
 ?>
 <!DOCTYPE html>
@@ -11,7 +19,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Report Harian
+        Report Data
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -77,7 +85,7 @@
                                                     <h5 class="card-title">Report Harian</h5>
                                                     <p class="card-text">Data report harian ini untuk mencetak data
                                                         transaksi setoran yang dilakukan oleh sales masika reload.</p>
-                                                    <a href="#" class="btn btn-outline-primary btn-round"><i
+                                                    <a href="cetakharian" target="_blank" class="btn btn-outline-primary btn-round"><i
                                                             class="fas fa-print"></i> Cetak Harian</a>
                                                     <hr class="my-4">
                                                 </div>
@@ -85,7 +93,7 @@
                                                     <h5 class="card-title">Report Bulanan</h5>
                                                     <p class="card-text">Data report bulanan ini untuk mencetak data
                                                         transaksi setoran yang dilakukan oleh sales masika reload.</p>
-                                                    <a href="#" class="btn btn-outline-primary btn-round"><i
+                                                    <a href="cetakbulanan" target="_blank" class="btn btn-outline-primary btn-round"><i
                                                             class="fas fa-print"></i> Cetak Bulanan</a>
                                                     <hr class="my-4">
                                                 </div>
@@ -93,7 +101,7 @@
                                                     <h5 class="card-title">Report Tahunan</h5>
                                                     <p class="card-text">Data report tahunan ini untuk mencetak data
                                                         transaksi setoran yang dilakukan oleh sales masika reload.</p>
-                                                    <a href="#" class="btn btn-outline-primary btn-round"><i
+                                                    <a href="cetaktahunan" target="_blank" class="btn btn-outline-primary btn-round"><i
                                                             class="fas fa-print"></i> Cetak Tahunan</a>
                                                     <hr class="my-4">
                                                 </div>

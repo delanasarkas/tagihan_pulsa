@@ -14,9 +14,9 @@ class PDF extends FPDF
 		//pindah ke posisi ke tengah untuk membuat judul
 		$this->Cell(80);
 		//judul
-        $this->Cell(55,15,'INVOICE TAGIHAN MASIKA RELOAD PADA TANGGAL'.date('d-m-Y'),0,1,'C');
+        $this->Cell(110,15,'REPORT PENGHASILAN BULANAN MASIKA RELOAD PADA BULAN '.strtoupper(date('F Y')),0,1,'C');
         $this->SetFont('Arial','',10);
-        $this->Cell(193,0,'Jl. Siliwangi No.5, Pamulang Bar., Kec. Pamulang, Kota Tangerang Selatan, Banten 15417',0,0,'C');
+        $this->Cell(192,0,'Jl. Siliwangi No.5, Pamulang Bar., Kec. Pamulang, Kota Tangerang Selatan, Banten 15417',0,0,'C');
 		//pindah baris
 		$this->Ln(15);
 		//buat garis horisontal
@@ -32,9 +32,8 @@ class PDF extends FPDF
 		$this->Cell(40,15,'Kode Penembakan',1,0,'C');
 		$this->Cell(40,15,'Nama Sales',1,0,'C');
 		$this->Cell(40,15,'Nama Pelanggan',1,0,'C');
-		$this->Cell(40,15,'Tanggal Tagihan',1,0,'C');
-		$this->Cell(40,15,'Nominal Tagihan',1,0,'C');
-        $this->Cell(37,15,'Status',1,1,'C');
+		$this->Cell(40,15,'Tanggal Setoran',1,0,'C');
+		$this->Cell(76.7,15,'Jumlah Setoran',1,1,'C');
         
         //session
         session_start();
@@ -48,23 +47,35 @@ class PDF extends FPDF
 		$rolle = $_SESSION['rolle'];
 
 		if($rolle == 'admin'){
-			$query = mysqli_query($con,"CALL cetak_invoice_tagihan_admin()");
-		}else{
-		    $query = mysqli_query($con,"CALL cetak_invoice_tagihan_sales('".$id."')");	
+			$query = mysqli_query($con,"SELECT a.jumlah_setoran, a.tgl_setoran,
+            b.nama_depan,b.nama_belakang,
+            c.nama_pelanggan,c.limits,
+            d.kode_penembakan,
+            e.id_invoice
+            FROM setoran_sales a, users b, data_pelanggan c, transaksi_penembakan d, invoice_tagihan e
+            WHERE a.id_users = b.id_users
+            AND a.id_pelanggan = c.id_pelanggan
+            AND a.id_transaksi = d.id_transaksi
+            AND a.id_invoice = e.id_invoice
+            AND keterangan = 'diterima' 
+            AND MONTH(a.tgl_setoran) = MONTH(NOW());");
 		}
 
-
         mysqli_next_result($con);
+        $total = 0;
         while($data = mysqli_fetch_assoc($query)){
             $this->SetFont('arial','',8);
             $this->Cell(40,10,substr($data['id_invoice'],0,7),1,0,'C');
             $this->Cell(40,10,$data['kode_penembakan'],1,0,'C');
             $this->Cell(40,10,$data['nama_depan'].' '.$data['nama_belakang'],1,0,'C');
             $this->Cell(40,10,$data['nama_pelanggan'],1,0,'C');
-            $this->Cell(40,10,date('d-m-Y',strtotime($data['tgl_penagihan'])),1,0,'C');
-            $this->Cell(40,10,'Rp '.number_format( $data['total'], 0 , '' , '.' ) . ',-',1,0,'L');
-            $this->Cell(37,10,$data['status_invoice'],1,1,'C');
+            $this->Cell(40,10,date('d-m-Y',strtotime($data['tgl_setoran'])),1,0,'C');
+            $this->Cell(76.7,10,'Rp '.number_format( $data['jumlah_setoran'], 0 , '' , '.' ) . ',-',1,1,'L');
+            $total += $data['jumlah_setoran'];
         }
+        $this->SetFont('arial','B',20);
+        $this->Cell(200,10,'TOTAL',1,0,'C');
+        $this->Cell(76.7,10,'Rp '.number_format( $total, 0 , '' , '.' ) . ',-',1,0,'C');
 	}
  
 	//Page footer
@@ -83,9 +94,9 @@ class PDF extends FPDF
  
 //contoh pemanggilan class
 $pdf = new PDF('L','mm','A4');
-$pdf->SetTitle('Cetak Invoice');
+$pdf->SetTitle('Report Bulanan');
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->Content();
-$pdf->Output("invoice.pdf","I");
+$pdf->Output("reportbulanan_".strtoupper(date('F_Y')).".pdf","I");
 ?>
