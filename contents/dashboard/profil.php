@@ -22,6 +22,34 @@
     </script>";
   }
 
+  //get id
+  $id = $_SESSION['userId'];
+  $rolle = $_SESSION['rolle'];
+
+  if($rolle == 'admin'){
+    $queryTransaksi = mysqli_query($con,"SELECT * FROM transaksi_penembakan");
+    $countTransaksi = mysqli_num_rows($queryTransaksi);
+
+    $queryPelanggan = mysqli_query($con,"SELECT * FROM data_pelanggan");
+    $countPelanggan = mysqli_num_rows($queryPelanggan);
+
+    $querySetoran = mysqli_query($con,"SELECT * FROM setoran_sales WHERE keterangan='diterima'");
+    $countSetorans = mysqli_num_rows($querySetoran);
+
+    $querySales = mysqli_query($con,"SELECT * FROM users WHERE rolle = 'sales'");
+  }else{
+    $queryTransaksi = mysqli_query($con,"SELECT * FROM transaksi_penembakan WHERE status_lunas='0' AND id_users='$id'");
+    $countTransaksi = mysqli_num_rows($queryTransaksi);
+
+    $queryPelanggan = mysqli_query($con,"SELECT * FROM data_pelanggan WHERE id_users='$id'");
+    $countPelanggan = mysqli_num_rows($queryPelanggan);
+
+    $querySetoran = mysqli_query($con,"SELECT * FROM setoran_sales WHERE keterangan='diterima' AND id_users='$id'");
+    $countSetorans = mysqli_num_rows($querySetoran);
+
+    $queryPelanggan = mysqli_query($con,"SELECT * FROM data_pelanggan WHERE id_users = '$id'");
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,13 +138,13 @@
                 <div class="button-container">
                   <div class="row">
                     <div class="col-lg-4 col-md-6 col-6 ml-auto">
-                      <h5>12<br><small>Pelanggan</small></h5>
+                      <h5><?= $countPelanggan; ?><br><small>Pelanggan</small></h5>
                     </div>
                     <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                      <h5>2GB<br><small>Transaksi</small></h5>
+                      <h5><?= $countTransaksi; ?><br><small>Transaksi</small></h5>
                     </div>
                     <div class="col-lg-4 mr-auto">
-                      <h5>24,6$<br><small>Setoran</small></h5>
+                      <h5><?= $countSetorans; ?><br><small>Setoran</small></h5>
                     </div>
                   </div>
                 </div>
@@ -126,7 +154,7 @@
               <div class="card-header">
                 <h4 class="card-title">
                     <?php
-                      if($_SESSION['rolle'] == 'sales'){
+                      if($rolle == 'sales'){
                         echo 'Downline (pelanggan)';
                       } else {
                         echo 'Sales';
@@ -136,6 +164,8 @@
               </div>
               <div class="card-body">
                 <ul class="list-unstyled team-members">
+                <?php if($rolle=='admin') { ?>
+                  <?php while($data = mysqli_fetch_assoc($querySales)){ ?>
                   <li>
                     <div class="row">
                       <div class="col-md-2 col-2">
@@ -145,16 +175,19 @@
                         </div>
                       </div>
                       <div class="col-md-7 col-7">
-                        DJ Khaled
+                        <?= $data['nama_depan'] ?> <?= $data['nama_belakang'] ?>
                         <br />
-                        <span class="text-muted"><small>Alamat</small></span>
+                        <span class="text-muted"><small><?= $data['alamat'] ?></small></span>
                       </div>
                       <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-whatsapp"></i>
-                        </btn>
+                        <a href="https://api.whatsapp.com/send?phone=<?= $data['no_tlp'] ?>&text=Silahkan Chat Kepada Sales <?= $data['nama_depan']." ".$data['nama_belakang']; ?>" target="_blank" class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-whatsapp"></i>
+                        </a>
                       </div>
                     </div>
                   </li>
+                  <?php } ?>
+                <?php } else { ?>
+                  <?php while($data = mysqli_fetch_assoc($queryPelanggan)){ ?>
                   <li>
                     <div class="row">
                       <div class="col-md-2 col-2">
@@ -164,35 +197,18 @@
                         </div>
                       </div>
                       <div class="col-md-7 col-7">
-                        Creative Tim
+                        <?= $data['nama_pelanggan'] ?>
                         <br />
-                        <span class="text-success"><small>Available</small></span>
+                        <span class="text-muted"><small><?= $data['alamat_pelanggan'] ?></small></span>
                       </div>
                       <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-whatsapp"></i>
-                        </btn>
+                        <a href="https://api.whatsapp.com/send?phone=<?= $data['nomor_telepon'] ?>&text=Silahkan Chat Kepada Pelanggan <?= $data['nama_pelanggan'] ?>" target="_blank" class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-whatsapp"></i>
+                        </a>
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <div class="row">
-                      <div class="col-md-2 col-2">
-                        <div class="avatar">
-                          <img src="../../assets/image/dashboard/default-avatar.png" alt="Circle Image"
-                            class="img-circle img-no-padding img-responsive">
-                        </div>
-                      </div>
-                      <div class="col-ms-7 col-7">
-                        Flume
-                        <br />
-                        <span class="text-danger"><small>Busy</small></span>
-                      </div>
-                      <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-whatsapp"></i>
-                        </btn>
-                      </div>
-                    </div>
-                  </li>
+                  <?php } ?>
+                <?php } ?>
                 </ul>
               </div>
             </div>
