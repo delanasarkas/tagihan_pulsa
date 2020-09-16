@@ -15,7 +15,7 @@
         data: {
             labels: nama_sales,
             datasets: [{
-                label: '',
+                label: 'Rp ',
                 backgroundColor: window.chartColors.red,
                 borderColor: window.chartColors.red,
                 data: jumlah_saldo,
@@ -44,6 +44,11 @@
                     }
                 },
                 y: {
+                    ticks: {
+							callback: function(tick) {
+								return 'Rp '+tick.toString();
+							}
+					},
                     display: true,
                     scaleLabel: {
                         display: true,

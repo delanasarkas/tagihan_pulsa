@@ -7,8 +7,6 @@
 <script src="../../assets/dashboard/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
 <script src="../../assets/dashboard/js/plugins/bootstrap-notify.js"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="../../assets/dashboard/demo/demo.js"></script>
 <!-- Datatable -->
 <script src="../../assets/dashboard/js/datatables/jquery.dataTables.min.js"></script>
 <script src="../../assets/dashboard/js/datatables/dataTables.bootstrap4.min.js"></script>

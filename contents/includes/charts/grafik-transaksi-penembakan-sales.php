@@ -17,7 +17,7 @@
 			data: {
 				labels: nama_pelanggan,
 				datasets: [{
-					label: '',
+					label: 'Rp ',
 					data: total,
 					backgroundColor:'rgba(255, 99, 132, 0.2)',
 					borderColor:'rgba(255,99,132,1)',
@@ -29,11 +29,14 @@
                     display: false
                 },
 				scales: {
-					yAxes: [{
+					y: {
 						ticks: {
-							beginAtZero:true
-						}
-					}]
+							callback: function(tick) {
+							return 'Rp '+tick.toString();
+							}
+						},
+						display: true,
+                	}
 				}
 			}
 		});

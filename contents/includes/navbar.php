@@ -1,3 +1,35 @@
+<?php  
+
+//include koneksi
+include('../query/koneksi.php');
+//get id
+$id = $_SESSION['userId'];
+$rolle = $_SESSION['rolle'];
+if($rolle=='admin'){
+    $queryInvoice = mysqli_query($con,"SELECT a.status_invoice, b.tgl_penagihan 
+    FROM invoice_tagihan a, transaksi_penembakan b 
+    WHERE a.id_transaksi = b.id_transaksi 
+    AND (a.status_invoice = 'belum proses' AND b.tgl_penagihan = CURDATE())");
+    $countInvoice = mysqli_num_rows($queryInvoice);
+
+    $queryKonfirmasi = mysqli_query($con,"SELECT * FROM setoran_sales WHERE keterangan='belum konfirmasi' AND tgl_setoran = CURDATE()");
+    $countKonfirmasi = mysqli_num_rows($queryKonfirmasi);
+
+    $total = $countInvoice + $countKonfirmasi;
+}else{
+    $queryInvoice = mysqli_query($con,"SELECT a.status_invoice, b.tgl_penagihan 
+    FROM invoice_tagihan a, transaksi_penembakan b 
+    WHERE a.id_transaksi = b.id_transaksi 
+    AND (a.status_invoice = 'belum proses' AND b.tgl_penagihan = CURDATE()) AND a.id_users = '$id'");
+    $countInvoice = mysqli_num_rows($queryInvoice);
+
+    $querySetoran = mysqli_query($con,"SELECT * FROM setoran_sales WHERE keterangan='pending' AND tgl_setoran = CURDATE() AND id_users = '$id'");
+    $countSetoran = mysqli_num_rows($querySetoran);
+
+    $total = $countInvoice + $countSetoran;
+}
+
+?>
 <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
     <div class="container-fluid">
         <div class="navbar-wrapper">
@@ -32,23 +64,25 @@
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="nc-icon nc-bell-55"></i>
-                        <span class="badge badge-danger">5</span>
+                        <span class="badge badge-danger"><?= $total; ?></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item <?php if($page=="invoicesales"){echo 'active';}?>" href="invoicesales">
+                        <a class="dropdown-item <?php if($page=="invoicesales"){echo 'active text-white';}?>" href="invoicesales">
                             Invoice (Tagihan)
-                            <span class="badge badge-info">3</span>
+                            <span class="badge badge-info"><?= $countInvoice; ?></span>
                         </a>
                         <?php if($_SESSION['rolle'] == 'admin') { ?>
-                        <a class="dropdown-item" href="konfirmasisetoran">
+                        <a class="dropdown-item <?php if($page=="setoransales"){echo 'active text-white';}?>" href="konfirmasisetoran">
                             Konfirmasi Setoran
-                            <span class="badge badge-info">2</span>
+                            <span class="badge badge-info"><?= $countKonfirmasi; ?></span>
                         </a>
                         <?php } ?>
-                        <a class="dropdown-item" href="setoransales">
+                        <?php if($_SESSION['rolle'] == 'sales') { ?>
+                        <a class="dropdown-item <?php if($page=="setoransales"){echo 'active text-white';}?>" href="setoransales">
                             Status Setoran
-                            <span class="badge badge-info">2</span>
+                            <span class="badge badge-info"><?= $countSetoran; ?></span>
                         </a>
+                        <?php } ?>
                     </div>
                 </li>
             </ul>
